@@ -1,0 +1,17 @@
+@font-face {
+	font-family: 'nickname';
+	src: url('nickname.otf') format('truetype'),
+	font-weight: normal;
+	font-style: normal;
+}	
+
+body{
+	font-family:nickname, sans-serif;
+	font-size:3em;
+	background-image:url("../images/background.jpg");
+}
+
+h1 {
+	font-family:nickname, sans-serif;
+	font-size:3em;
+}
