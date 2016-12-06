@@ -3,7 +3,6 @@
 	<head>
 		<!-- Page Title -->
 	    <title>Concours photo Facebook - Gallerie</title>
-	    
 	    <!-- Meta Tags -->
 	    <meta charset="utf-8">
 	    <meta name="keywords" content="Concours photo Pardon-Maman" />
@@ -12,29 +11,7 @@
 	    <meta name="author" content="Pardon-Maman">
 	    <meta name="robots" content="noindex,nofollow">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-
-	    <!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-
-		<!-- JQUERY LIBRARY -->	
-		<script
-  			src="https://code.jquery.com/jquery-3.1.1.min.js"
-  			integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
-  			crossorigin="anonymous">
-  		</script>
-  		
-		<!-- Optional theme -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-
-		<!-- Latest compiled and minified JavaScript -->
-		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-
-	    <!-- Styles -->
-	    <link href="css/style.css" rel="stylesheet" type="text/css">
-
-		<!-- SCRIPT JS -->	
-		<script type="text/javascript" src="/js/script.js"></script>   
+	    <?php require 'header.php' ?>
 	</head>
 
 	<body>
