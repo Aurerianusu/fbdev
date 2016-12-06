@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 <!doctype html>
 <html>
 	<head>
