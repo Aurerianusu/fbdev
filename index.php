@@ -13,12 +13,12 @@
 	    <meta name="robots" content="noindex,nofollow">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-	    <!-- Theme Styles -->
+	    <!-- Styles -->
 	    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
 	    <link href="/css/style.css" rel="stylesheet" type="text/css">
 	   
 	    <!-- JQUERY LIBRARY -->
-		<script type="text/javascript" src="/js/jquery.min.js"></script>  
+		<script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>  
 	</head>
 
 	<body>
@@ -27,16 +27,15 @@
 		 	<div class="header-content">
 		        <div class="container">
 		                <div class="logo">
-		                    <a href="https://www.pardon-maman.com">
-		                        <img src="images/splatter.png" height="200" width="275" alt="logo" class="img-responsive">
-		                    </a>
+		                    <img src="images/splatter.png" height="200" width="275" alt="logo" class="img-responsive">
+		                    <span id="texte-logo">Concours<br>Photo</p>
 		                </div>
 		                
-		                <div class="row menu">
+		                <nav class="row menu">
 		                    <div class="col-sm-4 col-xs-4">Accueil</div>
 		                    <div class="col-sm-4 col-xs-4">Galerie</div>
 		                    <div class="col-sm-4 col-xs-4">Règles</div>
-		                </div>
+		                </nav>
 		</header> 
 		<!-- END OF HEADER -->       
 

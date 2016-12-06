@@ -1,9 +1,7 @@
 @font-face {
-	font-family: 'nickname';
-	src: url('nickname.otf') format('truetype'),
-	font-weight: normal;
-	font-style: normal;
-}	
+    font-family: "nickname";
+    src: url('nickname.otf');
+}
 
 body{
 	font-family:nickname, sans-serif;
@@ -11,7 +9,17 @@ body{
 	background-image:url("../images/background.jpg");
 }
 
-h1 {
-	font-family:nickname, sans-serif;
-	font-size:3em;
+.logo{
+}
+
+#texte-logo{
+	position: absolute;
+    top: 72px;
+    left: 101px;
+    color: white;
+    -ms-transform: rotate(-18deg); /* IE 9 */
+    -webkit-transform: rotate(-18deg); /* Chrome, Safari, Opera */
+    transform: rotate(-18deg);
+    font-size: 36px;
+    text-align: center;
 }
