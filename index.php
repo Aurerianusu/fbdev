@@ -1,4 +1,3 @@
-<<<<<<< Updated upstream
 <!doctype html>
 <html>
 	<head>
@@ -13,13 +12,7 @@
 	    <meta name="author" content="Pardon-Maman">
 	    <meta name="robots" content="noindex,nofollow">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-	    <!-- Styles -->
-	    <link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-	    <link href="/css/style.css" rel="stylesheet" type="text/css">
-	   
-	    <!-- JQUERY LIBRARY -->
-		<script type="text/javascript" src="/js/jquery-3.1.1.min.js"></script>  
+		<?php require 'header.php';?>
 	</head>
 
 	<body>
@@ -44,15 +37,25 @@
 		<!-- BLOC 1 -->
 		<section id="section-accueil">
 		    <div class="container">
+				<p>gagnez votre tatouage !</p>
 		        <div class="row text-center">
-		            <div class="col-md-4 col-sm-4 col-xs-12">
-		            	<img src="" alt="" class="">            	
+		            <div class="col-md-4 col-sm-4 col-xs-12" id="gift">
+		            	<img src="images/gift.jpg" alt="" class="gift">
 		            </div>
-		            <div class="col-md-8 col-sm-8 col-xs-12"></div>
+		            <div class="col-md-8 col-sm-8 col-xs-12" id="description">
+						<p>pardon maman vous offre la possibilité de gagner un tatouage gratuit pour le vainqueur
+						du concours photo</p>
+
+						<p>
+						pour participer envoyez une photo de votre plus beau ta tatouage
+						</p>
+						<img src="images/submit.png" id="send_button">
+					</div>
 		        </div>
 		        
 		        <div class="row text-right">
-		        	<div class="col-md-12 col-sm-12 col-xs-12"></div>
+		        	<div class="col-md-12 col-sm-12 col-xs-12">
+					</div>
 				</div>
 		    </div>
 		</section>
@@ -60,10 +63,36 @@
 
 		<!-- BLOC 1 -->
 		<section id="section-accueil">
-		    <div class="container">
+			<div class="container">
+				<p>tatouage populaires</p>
 		        <div class="row text-center">
-		            <div class="col-md-4 col-sm-4 col-xs-12">
-		            	<img src="" alt="" class="">            	
+		            <div class="col-md-4 col-sm-4 col-xs-12" >
+						<ul id="image_list">
+							<li><img src="images/tatoo1.jpg" alt="" class="popular">
+								<div
+									class="fb-like"
+									data-width="250"
+									data-show-faces="true">
+								</div>
+							<li><img src="images/tatoo2.jpg" alt="" class="popular">
+								<div
+									class="fb-like"
+									data-width="250"
+									data-show-faces="true">
+								</div>
+							<li><img src="images/tatoo3.jpg" alt="" class="popular">
+								<div
+									class="fb-like"
+									data-width="250"
+									data-show-faces="true">
+								</div>
+							<lI><img src="images/tatoo4.jpg" alt="" class="popular">
+								<div
+									class="fb-like"
+									data-width="250"
+									data-show-faces="true">
+								</div>
+						</ul>
 		            </div>
 		            <div class="col-md-8 col-sm-8 col-xs-12"></div>
 		        </div>

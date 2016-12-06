@@ -5,15 +5,17 @@
 
 body{
 	font-family:nickname, sans-serif;
-	font-size:3em;
+	font-size:4em;
 	background-image:url("../images/background.jpg");
+    color: white;
 }
 
 .logo{
+	margin: 1px;
 }
 
-#texte-logo{
-	position: absolute;
+#texte-logo {
+    position: absolute;
     top: 72px;
     left: 101px;
     color: white;
@@ -22,4 +24,53 @@ body{
     transform: rotate(-18deg);
     font-size: 36px;
     text-align: center;
+}
+
+/* INDEX */
+#section-accueil .container {
+    background-color: rgba(181, 39, 185, 0.5);
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+#gift{
+    width: 500px;
+    border-style: solid;
+}
+.gift{
+    width: 500px;
+}
+#description{
+    font-size: 0.6em;
+    border-style: solid;
+    width: 600px;
+    text-align: left;
+    margin-left: 50px;
+}
+#send_button{
+    width: 300px;
+    float: right;
+}
+#image_list{
+    display: inline-flex;
+    list-style-type: none;
+}
+.popular {
+    height: 150px;
+    border: 7px solid #fff;
+    margin-left: 25px;
+}
+
+/* GALLERIE CSS */
+.hide-bullets {
+    list-style:none;
+    margin-left: -40px;
+    margin-top:20px;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%;
 }
