@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Contest</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<form method="POST" action="contest.php">
+    <br/>
+    <label for="contest_name"> Name of the contest : </label>
+    <input type="text" name="contest_name" id="contest_name" maxlength="45" required /><br/><br/>
+    <label for="contest_begin_date"> Begining date of the contest : </label>
+    <input type="date" name="contest_begin_date" id="contest_begin_date" required /><br/><br/>
+    <label for="contest_end_date"> End date of the contest : </label>
+    <input type="date" name="contest_end_date" id="contest_end_date" /><br/><br/>
+    <label for="contest_prize"> Prize of the contest : </label>
+    <input type="text" name="contest_prize" id="contest_prize" required />
+    <input type="submit" value="Submit"/><br /><br />
+</form>
+</body>
+</html>
