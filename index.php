@@ -98,7 +98,9 @@
 		        </div>
 		        
 		        <div class="row text-right">
-		        	<div class="col-md-12 col-sm-12 col-xs-12"></div>
+		        	<div class="col-md-12 col-sm-12 col-xs-12" >
+						<a href="gallerie.php" id="see_next"> Voir tous les tatouages... </a>
+					</div>
 				</div>
 		    </div>
 		</section>
