@@ -25,6 +25,7 @@ body{
     font-size: 36px;
     text-align: center;
 }
+
 /* INDEX */
 #section-accueil .container {
     background-color: rgba(181, 39, 185, 0.5);
@@ -55,4 +56,19 @@ body{
 .popular {
     height: 150px;
     border: 7px solid #fff;
+}
+
+/* GALLERIE CSS */
+.hide-bullets {
+    list-style:none;
+    margin-left: -40px;
+    margin-top:20px;
+}
+
+.thumbnail {
+    padding: 0;
+}
+
+.carousel-inner>.item>img, .carousel-inner>.item>a>img {
+    width: 100%;
 }
