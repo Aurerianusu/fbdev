@@ -51,11 +51,13 @@ body{
     float: right;
 }
 #image_list{
-    display: inline-flex
+    display: inline-flex;
+    list-style-type: none;
 }
 .popular {
     height: 150px;
     border: 7px solid #fff;
+    margin-left: 25px;
 }
 
 /* GALLERIE CSS */
