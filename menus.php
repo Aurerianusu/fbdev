@@ -24,7 +24,7 @@
                         <a href="./galerie.php">Galerie</a>
                     </li>
                     <li>
-                        <a href="./regles.php">Contact</a>
+                        <a href="./regles.php">Règles</a>
                     </li>
                 </ul>
             </div>
