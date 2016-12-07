@@ -21,10 +21,10 @@
                         <a href="/">Accueil</a>
                     </li>
                     <li>
-                        <a href="/galerie.php">Gallerie</a>
+                        <a href="./galerie.php">Galerie</a>
                     </li>
                     <li>
-                        <a href="/contact.php">Contact</a>
+                        <a href="./contact.php">Contact</a>
                     </li>
                 </ul>
             </div>
