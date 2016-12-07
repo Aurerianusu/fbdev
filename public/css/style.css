@@ -56,8 +56,22 @@ body{
     height: 150px;
     border: 7px solid #fff;
     margin-left: 25px;
-}
 
+    list-style: none;
+
+    -webkit-transform: scale(1);
+    /* Browser Variations: */
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transition-duration: 0.5s;
+    -moz-transition-duration: 0.5s;
+    -o-transition-duration: 0.5s;
+}
+.popular:hover {
+    -webkit-transform: scale(1.2);
+    -moz-transform: scale(1.2);
+    -o-transform: scale(1.2);
+}
 /* GALLERIE CSS */
 .hide-bullets {
     list-style:none;
