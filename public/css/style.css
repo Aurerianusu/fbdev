@@ -34,14 +34,12 @@ body{
 }
 #gift{
     width: 500px;
-    border-style: solid;
 }
 .gift{
     width: 500px;
 }
 #description{
     font-size: 0.6em;
-    border-style: solid;
     width: 600px;
     text-align: left;
     margin-left: 50px;
