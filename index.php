@@ -40,7 +40,7 @@
 				<p>gagnez votre tatouage !</p>
 		        <div class="row text-center">
 		            <div class="col-md-4 col-sm-4 col-xs-12" id="gift">
-		            	<img src="images/gift.jpg" alt="" class="gift">
+		            	<img src="public/images/gift.jpg" alt="" class="gift">
 		            </div>
 		            <div class="col-md-8 col-sm-8 col-xs-12" id="description">
 						<p>pardon maman vous offre la possibilité de gagner un tatouage gratuit pour le vainqueur
