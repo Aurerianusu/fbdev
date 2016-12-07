@@ -26,7 +26,52 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-12 col-xs-12">
-						<p>Règles du concours</p>
+						<p style="margin-top:10px;">Comment Participer ?</p>
+					</div>
+			    </div>
+			    <div class="row">
+					<div class="col-sm-12 col-xs-12">
+						<p style="font-size:20px;">1. Aime la page Facebook Pardon-maman</p>
+					</div>
+			    </div>
+			    <div class="row">
+					<div class="col-sm-12 col-xs-12">
+						<p style="font-size:20px;">2. Envoie depuis l'accueil une photo de ton plus beau tatouage</p>
+					</div>
+			    </div>
+			    <div class="row">
+					<div class="col-sm-12 col-xs-12">
+						<p style="font-size:20px;">3. Partage ta photo afin d'avoir un maximum de like</p>
+					</div>
+			    </div>
+			</div>
+		</section>
+
+		<section id="section-galerie" class="section-background">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-xs-12">
+						<p style="margin-top:10px;">Informations complémentaires</p>
+					</div>
+			    </div>
+			    <div class="row">
+					<div class="col-sm-12 col-xs-12">
+						<p style="font-size:20px;">Le concours se termine le 31/12/16 à 23h59</p>
+					</div>
+			    </div>
+			    <div class="row">
+					<div class="col-sm-12 col-xs-12">
+						<p style="font-size:20px;">La photo doit être authentique et représente votre tatouage</p>
+					</div>
+			    </div>
+			    <div class="row">
+					<div class="col-sm-12 col-xs-12">
+						<p style="font-size:20px;">Aucune triche sur les likes n'est toléré</p>
+					</div>
+			    </div>
+			    <div class="row">
+					<div class="col-sm-12 col-xs-12">
+						<p style="font-size:20px;">Pardon Maman se réserve le droit de disqualifier les photos qui ne respectent pas les règles</p>
 					</div>
 			    </div>
 			</div>

@@ -1,6 +1,6 @@
 <div class="container">
         <div class="row text-left bloc-center">
-        	<div class="col-sm-6 col-xs-12">
+        	<div class="col-sm-12 col-xs-12">
                	<a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-2x social"></i></a>
                 <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-2x social"></i></a>
                 <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-2x social"></i></a>
