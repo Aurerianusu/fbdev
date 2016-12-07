@@ -22,7 +22,7 @@
 		<!-- END OF HEADER -->       
 
 		<!-- CONTENT -->
-		<section id="section-gallerie">
+		<section id="section-galerie">
 
 			<div class="container">
 			    <div id="main_area">
@@ -45,12 +45,12 @@
 
 			                    <li class="col-sm-3 col-xs-6">
 			                        <a class="thumbnail" id="carousel-selector-2"><img src="http://placehold.it/150x150&text=2"></a>
-			                        <p class="title-photo">Angelmomma</p>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 
 			                    <li class="col-sm-3 col-xs-6">
 			                        <a class="thumbnail" id="carousel-selector-3"><img src="http://placehold.it/150x150&text=3"></a>
-			                      	<p class="title-photo">Jacquie</p>
+			                      	<p class="title-photo">Michel</p>
 			                    </li>
 
 			                    <li class="col-sm-3 col-xs-2">
@@ -188,7 +188,7 @@
 
 
 		<!-- END OF FOOTER -->
-		<footer></footer>
+		<footer><?php require 'footer.php' ?></footer>
 		<!-- END OF FOOTER -->
 
 	</body>

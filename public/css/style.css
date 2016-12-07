@@ -27,7 +27,7 @@ body{
 }
 
 /* INDEX */
-#section-accueil .container {
+#section-accueil .container, #section-galerie .container {
     background-color: rgba(181, 39, 185, 0.5);
     margin-top: 25px;
     margin-bottom: 25px;
@@ -73,7 +73,7 @@ body{
 .title-photo{
 	font-size: 16px;
     text-align: center;
-    color: #383636;
+    color:white;
 }
 
 body {
@@ -118,3 +118,45 @@ span.navbar-brand {
     position: relative;
     bottom: 29px;
 }
+
+
+/* FOOTER CSS */
+.social:hover {
+     -webkit-transform: scale(0.6);
+     -moz-transform: scale(0.6);
+     -o-transform: scale(0.6);
+ }
+ .social {
+     -webkit-transform: scale(0.5);
+     /* Browser Variations: */
+     -moz-transform: scale(0.5);
+     -o-transform: scale(0.5);
+     -webkit-transition-duration: 0.5s;
+     -moz-transition-duration: 0.5s;
+     -o-transition-duration: 0.5s;
+ }
+
+ #social-fb:hover {
+     color: #3B5998;
+ }
+ #social-tw:hover {
+     color: #4099FF;
+ }
+ #social-gp:hover {
+     color: #d34836;
+ }
+ #social-em:hover {
+     color: #f39c12;
+ }
+ .cgu a{
+    color:white;
+    text-decoration: none;
+    font-size: 30px;
+
+ }
+
+ .copyright{
+    font-size: 18px;
+ }
+
+  /* END FOOTER CSS */
