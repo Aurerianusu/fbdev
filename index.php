@@ -55,27 +55,27 @@
 			<div class="container">
 				<p>tatouage populaires</p>
 		        <div class="row text-center">
-		            <div class="col-md-4 col-sm-4 col-xs-12" >
+		            <div class="col-sm-12 col-xs-12" >
 						<ul id="image_list">
-							<li><img src="public/images/tatoo1.jpg" alt="" class="popular">
+							<li class="col-sm-3 col-xs-6"><img src="public/images/tatoo1.jpg" alt="" class="popular">
 								<div
 									class="fb-like"
 									data-width="250"
 									data-show-faces="true">
 								</div>
-							<li><img src="public/images/tatoo2.jpg" alt="" class="popular">
+							<li class="col-sm-3 col-xs-6"><img src="public/images/tatoo2.jpg" alt="" class="popular">
 								<div
 									class="fb-like"
 									data-width="250"
 									data-show-faces="true">
 								</div>
-							<li><img src="public/images/tatoo3.jpg" alt="" class="popular">
+							<li class="col-sm-3 col-xs-6"><img src="public/images/tatoo3.jpg" alt="" class="popular">
 								<div
 									class="fb-like"
 									data-width="250"
 									data-show-faces="true">
 								</div>
-							<lI><img src="public/images/tatoo4.jpg" alt="" class="popular">
+							<li class="col-sm-3 col-xs-6"><img src="public/images/tatoo4.jpg" alt="" class="popular">
 								<div
 									class="fb-like"
 									data-width="250"
