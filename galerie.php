@@ -2,7 +2,7 @@
 <html>
 	<head>
 		<!-- Page Title -->
-	    <title>Concours photo Facebook - Gallerie</title>
+	    <title>Concours photo Facebook - Galerie</title>
 	    <!-- Meta Tags -->
 	    <meta charset="utf-8">
 	    <meta name="keywords" content="Concours photo Pardon-Maman" />
