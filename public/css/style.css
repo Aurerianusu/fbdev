@@ -34,14 +34,12 @@ body{
 }
 #gift{
     width: 500px;
-    border-style: solid;
 }
 .gift{
     width: 500px;
 }
 #description{
     font-size: 0.6em;
-    border-style: solid;
     width: 600px;
     text-align: left;
     margin-left: 50px;
@@ -59,7 +57,11 @@ body{
     border: 7px solid #fff;
     margin-left: 25px;
 }
-
+#see_next{
+    background-color: rgba(140, 34, 166, 1);
+    color:white;
+    border-style: outset;
+}
 /* GALLERIE CSS */
 .hide-bullets {
     list-style:none;
