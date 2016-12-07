@@ -15,7 +15,7 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 	    <!-- Styles -->
-	    <link href="css/style.css" rel="stylesheet" type="text/css">
+	    <link href="public/css/style.css" rel="stylesheet" type="text/css">
 
 		<!-- SCRIPT JS -->	
-		<script type="text/javascript" src="/js/script.js"></script>   
+		<script type="text/javascript" src="public/js/script.js"></script>

@@ -20,7 +20,7 @@
 		 	<div class="header-content">
 		        <div class="container">
 		                <div class="logo">
-		                    <img src="images/splatter.png" height="200" width="275" alt="logo" class="img-responsive">
+		                    <img src="public/images/splatter.png" height="200" width="275" alt="logo" class="img-responsive">
 		                    <span id="texte-logo">Concours<br>Photo</p>
 		                </div>
 		                

@@ -21,13 +21,13 @@
 		 	<div class="header-content">
 		        <div class="container">
 		                <div class="logo">
-		                    <img src="images/splatter.png" height="200" width="275" alt="logo" class="img-responsive">
+		                    <img src="public/images/splatter.png" height="200" width="275" alt="logo" class="img-responsive">
 		                    <span id="texte-logo">Concours<br>Photo</p>
 		                </div>
 		                
 		                <nav class="row menu">
 		                    <div class="col-sm-4 col-xs-4">Accueil</div>
-		                    <div class="col-sm-4 col-xs-4">Galerie</div>
+		                    <divF class="col-sm-4 col-xs-4">Galerie</divF>
 		                    <div class="col-sm-4 col-xs-4">Règles</div>
 		                </nav>
 		</header> 
@@ -49,7 +49,7 @@
 						<p>
 						pour participer envoyez une photo de votre plus beau ta tatouage
 						</p>
-						<img src="images/submit.png" id="send_button">
+						<img src="public/images/submit.png" id="send_button">
 					</div>
 		        </div>
 		        
@@ -68,25 +68,25 @@
 		        <div class="row text-center">
 		            <div class="col-md-4 col-sm-4 col-xs-12" >
 						<ul id="image_list">
-							<li><img src="images/tatoo1.jpg" alt="" class="popular">
+							<li><img src="public/images/tatoo1.jpg" alt="" class="popular">
 								<div
 									class="fb-like"
 									data-width="250"
 									data-show-faces="true">
 								</div>
-							<li><img src="images/tatoo2.jpg" alt="" class="popular">
+							<li><img src="public/images/tatoo2.jpg" alt="" class="popular">
 								<div
 									class="fb-like"
 									data-width="250"
 									data-show-faces="true">
 								</div>
-							<li><img src="images/tatoo3.jpg" alt="" class="popular">
+							<li><img src="public/images/tatoo3.jpg" alt="" class="popular">
 								<div
 									class="fb-like"
 									data-width="250"
 									data-show-faces="true">
 								</div>
-							<lI><img src="images/tatoo4.jpg" alt="" class="popular">
+							<lI><img src="public/images/tatoo4.jpg" alt="" class="popular">
 								<div
 									class="fb-like"
 									data-width="250"
