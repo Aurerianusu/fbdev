@@ -5,7 +5,7 @@
 
 body{
 	font-family:nickname, sans-serif;
-	font-size:4em;
+	font-size:2.8em;
 	background-image:url("../images/background.jpg");
     color: white;
 }
@@ -27,7 +27,7 @@ body{
 }
 
 /* INDEX */
-#section-accueil .container, #section-galerie .container {
+#section-accueil .container, #section-galerie .container, #section-tatouages .container {
     background-color: rgba(181, 39, 185, 0.5);
     margin-top: 25px;
     margin-bottom: 25px;
@@ -40,25 +40,44 @@ body{
 }
 #description{
     font-size: 0.6em;
-    width: 600px;
-    text-align: left;
-    margin-left: 50px;
 }
+
+.send_button{
+  margin-bottom:30px;
+  margin-top:20px;
+  opacity: 0.8;
+}
+
 #send_button{
-    width: 300px;
-    float: right;
+  margin-bottom:30px;
+  margin-top:30px;
+  opacity: 0.8;
+   -webkit-transform: scale(1);
+    /* Browser Variations: */
+    -moz-transform: scale(1);
+    -o-transform: scale(1);
+    -webkit-transition-duration: 0.2s;
+    -moz-transition-duration: 0.2s;
+    -o-transition-duration: 0.2s;
 }
+#send_button:hover{
+  margin-bottom:30px;
+  margin-top:30px;
+  opacity: 1;
+  -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
+}
+
+
 #image_list{
     display: inline-flex;
     list-style-type: none;
 }
 .popular {
     height: 150px;
+    width: 100%;
     border: 7px solid #fff;
-    margin-left: 25px;
-
-    list-style: none;
-
     -webkit-transform: scale(1);
     /* Browser Variations: */
     -moz-transform: scale(1);
@@ -66,12 +85,15 @@ body{
     -webkit-transition-duration: 0.5s;
     -moz-transition-duration: 0.5s;
     -o-transition-duration: 0.5s;
+    margin-bottom: 10px;
+    margin-top: 10px;
 }
 .popular:hover {
-    -webkit-transform: scale(1.2);
-    -moz-transform: scale(1.2);
-    -o-transform: scale(1.2);
+    -webkit-transform: scale(1.05);
+    -moz-transform: scale(1.05);
+    -o-transform: scale(1.05);
 }
+
 /* GALLERIE CSS */
 .hide-bullets {
     list-style:none;
@@ -165,7 +187,7 @@ span.navbar-brand {
  .cgu a{
     color:white;
     text-decoration: none;
-    font-size: 30px;
+    font-size: 27px;
 
  }
 

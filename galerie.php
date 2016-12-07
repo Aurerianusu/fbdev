@@ -110,6 +110,14 @@
 			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 			                </ul>
+
+			        		<div class="col-sm-12 col-xs-12 text-center">
+			        			<a href="galerie.php" class="btn btn-lg btn-primary send_button">
+			        				<span class="glyphicon glyphicon-th"></span> 
+			        				Voir plus de tatouages...
+			        			</a>
+							</div>
+				
 			            </div>
 			            <div class="col-sm-6">
 			                <div class="col-xs-12" id="slider">
