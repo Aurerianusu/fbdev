@@ -17,18 +17,7 @@
 	<body>
 		<!-- HEADER -->
 		<header>
-		 	<div class="header-content">
-		        <div class="container">
-		                <div class="logo">
-		                    <img src="public/images/splatter.png" height="200" width="275" alt="logo" class="img-responsive">
-		                    <span id="texte-logo">Concours<br>Photo</p>
-		                </div>
-		                
-		                <nav class="row menu">
-		                    <div class="col-sm-4 col-xs-4">Accueil</div>
-		                    <div class="col-sm-4 col-xs-4">Galerie</div>
-		                    <div class="col-sm-4 col-xs-4">Règles</div>
-		                </nav>
+			<?php require 'menus.php' ?>
 		</header> 
 		<!-- END OF HEADER -->       
 
@@ -42,67 +31,83 @@
 			            <div class="col-sm-6" id="slider-thumbs">
 			                <!-- Bottom switcher of slider -->
 			                <ul class="hide-bullets">
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-6">
 			                        <a class="thumbnail" id="carousel-selector-0">
 			                            <img src="http://placehold.it/150x150&text=zero">
 			                        </a>
+			                        <p class="title-photo">Aurelien</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-6">
 			                        <a class="thumbnail" id="carousel-selector-1"><img src="http://placehold.it/150x150&text=1"></a>
+			                        <p class="title-photo">DarkKevin</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-6">
 			                        <a class="thumbnail" id="carousel-selector-2"><img src="http://placehold.it/150x150&text=2"></a>
+			                        <p class="title-photo">Angelmomma</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-6">
 			                        <a class="thumbnail" id="carousel-selector-3"><img src="http://placehold.it/150x150&text=3"></a>
+			                      	<p class="title-photo">Jacquie</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-4"><img src="http://placehold.it/150x150&text=4"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-5"><img src="http://placehold.it/150x150&text=5"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-6"><img src="http://placehold.it/150x150&text=6"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-7"><img src="http://placehold.it/150x150&text=7"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-8"><img src="http://placehold.it/150x150&text=8"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-9"><img src="http://placehold.it/150x150&text=9"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-10"><img src="http://placehold.it/150x150&text=10"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-11"><img src="http://placehold.it/150x150&text=11"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-12"><img src="http://placehold.it/150x150&text=12"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-13"><img src="http://placehold.it/150x150&text=13"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-14"><img src="http://placehold.it/150x150&text=14"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 
-			                    <li class="col-sm-3">
+			                    <li class="col-sm-3 col-xs-2">
 			                        <a class="thumbnail" id="carousel-selector-15"><img src="http://placehold.it/150x150&text=15"></a>
+			                        <p class="title-photo">Jacquie</p>
 			                    </li>
 			                </ul>
 			            </div>

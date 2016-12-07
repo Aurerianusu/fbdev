@@ -18,18 +18,7 @@
 	<body>
 		<!-- HEADER -->
 		<header>
-		 	<div class="header-content">
-		        <div class="container">
-		                <div class="logo">
-		                    <img src="public/images/splatter.png" height="200" width="275" alt="logo" class="img-responsive">
-		                    <span id="texte-logo">Concours<br>Photo</p>
-		                </div>
-		                
-		                <nav class="row menu">
-		                    <div class="col-sm-4 col-xs-4">Accueil</div>
-		                    <divF class="col-sm-4 col-xs-4">Galerie</divF>
-		                    <div class="col-sm-4 col-xs-4">Règles</div>
-		                </nav>
+			<?php require 'menus.php' ?>
 		</header> 
 		<!-- END OF HEADER -->       
 

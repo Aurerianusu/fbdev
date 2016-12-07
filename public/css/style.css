@@ -34,12 +34,14 @@ body{
 }
 #gift{
     width: 500px;
+    border-style: solid;
 }
 .gift{
     width: 500px;
 }
 #description{
     font-size: 0.6em;
+    border-style: solid;
     width: 600px;
     text-align: left;
     margin-left: 50px;
@@ -57,11 +59,7 @@ body{
     border: 7px solid #fff;
     margin-left: 25px;
 }
-#see_next{
-    background-color: rgba(140, 34, 166, 1);
-    color:white;
-    border-style: outset;
-}
+
 /* GALLERIE CSS */
 .hide-bullets {
     list-style:none;
@@ -71,8 +69,54 @@ body{
 
 .thumbnail {
     padding: 0;
+    margin-bottom:10px;
+}
+
+.title-photo{
+	font-size: 16px;
+    text-align: center;
+    color: #383636;
+}
+
+body {
+    padding-top: 70px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+}
+
+.navbar-fixed-top .nav {
+    padding: 15px 0;
+}
+
+.navbar-fixed-top .navbar-brand {
+    padding: 0 15px;
+}
+
+@media(min-width:768px) {
+    body {
+        padding-top: 100px; /* Required padding for .navbar-fixed-top. Change if height of navigation changes. */
+    }
+
+    .navbar-fixed-top .navbar-brand {
+        padding: 15px 0;
+    }
 }
 
 .carousel-inner>.item>img, .carousel-inner>.item>a>img {
     width: 100%;
+}
+
+
+#title-brand{
+	position: absolute;
+    top: 45px;
+    text-align: center;
+    color: white;
+    font-size: 32px;
+    transform: rotate(-8deg);
+    line-height: 30px;
+}
+
+span.navbar-brand {
+    margin-right: 70px;
+    position: relative;
+    bottom: 29px;
 }
