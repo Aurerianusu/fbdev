@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<!-- Page Title -->
-	    <title>Concours photo Facebook - Galerie</title>
+	    <title>Galerie | Concours photo Facebook</title>
 	    <!-- Meta Tags -->
 	    <meta charset="utf-8">
 	    <meta name="keywords" content="Concours photo Pardon-Maman" />
-	    <meta name="description" content="Participez au concours photo Pardon-maman et tentez de remporter un tattouage gratuit">
+	    <meta name="description" content="Voici la galerie photo du concours Pardon-maman. Tentez de remporter un tattouage gratuit !">
 	    <meta name="format-detection" content="telephone=no">
 	    <meta name="author" content="Pardon-Maman">
 	    <meta name="robots" content="noindex,nofollow">
@@ -27,6 +27,7 @@
 			<div class="container">
 			    <div id="main_area">
 			        <!-- Slider -->
+			        <h1>Galerie Photos </h1>
 			        <div class="row">
 			            <div class="col-sm-6" id="slider-thumbs">
 			                <!-- Bottom switcher of slider -->

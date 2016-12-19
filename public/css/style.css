@@ -196,3 +196,20 @@ span.navbar-brand {
  }
 
   /* END FOOTER CSS */
+
+
+/* ADMIN CSS */
+
+.title-settings {
+    background: rgba(64, 53, 53, 0.66);
+    text-align: center;
+    padding-top: 6px;
+    padding-bottom: 5px;
+    margin-top: 0px;
+    margin-bottom: 30px;
+}
+
+.form-horizontal{
+    background: rgba(73, 72, 115, 0.93);
+}
+/* END ADMIN CSS */

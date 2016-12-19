@@ -2,11 +2,11 @@
 <html>
 	<head>
 		<!-- Page Title -->
-	    <title>Règles | Concours photo Facebook</title>
+	    <title>CGU | Concours photo Facebook</title>
 	    <!-- Meta Tags -->
 	    <meta charset="utf-8">
 	    <meta name="keywords" content="Concours photo Pardon-Maman" />
-	    <meta name="description" content="Les règles du jeu concours Pardon-maman sont décrites dans cette section.">
+	    <meta name="description" content="Ici les informations relatives au jeu concours Pardon-maman décrites dans cette section.">
 	    <meta name="format-detection" content="telephone=no">
 	    <meta name="author" content="Pardon-Maman">
 	    <meta name="robots" content="noindex,nofollow">
@@ -24,7 +24,6 @@
 		<!-- CONTENT -->
 		<section id="section-galerie">
 			<div class="container">
-			<h1>Règles du jeu</h1>
 				<div class="row">
 					<div class="col-sm-12 col-xs-12">
 						<p style="margin-top:10px;">Comment Participer ?</p>

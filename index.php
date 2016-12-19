@@ -26,9 +26,7 @@
 		<!-- BLOC 1 -->
 		<section id="section-accueil">
 		    <div class="container">
-		     <div class="row">
-		     	<div class="col-sm-12 col-xs-12"><p>gagnez votre tatouage !</p></div>
-		     </div>
+		     <h1 style="font-size: 31px;">gagnez votre tatouage !</h1>
 		        <div class="row">
 		            <div class="col-sm-4 col-xs-12">
 		            	<img src="public/images/gift.jpg" alt="" class="img-thumbnail img-responsive">
