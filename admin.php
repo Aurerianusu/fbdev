@@ -26,7 +26,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-2 col-xs-2" style="display: inline-flex;">
-						<img src="/public/images/settings.png" style="margin-top:10px;float:left;margin-bottom:10px;" />
+						<img src="public/images/settings.png" style="margin-top:10px;float:left;margin-bottom:10px;" />
 						<h1 style="margin-top:25px;margin-left:15px;">Administration</h1>
 					</div>
 			    </div>
