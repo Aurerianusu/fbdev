@@ -44,7 +44,8 @@ else{
 
     echo 'Name: '.$userNode->getName().'<br>';
     echo 'User ID ' . $userNode->getId().'<br>';
-    echo 'Email ' . $userNode->getProperty('email').'<br><br>';
+    echo 'Genre' . $userNode->getGender().'<br><br>';
+    echo 'Email ' . $userNode->getField('email').'<br>';
 
     $image = 'https://graph.facebook.com/'.$userNode->getId().'/picture?width=200';
     echo "Picture <br>";
