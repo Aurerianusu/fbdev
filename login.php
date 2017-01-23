@@ -1,24 +1,14 @@
-/<!doctype>
-<html>
-<head>
-    <title>MDR</title>
-</head>
-<body>
-    <?php
-        session_start();
-        require_once __DIR__.'/vendor/autoload.php';
+<?php
 
-        $fb = new Facebook\Facebook([
-            'app_id' => '276539519413614',
-            'app_secret' => '93200c19ca13fa5eec70171dfb56a6e1',
-            'default_graph_version' => 'v2.5',
-        ]);
+    require_once __DIR__.'/vendor/autoload.php';
 
-        $helper = $fb->getRedirectLoginHelper();
-        $permissions = ['email', 'user_likes','public_profile','user_photos']; // optional
-        $loginUrl = $helper->getLoginUrl('http://localhost/fbdev/fb-callback.php', $permissions);
+    $fb = new Facebook\Facebook([
+        'app_id' => '276539519413614',
+        'app_secret' => '93200c19ca13fa5eec70171dfb56a6e1',
+        'default_graph_version' => 'v2.5',
+    ]);
 
-        echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
-    ?>
-</body>
-</html>
+    $helper = $fb->getRedirectLoginHelper();
+    $permissions = ['email', 'user_likes','public_profile','user_photos','user_birthday']; // optional
+    $loginUrl = $helper->getLoginUrl('http://localhost/fbdev/fb-callback.php', $permissions);
+    echo '<a href="' . $loginUrl . '"><img src="public/images/submit.png" id="send_button"></a></a>';

@@ -32,13 +32,13 @@
     if (!isset($accessToken)) {
 
         // Logged in!
-        $helper = $fb->getRedirectLoginHelper();
+       /* $helper = $fb->getRedirectLoginHelper();
         $permissions = ['email', 'user_likes','public_profile']; // optional
         $loginUrl = $helper->getLoginUrl('http://localhost/fbdev/fb-callback.php', $permissions);
 
         echo '<a href="' . $loginUrl . '">Log in with Facebook!</a>';
 
-        $_SESSION['facebook_access_token'] = $accessToken;
+        $_SESSION['facebook_access_token'] = $accessToken;*/
         // Now you can redirect to another page and use the
         // access token from $_SESSION['facebook_access_token']
     }
@@ -55,6 +55,7 @@
         echo 'User ID ' . $userNode->getId().'<br>';
         echo 'Email ' . $userNode->getField('email').'<br>';
         echo 'Genre ' . $userNode->getGender().'<br>';
+        echo 'Anniversaire ' . $userNode->getBirthday()->format('m/d/Y').'<br>';
         echo 'Lien du profil  <a href ='.$userNode->getLink().'>PROFIL FB</a><br>';
         echo "<img src=\"" . $profile_pic . "\" />";
 

@@ -1,6 +1,7 @@
 <!doctype html>
 <html>
 	<head>
+        <?php session_start(); ?>
 		<!-- Page Title -->
 	    <title>Concours photo Facebook</title>
 	    
@@ -36,7 +37,7 @@
 						<p>pardon maman vous offre la possibilité de gagner un tatouage gratuit pour le vainqueur
 						du concours photo</p>
 						<p>pour participer envoyez une photo de votre plus beau ta tatouage</p>
-						<img src="public/images/submit.png" id="send_button">
+                        <?php require './login.php'; ?>
 					</div>
 		        </div>
 		    </div>
