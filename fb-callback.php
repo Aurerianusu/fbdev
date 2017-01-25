@@ -30,7 +30,7 @@
         $_SESSION['facebook_access_token'] = (string) $accessToken;
         // Log them into your web framework here . . .
         // Redirect here . . .
-        header('Location: test.php');
+        header('Location: participation.php');
         exit;
     } elseif ($helper->getError()) {
         // The user denied the request
