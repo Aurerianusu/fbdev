@@ -104,6 +104,7 @@ require_once __DIR__.'/vendor/autoload.php';
                             </div>
 
                             <!-- Pour stocker la source de l'image sélectionné -->
+                            <input type="hidden" name="profilPic" id="profilPic" value=<?php echo $profile_pic; ?>>
                             <input type="hidden" name="monImage"  id="monImage"  value="" >
                             <div class="col-sm-12 col-xs-12 text-center">
                                 <input type="submit" class="btn btn-lg btn-primary send_button">
