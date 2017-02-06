@@ -20,10 +20,14 @@ require_once __DIR__.'/vendor/autoload.php';
     $accessToken = $_SESSION['facebook_access_token'];
 
     $fb->setDefaultAccessToken($accessToken);
-    $response = $fb->get('/me?fields=id,name,first_name,last_name,gender,link,birthday,location,picture');
+    $response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,link,birthday,location,picture');
     $userNode = $response->getGraphUser();
 
+    $firstName = $userNode->getFirstName();
+    $lastName = $userNode->getLastName();
     $profile_pic = "http://graph.facebook.com/" . $userNode->getId() . "/picture?width=200";
+    $birthday = $userNode->getBirthday()->format('Y/m/d h:m:s');
+    $email = $userNode->getField('email');
 
     //echo 'Name: ' . $userNode->getName() . '<br>';
     //echo 'User ID ' . $userNode->getId() . '<br>';
@@ -104,8 +108,13 @@ require_once __DIR__.'/vendor/autoload.php';
                             </div>
 
                             <!-- Pour stocker la source de l'image sélectionné -->
+                            <input type="hidden" name="firstName" id="firstName" value=<?php echo $firstName;?>>
+                            <input type="hidden" name="lastName" id="lastName" value=<?php echo $lastName;?>>
+                            <input type="hidden" name="email" id="email" value=<?php echo $email; ?>>
+                            <input type="hidden" name="birthday" id="birthday" value=<?php echo $birthday; ?>>
                             <input type="hidden" name="profilPic" id="profilPic" value=<?php echo $profile_pic; ?>>
                             <input type="hidden" name="monImage"  id="monImage"  value="" >
+
                             <div class="col-sm-12 col-xs-12 text-center">
                                 <input type="submit" class="btn btn-lg btn-primary send_button">
                             </div>

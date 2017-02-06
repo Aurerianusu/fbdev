@@ -8,6 +8,6 @@
     ]);
 
     $helper = $fb->getRedirectLoginHelper();
-    $permissions = ['email', 'user_likes','public_profile','user_photos','user_birthday']; // optional
+    $permissions = ['email', 'user_likes','public_profile','user_photos','user_birthday'];
     $loginUrl = $helper->getLoginUrl('http://localhost/fbdev/fb-callback.php', $permissions);
     echo '<a href="' . $loginUrl . '"><img src="public/images/submit.png" id="send_button"></a></a>';
