@@ -5,15 +5,37 @@
  * Date: 06/02/2017
  * Time: 14:16
  */
-define('__ROOT__', dirname(dirname(__FILE__)));
-require_once(__ROOT__.'/fbdev/bddConnect.php');
 
-var_dump($_POST);
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once __DIR__.'/vendor/autoload.php';
+require (__ROOT__.'/fbdev/db.php');
+session_start();
+
+ $fb = new Facebook\Facebook([
+     'app_id' => '276539519413614',
+     'app_secret' => '93200c19ca13fa5eec70171dfb56a6e1',
+     'default_graph_version' => 'v2.5',
+     'status' => true
+ ]);
+    $helper = $fb->getRedirectLoginHelper();
+
+    $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+    $response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,link,birthday,location,picture');
+    $userNode = $response->getGraphUser();
+
+    $firstName = $userNode->getFirstName();
+    $lastName = $userNode->getLastName();
+    $birthday = $userNode->getBirthday()->format('Y/m/d h:m:s');
+    $email = $userNode->getField('email');
+    $profile_pic =  $userNode->getPicture();
+    $profile_pic = $profile_pic->getUrl();
+
+    //$profile_pic = "http://graph.facebook.com/".$userNode->getId()."/picture?width=200";
+
 ?>
 <!doctype html>
 <html>
 <head>
-    <?php session_start(); ?>
     <!-- Page Title -->
     <title>Confirmation</title>
 
@@ -36,30 +58,19 @@ var_dump($_POST);
 <!-- END OF HEADER -->
 
 <!-- CONTENT -->
-<!-- BLOC 1 -->
-<?php
 
-    // Our database object
-    $db = new Db();
-
-    // Quote and escape form submitted values
-    $lastName = $db->quote($_POST['lastName']);
-    $firstName = $db->quote($_POST['firstName']);
-    $email = $db->quote($_POST['email']);
-    $birthday = $db->quote($_POST['birthday']);
-
-    // Insert the values into the database
-    $result = $db->query("INSERT INTO 'participant' ('participant_name','participant_surname','participant_email','birthdate_participant') VALUES (" . $lastName . ",". $firstName . "," . $email . "," . $birthday . ")");
-
-
-?>
 <section id="section-accueil">
     <div class="container">
         <h1 style="font-size: 31px;">Confirmer votre participation</h1>
         <div class="row">
             <div class="col-sm-6 col-xs-6 text-center">
-                Vous<br>
-                <img src="<?php echo $_POST['profilPic'];?>" alt="" class="img-thumbnail img-responsive">
+                <ul>
+                    Résumé de vos infos
+                    <li><img src="<?php echo $profile_pic;?>" alt="" class="img-thumbnail img-responsive"></li>
+                    <li><?php echo $lastName;?></li>
+                    <li><?php echo $firstName;?></li>
+                    <li><?php echo $email;?></li>
+                </ul>
             </div>
             <div class="col-sm-6 col-xs-6 text-center">
                 Votre tatouage<br>
@@ -67,14 +78,31 @@ var_dump($_POST);
             </div>
         </div>
         <div class="row">
-            <form method="post" action="index.php">
+            <form method="post" action="#">
                 <div class="col-sm-12 col-xs-12 text-center">
-                    <input type="submit" class="btn btn-lg btn-success" id="valid">
+                    <input type="submit" class="btn btn-lg btn-success" name="valid">
                 </div>
             </form>
         </div>
     </div>
 </section>
+<?php
+if(isset($_POST['valid'])){
+    $db = new db();
+    $db->connect();
+
+    $participantId = $db->getOne("SELECT participant_id FROM participant WHERE participant_email = '$email'");
+
+    if($participantId){
+
+    }
+    else{
+
+        $db->execute("INSERT INTO participant (participant_name,participant_surname,participant_email,birthdate_participant) VALUES ('$lastName','$firstName','$email','$birthday')");
+    }
+
+}
+?>
 
 <!-- END OF CONTENT -->
 

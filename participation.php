@@ -15,27 +15,11 @@ require_once __DIR__.'/vendor/autoload.php';
         'status' => true
     ]);
 
-    $helper = $fb->getRedirectLoginHelper();
+    //$helper = $fb->getRedirectLoginHelper();
 
-    $accessToken = $_SESSION['facebook_access_token'];
-
-    $fb->setDefaultAccessToken($accessToken);
+    $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
     $response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,link,birthday,location,picture');
     $userNode = $response->getGraphUser();
-
-    $firstName = $userNode->getFirstName();
-    $lastName = $userNode->getLastName();
-    $profile_pic = "http://graph.facebook.com/" . $userNode->getId() . "/picture?width=200";
-    $birthday = $userNode->getBirthday()->format('Y/m/d h:m:s');
-    $email = $userNode->getField('email');
-
-    //echo 'Name: ' . $userNode->getName() . '<br>';
-    //echo 'User ID ' . $userNode->getId() . '<br>';
-    //echo 'Email ' . $userNode->getField('email') . '<br>';
-    //echo 'Genre ' . $userNode->getGender() . '<br>';
-    //echo 'Anniversaire ' . $userNode->getBirthday()->format('m/d/Y') . '<br>';
-    //echo 'Lien du profil  <a href =' . $userNode->getLink() . '>PROFIL FB</a><br>';
-    //echo "<img src=\"" . $profile_pic . "\" />";
 
     $photos_request = $fb->get('/me/photos?limit=100&type=uploaded');
     $photos = $photos_request->getGraphEdge();
@@ -107,12 +91,6 @@ require_once __DIR__.'/vendor/autoload.php';
                                 </div>
                             </div>
 
-                            <!-- Pour stocker la source de l'image sélectionné -->
-                            <input type="hidden" name="firstName" id="firstName" value=<?php echo $firstName;?>>
-                            <input type="hidden" name="lastName" id="lastName" value=<?php echo $lastName;?>>
-                            <input type="hidden" name="email" id="email" value=<?php echo $email; ?>>
-                            <input type="hidden" name="birthday" id="birthday" value=<?php echo $birthday; ?>>
-                            <input type="hidden" name="profilPic" id="profilPic" value=<?php echo $profile_pic; ?>>
                             <input type="hidden" name="monImage"  id="monImage"  value="" >
 
                             <div class="col-sm-12 col-xs-12 text-center">
@@ -124,7 +102,6 @@ require_once __DIR__.'/vendor/autoload.php';
             </div>
         </div>
     </section>
-
 
     <!-- END OF FOOTER -->
     <footer><?php require 'footer.php' ?></footer>
