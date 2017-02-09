@@ -28,6 +28,9 @@
                     <li>
                         <a href="./regles.php">Règles</a>
                     </li>
+                    <li>
+                        <a href="logout.php">Quitter</a>
+                    </li>
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
