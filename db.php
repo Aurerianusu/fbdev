@@ -96,4 +96,39 @@ class db {
         }
         return $response;
     }
+    function getUserId($email){
+        $query = "SELECT participant_id FROM participant WHERE email = '$email'";
+        if(!$response = $this->conn->exec($query)){
+            echo 'PDO::errorInfo():';
+            echo '<br />';
+            echo 'error SQL: '.$query;
+            die();
+        }
+        return $response;
+    }
+
+    function userInscription($lastName,$firstName,$email,$birthday){
+        $query = "INSERT INTO participant (participant_name,participant_surname,participant_email,birthdate_participant) VALUES ('$lastName','$firstName','$email','$birthday')";
+        if(!$response = $this->conn->exec($query)){
+            echo 'PDO::errorInfo():';
+            echo '<br />';
+            echo 'error SQL: '.$query;
+            die();
+        }
+        return $response;
+    }
+
+    function uploadPicture($participantId,$contestId,$picture){
+        $query = "INSERT INTO photo(participant_id,contest_id,link) VALUE ('$participantId','$contestId','$picture')";
+        if(!$response = $this->conn->exec($query)){
+            echo 'PDO::errorInfo():';
+            echo '<br />';
+            echo 'error SQL: '.$query;
+            die();
+        }
+        return $response;
+    }
+    function createContest($contestName,$beginDate,$endDate,$contentPrize){
+        $query = "INSERT INTO contest (contest_name, contest_creation_date, contest_begin_date, contest_end_date, contest_prize, is_active, winner_participant_id, winner_image_id) "
+    }
 }

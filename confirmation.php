@@ -89,16 +89,16 @@ session_start();
 <?php
 if(isset($_POST['valid'])){
     $db = new db();
-    $db->connect();
 
-    $participantId = $db->getOne("SELECT participant_id FROM participant WHERE participant_email = '$email'");
+    $participantId = $db->getUserId($email);
 
     if($participantId){
-
+        $db->uploadPicture($participantId,$contestId,$_POST['monImage']);
     }
     else{
-
-        $db->execute("INSERT INTO participant (participant_name,participant_surname,participant_email,birthdate_participant) VALUES ('$lastName','$firstName','$email','$birthday')");
+        $db->userInscription($lastName,$firstName,$email,$birthday);
+        $participantId = $db->getUserId($email);
+        $db->uploadPicture($participantId,$contestId,$_POST['monImage']);
     }
 
 }
