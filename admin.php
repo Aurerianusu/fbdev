@@ -1,3 +1,8 @@
+<?php
+define('__ROOT__', dirname(dirname(__FILE__)));
+require_once __DIR__.'/vendor/autoload.php';
+require (__ROOT__.'/fbdev/db.php');
+session_start();?>
 <!doctype html>
 <html>
 	<head>
@@ -33,420 +38,144 @@
 			</div>
 		</section>
 
-
-		<section id="section-galerie">
-			<div class="container">
-				<div class="row">
-
-
-<!-- Debut Formulaire -->
-			<form>
-			   <div class="form-horizontal">
-					<fieldset>
-						
-						<h2 class="title-settings">ACCUEIL</h2>
-
-						<!-- Textarea -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textarea">Présentation</label>
-						  <div class="col-md-4">                     
-						    <textarea class="form-control" id="textarea" name="textarea" rows="11">ici le texte d'accueil</textarea>
-						  </div>
-						</div>
-
-					</fieldset>
-				</div>
-			</div>
-		</section>
-
-		<section id="section-galerie">
-			<div class="container">
-				<div class="row">
-			   <div class="form-horizontal">
-					<fieldset>
-						<!-- Form Name -->
-						<h2 class="title-settings">GALERIE</h2>
-
-						<!-- Textarea -->
-						<div class="form-group">
-						  
-							<div class="row" style="margin-left:5px;margin-top:5px;margin-right:32px;">
-								<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo3.jpg" />
-			        			</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-			       					<img class="popular"  style="width:60px;height:60px;border:inherit;" src="public/images/tatoo4.jpg" />
-			       				</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo3.jpg" />
-			        			</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-			       					<img class="popular"  style="width:60px;height:60px;border:inherit;" src="public/images/tatoo4.jpg" />
-			       				</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			    			</div>
-
-			    			<div class="row" style="margin-left:5px;margin-top:5px;margin-right:32px;">
-								<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo3.jpg" />
-			        			</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-			       					<img class="popular"  style="width:60px;height:60px;border:inherit;" src="public/images/tatoo4.jpg" />
-			       				</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo3.jpg" />
-			        			</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-			       					<img class="popular"  style="width:60px;height:60px;border:inherit;" src="public/images/tatoo4.jpg" />
-			       				</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			    			</div>
-			    			<div class="row" style="margin-left:5px;margin-top:5px;margin-right:32px;">
-								<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo3.jpg" />
-			        			</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-			       					<img class="popular"  style="width:60px;height:60px;border:inherit;" src="public/images/tatoo4.jpg" />
-			       				</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo3.jpg" />
-			        			</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-			       					<img class="popular"  style="width:60px;height:60px;border:inherit;" src="public/images/tatoo4.jpg" />
-			       				</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			    			</div>
-			    			<div class="row" style="margin-left:5px;margin-top:5px;margin-right:32px;">
-								<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo3.jpg" />
-			        			</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-			       					<img class="popular"  style="width:60px;height:60px;border:inherit;" src="public/images/tatoo4.jpg" />
-			       				</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo3.jpg" />
-			        			</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-			       					<img class="popular"  style="width:60px;height:60px;border:inherit;" src="public/images/tatoo4.jpg" />
-			       				</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			    			</div>
-			    			<div class="row" style="margin-left:5px;margin-top:5px;margin-right:32px;">
-								<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo3.jpg" />
-			        			</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-			       					<img class="popular"  style="width:60px;height:60px;border:inherit;" src="public/images/tatoo4.jpg" />
-			       				</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo3.jpg" />
-			        			</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-			       					<img class="popular"  style="width:60px;height:60px;border:inherit;" src="public/images/tatoo4.jpg" />
-			       				</div>
-
-			       				<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			        			<div class="col-sm-1 col-xs-2">
-									<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo1.jpg" />
-								</div>
-								
-			        			<div class="col-sm-1 col-xs-2">
-			        				<img class="popular" style="width:60px;height:60px;border:inherit;" src="public/images/tatoo2.jpg" />
-			        			</div>
-
-			    			</div>
-						</div>
-
-					</fieldset>
-				</div>
-			</div>
-		</section>
-
-
-
-		<section id="section-galerie">
-			<div class="container">
-				<div class="row">
-			   <div class="form-horizontal">
-					<fieldset>
-						<!-- Form Name -->
-						<h2 class="title-settings">Règles</h2>
-
-						<!-- Textarea -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textarea">Présentation</label>
-						  <div class="col-md-4">                     
-						    <textarea class="form-control" id="textarea" name="textarea">ici le texte d'accueil</textarea>
-						  </div>
-						</div>
-
-						<!-- Select Basic -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="themeselect">Themes - Fonds</label>
-						  <div class="col-md-4">
-						    <select id="themeselect" name="themeselect" class="form-control">
-						      <option value="purple">Theme Violet/Noir</option>
-						      <option value="grey">Theme Gris/Noir</option>
-						    </select>
-						  </div>
-						</div>
-
-					</fieldset>
-				</div>
-			</div>
-		</section>
-
-
-
-		<section id="section-galerie">
-			<div class="container">
-				<div class="row">
-			   <div class="form-horizontal">
-					<fieldset>
-						<!-- Form Name -->
-						<h2 class="title-settings">CGU</h2>
-
-						<!-- Textarea -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textarea">Présentation</label>
-						  <div class="col-md-4">                     
-						    <textarea class="form-control" id="textarea" name="textarea">ici le texte d'accueil</textarea>
-						  </div>
-						</div>
-
-						<!-- Select Basic -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="themeselect">Themes - Fonds</label>
-						  <div class="col-md-4">
-						    <select id="themeselect" name="themeselect" class="form-control">
-						      <option value="purple">Theme Violet/Noir</option>
-						      <option value="grey">Theme Gris/Noir</option>
-						    </select>
-						  </div>
-						</div>
-
-					</fieldset>
-				<div>
-			</div>
-		</section>
-
-
-		<section id="section-galerie">
-			<div class="container">
-				<div class="row">
-			   <div class="form-horizontal">
-					<fieldset>
-						<!-- Form Name -->
-						<h2 class="title-settings">AUTRES</h2>
-
-						<!-- Textarea -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="textarea">Présentation</label>
-						  <div class="col-md-4">                     
-						    <textarea class="form-control" id="textarea" name="textarea">ici le texte d'accueil</textarea>
-						  </div>
-						</div>
-
-						<!-- Select Basic -->
-						<div class="form-group">
-						  <label class="col-md-4 control-label" for="themeselect">Themes - Fonds</label>
-						  <div class="col-md-4">
-						    <select id="themeselect" name="themeselect" class="form-control">
-						      <option value="purple">Theme Violet/Noir</option>
-						      <option value="grey">Theme Gris/Noir</option>
-						    </select>
-						  </div>
-						</div>
-
-					</fieldset>
-				</div>
-			</div>
-		</section>
-
-		<section>
-			<div class="container" style="margin-bottom: 40px;">
-				<div class="row">
-					<div class="col-md-2 col-md-offset-5">
-						<button type="submit" class="btn-lg btn-primary">Sauvegarder</button>
-					</div>
-				</div>
-			</div>
-		</section>
-
-		</form>
-<!-- FIN Formulaire -->
-
-
+        <form method="post" action="#" enctype="multipart/form-data">
+            <section id="section-galerie">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <h2 class="title-settings">Titre</h2>
+                                <div class="form-group">
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <input type="text" class="form-control" name="title" rows="11">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-galerie">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <h2 class="title-settings">Prix</h2>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textarea">Nom du prix</label>
+                                    <div class="col-md-4">
+                                        <input type="text" class="form-control" name="price" rows="11">
+                                        <input type="file" name="fileToUpload" id="fileToUpload">
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-galerie">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <h2 class="title-settings">ACCUEIL</h2>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textarea">Présentation</label>
+                                    <div class="col-md-4">
+                                        <textarea class="form-control" id="textarea" name="home" rows="11">ici le texte d'accueil</textarea>
+                                  </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section id="section-galerie">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <h2 class="title-settings">Règles</h2>
+                                <div class="form-group">
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <textarea class="form-control center-block" id="textarea" name="rules">ici le texte d'accueil</textarea>
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section id="section-galerie">
+                <div class="container">
+                    <div class="row">
+                        <div class="form-horizontal">
+                            <fieldset>
+                                <h2 class="title-settings">Date</h2>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="dateBegin">Date de début</label>
+                                    <div class="col-md-4">
+                                       <input type="date" class="form-control" name="dateBegin" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="hourBegin">Heure début</label>
+                                    <div class="col-md-4">
+                                        <input type="time" class="form-control" name="hourBegin" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="dateEnd">Date de fin</label>
+                                    <div class="col-md-4">
+                                        <input type="date" class="form-control" name="dateEnd" >
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="hourEnd">Heure de fin </label>
+                                    <div class="col-md-4">
+                                        <input type="time" class="form-control" name="hourEnd" >
+                                    </div>
+                                </div>
+                            </fieldset>
+                        </div>
+                    </div>
+            </section>
+
+            <section>
+                <div class="container" style="margin-bottom: 40px;">
+                    <div class="row">
+                        <div class="col-md-2 col-md-offset-5">
+                            <button type="submit" name="save" class="btn-lg btn-primary">Sauvegarder</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </form>
+        <?php
+            if(isset($_POST['save'])){
+                $db = new db();
+
+
+
+                $dateBegin = $db->dateWithHour($_POST['dateBegin'],$_POST['hourBegin']);
+                $dateEnd = $db->dateWithHour($_POST['dateEnd'],$_POST['hourEnd']);
+
+                var_dump($dateBegin);
+                var_dump($db->isDateIsToday($dateBegin));die;
+                $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateBegin,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name']);
+                if ($creation){
+                    $db->uploadPrice($_FILES['fileToUpload']);
+                }else{
+                    var_dump('faaaallllseeee');
+                }
+            }
+        ?>
 		<!-- END OF FOOTER -->
 		<footer><?php require 'footer.php' ?></footer>
 		<!-- END OF FOOTER -->
-
 	</body>
-
 </html>
