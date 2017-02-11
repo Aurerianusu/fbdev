@@ -29,8 +29,6 @@
     $email = $userNode->getField('email');
     $profile_pic =  $userNode->getPicture();
     $profile_pic = $profile_pic->getUrl();
-
-    //$profile_pic = "http://graph.facebook.com/".$userNode->getId()."/picture?width=200";
 ?>
 <!doctype html>
 <html>
@@ -76,7 +74,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form method="post">
+                    <form method="post" action="traitement.php">
                         <div class="col-sm-12 col-xs-12 text-center">
                             <input type="hidden" name="linkTatoo" value="<?php echo $_POST['monImage'];?>">
                             <input type="submit" class="btn btn-lg btn-success" name="valid">
@@ -85,35 +83,6 @@
                 </div>
             </div>
         </section>
-        <?php
-            if(isset($_POST['valid'])){
-                $db = new db();
-
-                $linkMonImage = $_POST['linkTatoo'];
-                $participant = $db->getUser($email);
-                $participantId = $participant['participant_id'];
-                $contest= $db->getActiveContest();
-                $contestId = $contest['contest_id'];
-
-                if($participantId){
-
-                    $db->uploadPicture($participantId,$contestId,$linkMonImage);
-                    var_dump($linkMonImage);
-
-                }
-                else{
-                    var_dump($linkMonImage);
-                    $db->userInscription($lastName,$firstName,$email,$birthday);
-
-                    $participant = $db->getUser($email);
-                    $participantId = $participant['participant_id'];
-
-                    $db->uploadPicture($participantId,$contestId,$linkMonImage);
-
-                }
-                header('Location: index.php');
-            }
-        ?>
         <!-- END OF CONTENT -->
         <!-- FOOTER -->
         <footer class="footer">
