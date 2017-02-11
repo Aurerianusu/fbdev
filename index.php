@@ -1,7 +1,15 @@
+<?php
+    session_start();
+    define('__ROOT__', dirname(dirname(__FILE__)));
+    require_once __DIR__.'/vendor/autoload.php';
+    require (__ROOT__.'/fbdev/db.php');
+
+    $db = new db();
+    $price = $db->getActiveContest();
+?>
 <!doctype html>
 <html>
 	<head>
-        <?php session_start(); ?>
 		<!-- Page Title -->
 	    <title>Concours photo Facebook</title>
 	    
@@ -27,16 +35,17 @@
 		<!-- BLOC 1 -->
 		<section id="section-accueil">
 		    <div class="container">
-		     <h1 style="font-size: 31px;">gagnez votre tatouage !</h1>
+                <h1 style="font-size: 31px;">
+                    <?php echo $price['contest_prize']; ?>
+                </h1>
 		        <div class="row">
 		            <div class="col-sm-4 col-xs-12">
-		            	<img src="public/images/gift.jpg" alt="" class="img-thumbnail img-responsive">
+		            	<img src="<?php echo $price['contest_image']; ?>" alt="" class="img-thumbnail img-responsive">
 		            </div>
 
 		            <div class="col-sm-8 col-xs-12 text-left" id="description" >
-						<p>pardon maman vous offre la possibilité de gagner un tatouage gratuit pour le vainqueur
-						du concours photo</p>
-						<p>pour participer envoyez une photo de votre plus beau ta tatouage</p>
+						<p><?php echo $price['contest_home']; ?></p>
+						<p><?php echo $price['contest_rules']; ?></p>
                         <?php require './login.php'; ?>
 					</div>
 		        </div>

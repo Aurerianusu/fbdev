@@ -1,9 +1,11 @@
 <?php
-define('__ROOT__', dirname(dirname(__FILE__)));
-require_once __DIR__.'/vendor/autoload.php';
-require (__ROOT__.'/fbdev/db.php');
-include "check_formulaire.php";
-session_start();?>
+    define('__ROOT__', dirname(dirname(__FILE__)));
+    require_once __DIR__.'/vendor/autoload.php';
+    require (__ROOT__.'/fbdev/db.php');
+    include "check_formulaire.php";
+    session_start();
+?>
+
 <!doctype html>
 <html>
 	<head>

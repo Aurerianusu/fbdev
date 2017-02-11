@@ -173,7 +173,7 @@ class db {
     }
     function createContest($contestName,$contestRules,$contestHome,$dateBegin,$dateEnd,$priceName,$pricePic){
         $today = date("Y-m-d H:i:s");
-        $filePath = 'public/images/contest'.$pricePic;
+        $filePath = 'public/images/contest/'.$pricePic;
         $query = "INSERT INTO contest (contest_name,contest_rules,contest_home,contest_creation_date,contest_begin_date,contest_end_date,contest_prize,contest_image,is_active) VALUES ('$contestName','$contestRules','$contestHome','$today','$dateBegin','$dateEnd','$priceName','$filePath','1')";
         if(!$response = $this->conn->exec($query)){
             echo 'PDO::errorInfo():';
@@ -190,7 +190,7 @@ class db {
     function uploadPrice($file){
 
         $target_dir = "public/images/contest/";
-        $target_file = $target_dir . basename($file["name"]);
+        $target_file = $target_dir .'/'. basename($file["name"]);
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 
@@ -232,5 +232,10 @@ class db {
                 echo "Sorry, there was an error uploading your file.";
             }
         }
+    }
+
+    function getActiveContest(){
+        $contest = $this->getOne("SELECT * FROM contest WHERE  is_active = 1");
+        return $contest;
     }
 }

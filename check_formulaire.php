@@ -8,6 +8,8 @@
 
 $error = FALSE;
 $msg_error = "";
+
+
 $db = new db();
 
 if(!isset($_POST['dateNow'])){
@@ -20,7 +22,7 @@ if(isset($_POST['dateNow'])){
     $dateSelected = date("Y-m-d H:i:s");
 
 }elseif(isset($_POST['dateBegin'])&& isset($_POST['hourBegin'])){
-    $dateSelected = $this->dateWithHour($_POST['dateBegin'],$_POST['hourBegin']);
+    $dateSelected = $db->dateWithHour($_POST['dateBegin'],$_POST['hourBegin']);
 
 }else{
     $dateSelected = date("Y-m-d H:i:s");
