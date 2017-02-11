@@ -106,6 +106,7 @@ require_once __DIR__.'/vendor/autoload.php';
     <!-- END OF FOOTER -->
     <footer><?php require 'footer.php' ?></footer>
     <!-- END OF FOOTER -->
+
     <script>
         function swap(image) {
             document.getElementById("bigPicture").src = image.src;

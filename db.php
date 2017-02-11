@@ -96,15 +96,10 @@ class db {
         }
         return $response;
     }
-    function getUserId($email){
-        $query = "SELECT participant_id FROM participant WHERE email = '$email'";
-        if(!$response = $this->conn->exec($query)){
-            echo 'PDO::errorInfo():';
-            echo '<br />';
-            echo 'error SQL: '.$query;
-            die();
-        }
-        return $response;
+    function getUser($email){
+
+        $user = $this->getOne("SELECT * FROM participant WHERE participant_email = '$email'");
+        return $user;
     }
 
     function userInscription($lastName,$firstName,$email,$birthday){
