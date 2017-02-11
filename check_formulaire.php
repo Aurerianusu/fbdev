@@ -75,6 +75,11 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
         $error = TRUE;
         $msg_error .= "<li>La date de fin doit être après la date de début";
     }
+    if($_FILES['fileToUpload']['name'] == '')
+    {
+        $error = TRUE;
+        $msg_error .= "<li>Vous devez choisir une photo pour le prix";
+    }
 
 }
 
@@ -85,10 +90,13 @@ if($error)
     echo "</ul>";
 }else
 {
-    $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateSelected,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name']);
-    if ($creation){
-        $db->uploadPrice($_FILES['fileToUpload']);
-    }else{
-        var_dump('faaaallllseeee');
+    if(isset($_POST['save'])){
+        $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateSelected,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name']);
+        if ($creation){
+            $db->uploadPrice($_FILES['fileToUpload']);
+        }else{
+            var_dump('faaaallllseeee');
+        }
     }
+
 }

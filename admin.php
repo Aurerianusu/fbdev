@@ -161,7 +161,7 @@ session_start();?>
                 <div class="container" style="margin-bottom: 40px;">
                     <div class="row">
                         <div class="col-md-2 col-md-offset-5">
-                            <button type="submit"  class="btn-lg btn-primary">Sauvegarder</button>
+                            <button type="submit" name="save"  class="btn-lg btn-primary">Sauvegarder</button>
                         </div>
                     </div>
                 </div>
