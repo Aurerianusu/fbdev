@@ -2,6 +2,7 @@
 define('__ROOT__', dirname(dirname(__FILE__)));
 require_once __DIR__.'/vendor/autoload.php';
 require (__ROOT__.'/fbdev/db.php');
+include "check_formulaire.php";
 session_start();?>
 <!doctype html>
 <html>
@@ -38,7 +39,7 @@ session_start();?>
 			</div>
 		</section>
 
-        <form method="post" action="#" enctype="multipart/form-data">
+        <form method="post" enctype="multipart/form-data">
             <section id="section-galerie">
                 <div class="container">
                     <div class="row">
@@ -47,7 +48,7 @@ session_start();?>
                                 <h2 class="title-settings">Titre</h2>
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-4">
-                                        <input type="text" class="form-control" name="title" rows="11">
+                                        <input type="text" class="form-control" name="title" value="<?php echo (isset($_POST['title']))?$_POST['title']:"";?>" rows="11">
                                     </div>
                                 </div>
                             </fieldset>
@@ -64,8 +65,13 @@ session_start();?>
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textarea">Nom du prix</label>
                                     <div class="col-md-4">
-                                        <input type="text" class="form-control" name="price" rows="11">
-                                        <input type="file" name="fileToUpload" id="fileToUpload">
+                                        <input type="text" class="form-control" name="price" value="<?php echo (isset($_POST['price']))?$_POST['price']:"";?>" rows="11">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-md-4 control-label" for="textarea">Photos du prix</label>
+                                    <div class="col-md-4">
+                                        <input type="file" name="fileToUpload" id="fileToUpload" value="<?php echo (isset($_FILES['fileToUpload']))?$_FILES['fileToUpload']:"";?>">
                                     </div>
                                 </div>
                             </fieldset>
@@ -82,7 +88,7 @@ session_start();?>
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="textarea">Présentation</label>
                                     <div class="col-md-4">
-                                        <textarea class="form-control" id="textarea" name="home" rows="11">ici le texte d'accueil</textarea>
+                                        <textarea class="form-control" id="textarea" name="home" rows="11"> <?php echo (isset($_POST['home']))?$_POST['home']:"";?></textarea>
                                   </div>
                                 </div>
                             </fieldset>
@@ -99,7 +105,7 @@ session_start();?>
                                 <h2 class="title-settings">Règles</h2>
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-4">
-                                        <textarea class="form-control center-block" id="textarea" name="rules">ici le texte d'accueil</textarea>
+                                        <textarea class="form-control center-block" id="textarea" name="rules" ><?php echo (isset($_POST['rules']))?$_POST['rules']:"";?></textarea>
                                     </div>
                                 </div>
                             </fieldset>
@@ -113,31 +119,37 @@ session_start();?>
                         <div class="form-horizontal">
                             <fieldset>
                                 <h2 class="title-settings">Date</h2>
-                                <div class="form-group">
+                                <div class="form-group" id="datePrecise">
+
                                     <label class="col-md-4 control-label" for="dateBegin">Date de début</label>
                                     <div class="col-md-4">
-                                       <input type="date" class="form-control" name="dateBegin" >
+                                       <input type="date" class="form-control" name="dateBegin" value=" <?php echo (isset($_POST['dateBegin']))?$_POST['dateBegin']:"";?>" >
                                     </div>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group" id="datePrecise">
                                     <label class="col-md-4 control-label" for="hourBegin">Heure début</label>
                                     <div class="col-md-4">
-                                        <input type="time" class="form-control" name="hourBegin" >
+                                        <input type="time" class="form-control" name="hourBegin  <?php echo (isset($_POST['hourBegin']))?$_POST['hourBegin']:"";?>" >
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-4 col-md-offset-4">
+                                        <input type="radio" name="date" value="now" class="btn-lg btn-primary"> Maintenant</input>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="dateEnd">Date de fin</label>
                                     <div class="col-md-4">
-                                        <input type="date" class="form-control" name="dateEnd" >
+                                        <input type="date" class="form-control" name="dateEnd" value=" <?php echo (isset($_POST['dateEnd']))?$_POST['dateEnd']:"";?>">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="hourEnd">Heure de fin </label>
                                     <div class="col-md-4">
-                                        <input type="time" class="form-control" name="hourEnd" >
+                                        <input type="time" class="form-control" name="hourEnd" value=" <?php echo (isset($_POST['hourEnd']))?$_POST['hourEnd']:"";?>">
                                     </div>
                                 </div>
                             </fieldset>
@@ -149,31 +161,12 @@ session_start();?>
                 <div class="container" style="margin-bottom: 40px;">
                     <div class="row">
                         <div class="col-md-2 col-md-offset-5">
-                            <button type="submit" name="save" class="btn-lg btn-primary">Sauvegarder</button>
+                            <button type="submit"  class="btn-lg btn-primary">Sauvegarder</button>
                         </div>
                     </div>
                 </div>
             </section>
         </form>
-        <?php
-            if(isset($_POST['save'])){
-                $db = new db();
-
-
-
-                $dateBegin = $db->dateWithHour($_POST['dateBegin'],$_POST['hourBegin']);
-                $dateEnd = $db->dateWithHour($_POST['dateEnd'],$_POST['hourEnd']);
-
-                var_dump($dateBegin);
-                var_dump($db->isDateIsToday($dateBegin));die;
-                $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateBegin,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name']);
-                if ($creation){
-                    $db->uploadPrice($_FILES['fileToUpload']);
-                }else{
-                    var_dump('faaaallllseeee');
-                }
-            }
-        ?>
 		<!-- END OF FOOTER -->
 		<footer><?php require 'footer.php' ?></footer>
 		<!-- END OF FOOTER -->

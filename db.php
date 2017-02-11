@@ -138,8 +138,6 @@ class db {
     {
         $curr_date=strtotime(date("Y-m-d H:i"));
         $the_date=strtotime($date);
-        var_dump($the_date);
-        var_dump($curr_date);
         $diff=floor(($curr_date-$the_date)/(60*60*24));
         switch($diff)
         {
@@ -151,6 +149,26 @@ class db {
                 break;
             default:
                 return $diff." Days ago";
+        }
+    }
+
+    function dateSelected($dateNow,$dateBegin,$hourBegin){
+
+        if(isset($dateNow)){
+            unset($dateBegin);
+            unset($hourBegin);
+            $dateSelected = date("Y-m-d H:i:");
+
+            return $dateSelected;
+        }elseif(isset($dateBegin)&& isset($hourBegin)){
+            $dateSelected = $this->dateWithHour($dateBegin,$hourBegin);
+
+            return $dateSelected;
+
+        }else{
+            $dateSelected = date("Y-m-d H:i:");
+
+            return $dateSelected;
         }
     }
     function createContest($contestName,$contestRules,$contestHome,$dateBegin,$dateEnd,$priceName,$pricePic){
