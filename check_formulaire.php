@@ -82,23 +82,19 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
         $error = TRUE;
         $msg_error .= "<li>Vous devez choisir une photo pour le prix";
     }
-
+    $file = $db->uploadPrice($_FILES['fileToUpload']);
+    
 }
 
-if($error)
-{
+if($error) {
+
     echo "<ul>";
     echo $msg_error;
     echo "</ul>";
-}else
-{
-    if(isset($_POST['save'])){
+}else {
+    if(isset($_POST['save']) && isset($file) && $file == true){
         $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateSelected,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name']);
-        if ($creation){
-            $db->uploadPrice($_FILES['fileToUpload']);
-        }else{
-            var_dump('faaaallllseeee');
-        }
+        header('Location: index.php');
     }
 
 }

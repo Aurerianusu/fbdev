@@ -47,7 +47,7 @@
                     <div class="row">
                         <div class="form-horizontal">
                             <fieldset>
-                                <h2 class="title-settings">Titre</h2>
+                                <h2 class="title-settings">Nom du concours</h2>
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-4">
                                         <input type="text" class="form-control" name="title" value="<?php echo (isset($_POST['title']))?$_POST['title']:"";?>" rows="11">

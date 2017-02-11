@@ -196,35 +196,39 @@ class db {
                 echo "File is an image - " . $check["mime"] . ".";
                 $uploadOk = 1;
             } else {
-                echo "File is not an image.";
+                echo "Le fichier n'est pas une image";
                 $uploadOk = 0;
             }
         }
         // Check if file already exists
         if (file_exists($target_file)) {
-            echo "Sorry, file already exists.";
+            echo "Désolé, le fichier existe déjà";
             $uploadOk = 0;
         }
         // Check file size
         if ($file["size"] > 500000) {
-            echo "Sorry, your file is too large.";
+            echo "Désolé, le fichier est trop lourd";
             $uploadOk = 0;
         }
         // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
-            echo "Sorry, only JPG, JPEG, PNG & GIF files are allowed.";
+            echo "Désolé, seulement les fichiers JPG, JPEG, PNG & GIF sont autorisés.";
             $uploadOk = 0;
         }
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            echo "Sorry, your file was not uploaded.";
+            echo "Désolé votre fichier n'a pas été envoyé";
+            return false;
         // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($file["tmp_name"], $target_file)) {
-                echo "The file ". basename($file["name"]). " has been uploaded.";
+                echo "The file ". basename($file["name"]). " a été envoyé !.";
+                return true;
             } else {
-                echo "Sorry, there was an error uploading your file.";
+                echo "Désolé il y a eu une error lors de l'envoie de votre fichier";
+                return false;
+
             }
         }
     }
