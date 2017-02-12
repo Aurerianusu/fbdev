@@ -5,7 +5,9 @@
     require (__ROOT__.'/fbdev/db.php');
 
     $db = new db();
-    $price = $db->getActiveContest();
+    $contest = $db->getActiveContest();
+
+    $participate = $db->checkIfParticipate($_SESSION['email']);
 ?>
 <!doctype html>
 <html>
@@ -36,17 +38,17 @@
 		<section id="section-accueil">
 		    <div class="container">
                 <h1 style="font-size: 31px;">
-                    <?php echo $price['contest_prize']; ?>
+                    <?php echo $contest['contest_prize']; ?>
                 </h1>
 		        <div class="row">
 		            <div class="col-sm-4 col-xs-12">
-		            	<img src="<?php echo $price['contest_image']; ?>" alt="" class="img-thumbnail img-responsive">
+		            	<img src="<?php echo $contest['contest_image']; ?>" alt="" class="img-thumbnail img-responsive">
 		            </div>
 
 		            <div class="col-sm-8 col-xs-12 text-left" id="description" >
-						<p><?php echo $price['contest_home']; ?></p>
-						<p><?php echo $price['contest_rules']; ?></p>
-                        <?php require './login.php'; ?>
+						<p><?php echo $contest['contest_home']; ?></p>
+						<p><?php echo $contest['contest_rules']; ?></p>
+                        <p><?php include './login.php'; ?></p>
 					</div>
 		        </div>
 		    </div>

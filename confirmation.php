@@ -29,6 +29,10 @@
     $email = $userNode->getField('email');
     $profile_pic =  $userNode->getPicture();
     $profile_pic = $profile_pic->getUrl();
+
+    $_SESSION['email'] = $email;
+    $db = new db();
+    $db->checkIfParticipateAndRedirection($_SESSION['email']);
 ?>
 <!doctype html>
 <html>

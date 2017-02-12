@@ -6,8 +6,11 @@
  * Time: 16:37
  */
 
-session_start();
-require_once __DIR__.'/vendor/autoload.php';
+    session_start();
+    define('__ROOT__', dirname(dirname(__FILE__)));
+    require (__ROOT__.'/fbdev/db.php');
+    require_once __DIR__.'/vendor/autoload.php';
+
     $fb = new Facebook\Facebook([
         'app_id' => '276539519413614',
         'app_secret' => '93200c19ca13fa5eec70171dfb56a6e1',
@@ -20,6 +23,10 @@ require_once __DIR__.'/vendor/autoload.php';
     $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
     $response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,link,birthday,location,picture');
     $userNode = $response->getGraphUser();
+
+    $_SESSION['email'] = $userNode->getField('email');
+    $db = new db();
+    $db->checkIfParticipateAndRedirection($_SESSION['email']);
 
     $photos_request = $fb->get('/me/photos?limit=100&type=uploaded');
     $photos = $photos_request->getGraphEdge();

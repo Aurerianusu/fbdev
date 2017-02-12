@@ -237,4 +237,37 @@ class db {
         $contest = $this->getOne("SELECT * FROM contest WHERE  is_active = 1");
         return $contest;
     }
+
+    function getUserPhoto($userId){
+        $photo = $this->getOne("SELECT * FROM photo WHERE participant_id = '$userId'");
+
+        return $photo;
+    }
+
+    function checkIfParticipate($email){
+
+        if(isset($email)) {
+            $user = $this->getUser($email);
+            $userId = $user['participant_id'];
+            $contest = $this->getActiveContest();
+            $contestId = $contest['contest_id'];
+
+            $ifParticipate = $this->getOne("SELECT facebook_photos_id FROM photo WHERE participant_id = '$userId' AND contest_id = '$contestId'");
+
+            if ($ifParticipate) {
+                var_dump('tu participe déjà');
+                return true;
+            } else {
+                var_dump('tu peux participer');
+                return false;
+            }
+        }
+    }
+
+    function checkIfParticipateAndRedirection($email){
+        $participate = $this->checkIfParticipate($email);
+        if($participate){
+            header('Location: nope.php');
+        }
+    }
 }
