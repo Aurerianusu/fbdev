@@ -170,7 +170,7 @@
             </section>
         </form>
 		<!-- END OF FOOTER -->
-		<footer><?php require 'footer.php' ?></footer>
+		<footer><?php require_once '../footer.php' ?></footer>
 		<!-- END OF FOOTER -->
 	</body>
 </html>

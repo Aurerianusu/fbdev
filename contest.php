@@ -1,3 +1,26 @@
+<!doctype html>
+<html>
+<head>
+    <!-- Page Title -->
+    <title>Concours photo Facebook</title>
+
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="keywords" content="Concours photo Pardon-Maman" />
+    <meta name="description" content="Participez au concours photo Pardon-maman et tentez de remporter un tattouage gratuit">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="author" content="Pardon-Maman">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <?php require 'header.php';?>
+</head>
+
+<body>
+<!-- HEADER -->
+<header>
+    <?php require 'menus.php' ?>
+</header>
+
 <?php
 
 class contest
@@ -62,6 +85,12 @@ class contest
     {
         require 'contestForm.html';
     }
+
+    public function editContest()
+    {
+        $contestToEdit = $_POST['idContest'];
+
+    }
 }
 
 $contest = new contest();
@@ -69,3 +98,7 @@ $contest-> displayContestForm();
 $contest->displayContest();
 
 ?>
+
+<fb:login-button name="subscribe" id="subscribe" scope="public_profile, email, user_photos" onlogin="checkLoginState();">
+</fb:login-button>
+<button name="subscribe" id="subscribe" onlogin="checkLoginState();">Connexion</button>

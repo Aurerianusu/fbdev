@@ -27,11 +27,9 @@ jQuery(document).ready(function($) {
 
 $(document).ready(function(){
  
-    var listOfScope = ['public_profile','email'];
+    var listOfScope = ['public_profile','email, user_photos'];
     var maxRerequestScope = 1;
     var numberRerequestScope = 0;
- 
- 
  
  
     // Load the SDK asynchronously
@@ -51,7 +49,7 @@ $(document).ready(function(){
       cookie     : true,  // enable cookies to allow the server to access
                           // the session
       xfbml      : true,  // parse social plugins on this page
-      version    : 'v2.5' // use graph api version 2.5
+      version    : 'v2.8' // use graph api version 2.5
     });
  
  
@@ -60,7 +58,6 @@ $(document).ready(function(){
     });
  
   };
- 
  
  
    function checkLoginState() {
@@ -78,6 +75,15 @@ $(document).ready(function(){
       // for FB.getLoginStatus().
       if (response.status === 'connected') {
         // Logged into your app and Facebook.
+          FB.api(
+              "/{10207731498469062}/photos",
+              function (response) {
+                  if (response && !response.error) {
+                      /* handle the result */
+                      console.log("Ca fonctionne");
+                  }
+              }
+          );
         verifyScope(testAPI, response);
  
       } else if (response.status === 'not_authorized') {
@@ -86,6 +92,9 @@ $(document).ready(function(){
           'into this app.';
         $("#subscribe").show();
         $("#disconnect").hide();
+          FB.login(function(response){
+              statusChangeCallback(response);
+          }, {scope: 'public_profile,email, user_photos'});
       } else {
         // The person is not logged into Facebook, so we're not sure if
         // they are logged into this app or not.
@@ -132,8 +141,19 @@ $(document).ready(function(){
         return !error;
       });
     }
- 
- 
+
+    function getAlbums()
+    {
+        FB.api(
+            "/{10207731498469062}/photos",
+            function (response) {
+                if (response && !response.error) {
+                    /* handle the result */
+                    console.log("Ca fonctionne");
+                }
+            }
+        );
+    }
  
  
     function askScopeAgain(){
@@ -148,8 +168,6 @@ $(document).ready(function(){
       }
  
     }
- 
- 
  
  
     function testAPI(response) {
@@ -181,5 +199,7 @@ $(document).ready(function(){
         statusChangeCallback(response);
       });
   });
+
+    getAlbums();
  
 });

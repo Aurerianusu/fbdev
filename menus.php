@@ -11,7 +11,7 @@
                 </button>
                 <a href="./">
                     <span class="navbar-brand">
-                        <img src="public/images/splatter.png" alt="">
+                        <img src="/fbdev/public/images/splatter.png" alt="">
                         <span id="title-brand">Concours<br>Photo</span>
                     </span>
                 </a>
@@ -20,16 +20,16 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav">
                     <li>
-                        <a href="./">Accueil</a>
+                        <a href="/fbdev/">Accueil</a>
                     </li>
                     <li>
-                        <a href="./galerie.php">Galerie</a>
+                        <a href="/fbdev/galerie.php">Galerie</a>
                     </li>
                     <li>
-                        <a href="./regles.php">Règles</a>
+                        <a href="/fbdev/regles.php">Règles</a>
                     </li>
                     <li>
-                        <a href="logout.php">Quitter</a>
+                        <a href="/fbdev/logout.php">Quitter</a>
                     </li>
                 </ul>
             </div>
