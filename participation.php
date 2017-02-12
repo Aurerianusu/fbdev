@@ -11,8 +11,7 @@
     require_once './vendor/autoload.php';
 
     $db = new db();
-    if(isset($_SESSION['email'])){
-        $participate = $db->checkIfParticipateAndRedirection($_SESSION['email']);
+
 
         $fb = $db->initFb();
         //$helper = $fb->getRedirectLoginHelper();
@@ -23,6 +22,11 @@
 
         $_SESSION['email'] = $userNode->getField('email');
 
+        $participate = $db->checkIfParticipateAndRedirection($_SESSION['email']);
+
+        if($participate){
+            header('Location: nope.php');
+        }
 
         $photos_request = $fb->get('/me/photos?limit=100&type=uploaded');
         $photos = $photos_request->getGraphEdge();
@@ -39,9 +43,9 @@
             $photos_array = $photos->asArray();
             $all_photos = array_merge($photos_array, $all_photos);
         }
-    }else{
-        header('Location: mustconnect.php');
-    }
+
+        //header('Location: mustconnect.php');
+
 
 ?>
 <!doctype html>

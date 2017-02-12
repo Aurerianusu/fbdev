@@ -11,12 +11,9 @@ require_once __DIR__.'/vendor/autoload.php';
 require (__ROOT__.'/fbdev/db.php');
 session_start();
 
-$fb = new Facebook\Facebook([
-    'app_id' => '276539519413614',
-    'app_secret' => '93200c19ca13fa5eec70171dfb56a6e1',
-    'default_graph_version' => 'v2.5',
-    'status' => true
-]);
+$db = new db();
+
+$fb = $db->initFb();
 $helper = $fb->getRedirectLoginHelper();
 
 $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
@@ -31,8 +28,6 @@ $profile_pic =  $userNode->getPicture();
 $profile_pic = $profile_pic->getUrl();
 
 //$profile_pic = "http://graph.facebook.com/".$userNode->getId()."/picture?width=200";
-
-$db = new db();
 
 $linkMonImage = $_POST['linkTatoo'];
 $participant = $db->getUser($email);
@@ -54,4 +49,4 @@ else{
     $db->uploadPicture($participantId,$contestId,$linkMonImage);
 
 }
-header('Location: success.php');
+header('Location: ./success.php');

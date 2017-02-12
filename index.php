@@ -6,9 +6,12 @@ require_once __DIR__ . '/db.php';
 
 $db = new db();
 $contest = $db->getActiveContest();
+$db->initFb();
 
-if (isset($_SESSION['email'])) //check if needed
-{
+var_dump($_SESSION['email']);
+
+if (isset($_SESSION['email'])) {
+
     $participate = $db->checkIfParticipate($_SESSION['email']);
 }
 
@@ -71,7 +74,7 @@ var_dump($allTattoo);
             foreach ($allTattoo as $tattoo) {
                 ?>
                 <div class="col-sm-3 col-xs-6">
-                    <img class="popular" src="<"/>
+                    <img class="popular" src="<?php echo $tattoo['link']?>"/>
                     <div
                         data-href="#"
                         class="fb-like"
