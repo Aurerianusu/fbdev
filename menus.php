@@ -9,7 +9,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="./">
+                <a href="/fbdev/">
                     <span class="navbar-brand">
                         <img src="/fbdev/public/images/splatter.png" alt="">
                         <span id="title-brand">Concours<br>Photo</span>
