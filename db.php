@@ -301,4 +301,30 @@ class db {
 
         return $fb;
     }
+
+    function getAllContest(){
+        $allContest = $this->getAll("SELECT * FROM contest");
+
+        return $allContest;
+    }
+
+    function getAllTattoo(){
+        $allTattoo = $this->getAll("SELECT * FROM photo");
+
+        return $allTattoo;
+    }
+
+    function getAllTattooWithInfo(){
+        $allTattooWithInfo = $this->getAll("
+                SELECT 
+                participant.participant_email, 
+                participant.participant_name, 
+                participant.participant_surname, 
+                participant.participant_id,
+                photo.link
+                FROM photo,participant
+                WHERE photo.participant_id = participant.participant_id
+                ");
+        return $allTattooWithInfo;
+    }
 }

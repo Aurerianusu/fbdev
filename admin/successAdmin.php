@@ -38,7 +38,7 @@ session_start();
         <p>Votre concours a été créé !</p>
         <br><br>
         <p>Vous allez être redirigé dans quelques instant</p>
-        <p> Si vous n'etes pas automatiquelent redirigé, veuillez cliquer <a href="admin.php">ici</a></p>
+        <p> Si vous n'etes pas automatiquelent redirigé, veuillez cliquer <a href="create-contest.php">ici</a></p>
     </div>
 
 </section>
