@@ -9,7 +9,7 @@
 
     $participate = $db->checkIfParticipate($_SESSION['email']);
 
-    $bestTattoo = $db->getTatooActiveContest($contest['contest_id']);
+    $bestTattoo = $db->getTatooActiveContest(   $contest['contest_id']);
     var_dump($bestTattoo);
 ?>
 <!doctype html>

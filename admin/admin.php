@@ -1,7 +1,7 @@
 <?php
     define('__ROOT__', dirname(dirname(__FILE__)));
-    require_once __DIR__.'/vendor/autoload.php';
-    require (__ROOT__.'/fbdev/db.php');
+    require_once __DIR__ . '../vendor/autoload.php';
+    require(__ROOT__ . '../fbdev/db.php');
     include "check_formulaire.php";
     session_start();
 ?>
@@ -34,7 +34,7 @@
 			<div class="container">
 				<div class="row">
 					<div class="col-sm-2 col-xs-2" style="display: inline-flex;">
-						<img src="public/images/settings.png" style="margin-top:10px;float:left;margin-bottom:10px;" />
+						<img src="../public/images/settings.png" style="margin-top:10px;float:left;margin-bottom:10px;" />
 						<h1 style="margin-top:25px;margin-left:15px;">Administration</h1>
 					</div>
 			    </div>
