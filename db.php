@@ -185,8 +185,8 @@ class db {
 
     function uploadPrice($file){
 
-        $target_dir = "public/images/contest/";
-        $target_file = $target_dir .'/'. basename($file["name"]);
+        $target_dir = "../public/images/contest/";
+        $target_file = $target_dir . basename($file["name"]);
         $uploadOk = 1;
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
 

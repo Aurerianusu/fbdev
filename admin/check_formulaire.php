@@ -94,7 +94,7 @@ if($error) {
 }else {
     if(isset($_POST['save']) && isset($file) && $file == true){
         $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateSelected,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name']);
-        header('Location: index.php');
+        header('Location: /fbdev/successadmin.php');
     }
 
 }

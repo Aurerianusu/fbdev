@@ -11,32 +11,38 @@
     require_once './vendor/autoload.php';
 
     $db = new db();
-    $fb = $db->initFb();
-    //$helper = $fb->getRedirectLoginHelper();
+    if(isset($_SESSION['email'])){
+        $participate = $db->checkIfParticipateAndRedirection($_SESSION['email']);
 
-    $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-    $response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,link,birthday,location,picture');
-    $userNode = $response->getGraphUser();
+        $fb = $db->initFb();
+        //$helper = $fb->getRedirectLoginHelper();
 
-    $_SESSION['email'] = $userNode->getField('email');
+        $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+        $response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,link,birthday,location,picture');
+        $userNode = $response->getGraphUser();
 
-    $participate = $db->checkIfParticipateAndRedirection($_SESSION['email']);
+        $_SESSION['email'] = $userNode->getField('email');
 
-    $photos_request = $fb->get('/me/photos?limit=100&type=uploaded');
-    $photos = $photos_request->getGraphEdge();
 
-    $all_photos = array();
-    if ($fb->next($photos)) {
-        $photos_array = $photos->asArray();
-        $all_photos = array_merge($photos_array, $all_photos);
-        while ($photos = $fb->next($photos)) {
+        $photos_request = $fb->get('/me/photos?limit=100&type=uploaded');
+        $photos = $photos_request->getGraphEdge();
+
+        $all_photos = array();
+        if ($fb->next($photos)) {
+            $photos_array = $photos->asArray();
+            $all_photos = array_merge($photos_array, $all_photos);
+            while ($photos = $fb->next($photos)) {
+                $photos_array = $photos->asArray();
+                $all_photos = array_merge($photos_array, $all_photos);
+            }
+        } else {
             $photos_array = $photos->asArray();
             $all_photos = array_merge($photos_array, $all_photos);
         }
-    } else {
-        $photos_array = $photos->asArray();
-        $all_photos = array_merge($photos_array, $all_photos);
+    }else{
+        header('Location: mustconnect.php');
     }
+
 ?>
 <!doctype html>
 <html>

@@ -13,7 +13,7 @@
     $contest = $db->getActiveContest();
 
     if($contest){
-        if($participate){
+        if(isset($participate)){
             echo '<h1> vous participez à notre concours <span class="glyphicon glyphicon-ok" style="color: chartreuse"></span></h1>';
         }else{
             echo '<a href="' . $loginUrl . '"><img src="public/images/submit.png" id="send_button"></a></a>';
