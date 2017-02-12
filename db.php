@@ -15,12 +15,13 @@ class db {
     private $Debug;
 
     function __construct() {
+        $config = parse_ini_file("config.ini");
         $this->conn = false;
-        $this->host = 'localhost'; //hostname
-        $this->user = 'root'; //username
-        $this->password = ''; //password
-        $this->baseName = 'pardonmaman'; //name of your database
-        $this->port = '3306';
+        $this->host = $config['host']; //hostname
+        $this->user = $config['user']; //username
+        $this->password = $config['password']; //password
+        $this->baseName = $config['dbname']; //name of your database
+        $this->port = $config['port'];
         $this->debug = true;
         $this->connect();
     }
@@ -269,5 +270,26 @@ class db {
         if($participate){
             header('Location: nope.php');
         }
+    }
+
+    function getTatooActiveContest($contestId){
+
+        $tatoo = $this->getAll("SELECT link FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC ");
+
+        return $tatoo;
+    }
+
+    function initFb(){
+        $config = parse_ini_file("config.ini");
+
+        $fb = new Facebook\Facebook([
+            'app_id' => $config['app_id'],
+            'app_secret' => $config['app_secret'],
+            'default_graph_version' => $config['default_graph_version'],
+            'status' => $config['status']
+        ]);
+
+        return $fb;
+
     }
 }

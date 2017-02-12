@@ -8,6 +8,9 @@
     $contest = $db->getActiveContest();
 
     $participate = $db->checkIfParticipate($_SESSION['email']);
+
+    $bestTattoo = $db->getTatooActiveContest($contest['contest_id']);
+    var_dump($bestTattoo);
 ?>
 <!doctype html>
 <html>
@@ -60,53 +63,24 @@
 			<div class="container">
 				<p>Tatouages populaires</p>
 				<div class="row">
-					<div class="col-sm-3 col-xs-6">
-						<img class="popular" src="public/images/tatoo1.jpg" />
-						<div
-							data-href="#"
-							class="fb-like"
-							data-layout="box_count" 
-							data-action="like"
-							data-size="large"
-							data-show-faces="true">
-						</div>
-					</div>
-					
-        			<div class="col-sm-3 col-xs-6">
-        				<img class="popular" src="public/images/tatoo2.jpg" />
-        				<div
-							data-href="#"
-							class="fb-like"
-							data-layout="box_count" 
-							data-action="like"
-							data-size="large"
-							data-show-faces="true">
-						</div>
-        			</div>
+                    <?php
+                        foreach ($bestTattoo as $tattoo){
+                    ?>
+                        <div class="col-sm-3 col-xs-6">
+                        <img class="popular" src="<?php echo $tattoo['link']; ?>" />
+                        <div
+                            data-href="#"
+                            class="fb-like"
+                            data-layout="box_count"
+                            data-action="like"
+                            data-size="large"
+                            data-show-faces="true">
+                        </div>
+                    </div>
+                            <?php
+                        }
+                    ?>
 
-        			<div class="col-sm-3 col-xs-6">
-        				<img class="popular" src="public/images/tatoo3.jpg" />
-        				<div
-							data-href="#"
-							class="fb-like"
-							data-layout="box_count" 
-							data-action="like"
-							data-size="large"
-							data-show-faces="true">
-						</div>
-        			</div>
-
-       				<div class="col-sm-3 col-xs-6">
-       					<img class="popular" src="public/images/tatoo4.jpg" />
-       					<div
-							data-href="#"
-							class="fb-like"
-							data-layout="box_count" 
-							data-action="like"
-							data-size="large"
-							data-show-faces="true">
-						</div>
-       				</div>
     			</div>
 
 		        <div class="row">
