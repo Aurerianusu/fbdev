@@ -1,15 +1,14 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Guigui
- * Date: 25/01/2017
- * Time: 16:37
- */
+    /**
+     * Created by PhpStorm.
+     * User: Guigui
+     * Date: 25/01/2017
+     * Time: 16:37
+     */
 
     session_start();
-    define('__ROOT__', dirname(dirname(__FILE__)));
-    require (__ROOT__.'/fbdev/db.php');
-    require_once __DIR__.'/vendor/autoload.php';
+    require_once './db.php';
+    require_once './vendor/autoload.php';
 
     $db = new db();
     $fb = $db->initFb();
@@ -21,7 +20,7 @@
 
     $_SESSION['email'] = $userNode->getField('email');
 
-    $db->checkIfParticipateAndRedirection($_SESSION['email']);
+    $participate = $db->checkIfParticipateAndRedirection($_SESSION['email']);
 
     $photos_request = $fb->get('/me/photos?limit=100&type=uploaded');
     $photos = $photos_request->getGraphEdge();
@@ -52,13 +51,13 @@
         <meta name="author" content="Pardon-Maman">
         <meta name="robots" content="noindex,nofollow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <?php require 'header.php' ?>
+        <?php require './header.php' ?>
     </head>
 
     <body>
         <!-- HEADER -->
         <header>
-            <?php require 'menus.php' ?>
+            <?php require './menus.php' ?>
         </header>
         <!-- END OF HEADER -->
 
@@ -106,7 +105,7 @@
     </section>
 
     <!-- END OF FOOTER -->
-    <footer><?php require 'footer.php' ?></footer>
+    <footer><?php require './footer.php' ?></footer>
     <!-- END OF FOOTER -->
 
     <script>

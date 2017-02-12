@@ -1,16 +1,16 @@
 <?php
     session_start();
-    define('__ROOT__', dirname(dirname(__FILE__)));
+
     require_once __DIR__.'/vendor/autoload.php';
-    require (__ROOT__.'/fbdev/db.php');
+    require_once __DIR__.'/db.php';
 
     $db = new db();
     $contest = $db->getActiveContest();
 
     $participate = $db->checkIfParticipate($_SESSION['email']);
 
-    $bestTattoo = $db->getTatooActiveContest(   $contest['contest_id']);
-    var_dump($bestTattoo);
+    $allTattoo = $db->getTatooActiveContest($contest['contest_id']);
+    var_dump($allTattoo);
 ?>
 <!doctype html>
 <html>
@@ -64,10 +64,10 @@
 				<p>Tatouages populaires</p>
 				<div class="row">
                     <?php
-                        foreach ($bestTattoo as $tattoo){
+                        foreach ($allTattoo as $tattoo){
                     ?>
                         <div class="col-sm-3 col-xs-6">
-                        <img class="popular" src="<?php echo $tattoo['link']; ?>" />
+                        <img class="popular" src="<" />
                         <div
                             data-href="#"
                             class="fb-like"

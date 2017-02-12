@@ -236,13 +236,14 @@ class db {
 
     function getActiveContest(){
         $contest = $this->getOne("SELECT * FROM contest WHERE  is_active = 1");
+
         return $contest;
     }
 
-    function getUserPhoto($userId){
-        $photo = $this->getOne("SELECT * FROM photo WHERE participant_id = '$userId'");
+    function getUserTattoo($userId){
+        $allUserTattoo = $this->getOne("SELECT * FROM photo WHERE participant_id = '$userId'");
 
-        return $photo;
+        return $allUserTattoo;
     }
 
     function checkIfParticipate($email){
@@ -268,7 +269,10 @@ class db {
     function checkIfParticipateAndRedirection($email){
         $participate = $this->checkIfParticipate($email);
         if($participate){
+            return true;
             header('Location: nope.php');
+        }else{
+            return false;
         }
     }
 
@@ -290,6 +294,5 @@ class db {
         ]);
 
         return $fb;
-
     }
 }

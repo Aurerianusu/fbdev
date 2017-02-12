@@ -1,9 +1,9 @@
 <?php
-    define('__ROOT__', dirname(dirname(__FILE__)));
-    require_once __DIR__ . '../vendor/autoload.php';
-    require(__ROOT__ . '../fbdev/db.php');
-    include "check_formulaire.php";
     session_start();
+    require_once '../db.php';
+    require_once '../vendor/autoload.php';
+    require_once __DIR__ .'./check_formulaire.php';
+
 ?>
 
 <!doctype html>
@@ -19,13 +19,13 @@
 	    <meta name="author" content="Pardon-Maman">
 	    <meta name="robots" content="noindex,nofollow">
 	    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-	    <?php require 'header.php' ?>
+	    <?php require '../header.php' ?>
 	</head>
 
 	<body>
 		<!-- HEADER -->
 		<header>
-			<?php require 'menus.php' ?>
+			<?php require '../menus.php' ?>
 		</header> 
 		<!-- END OF HEADER -->       
 

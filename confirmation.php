@@ -5,12 +5,11 @@
  * Date: 06/02/2017
  * Time: 14:16
  */
-
-    define('__ROOT__', dirname(dirname(__FILE__)));
-    require_once __DIR__.'/vendor/autoload.php';
-    require (__ROOT__.'/fbdev/db.php');
     session_start();
+    require_once __DIR__.'./db.php';
+    require_once __DIR__.'/vendor/autoload.php';
 
+    $db = new db();
     $fb = $db->initFb();
     $helper = $fb->getRedirectLoginHelper();
 
@@ -26,8 +25,8 @@
     $profile_pic = $profile_pic->getUrl();
 
     $_SESSION['email'] = $email;
-    $db = new db();
-    $db->checkIfParticipateAndRedirection($_SESSION['email']);
+
+    $participate = $db->checkIfParticipateAndRedirection($_SESSION['email']);
 ?>
 <!doctype html>
 <html>
@@ -43,7 +42,7 @@
         <meta name="author" content="Pardon-Maman">
         <meta name="robots" content="noindex,nofollow">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <?php require 'header.php';?>
+        <?php require './header.php';?>
     </head>
 
     <body>

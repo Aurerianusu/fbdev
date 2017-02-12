@@ -11,7 +11,7 @@ session_start();
 <html>
     <head>
         <!-- Page Title -->
-        <title>Inscription réussi</title>
+        <title>Inscription réussi | Concours photo Facebook</title>
 
         <!-- Meta Tags -->
         <meta charset="utf-8">
