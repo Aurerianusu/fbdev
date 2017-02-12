@@ -83,7 +83,7 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
         $msg_error .= "<li>Vous devez choisir une photo pour le prix";
     }
     $file = $db->uploadPrice($_FILES['fileToUpload']);
-    
+
 }
 
 if($error) {

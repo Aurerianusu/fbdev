@@ -11,13 +11,8 @@
     require (__ROOT__.'/fbdev/db.php');
     require_once __DIR__.'/vendor/autoload.php';
 
-    $fb = new Facebook\Facebook([
-        'app_id' => '276539519413614',
-        'app_secret' => '93200c19ca13fa5eec70171dfb56a6e1',
-        'default_graph_version' => 'v2.5',
-        'status' => true
-    ]);
-
+    $db = new db();
+    $fb = $db->initFb();
     //$helper = $fb->getRedirectLoginHelper();
 
     $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
@@ -25,7 +20,7 @@
     $userNode = $response->getGraphUser();
 
     $_SESSION['email'] = $userNode->getField('email');
-    $db = new db();
+
     $db->checkIfParticipateAndRedirection($_SESSION['email']);
 
     $photos_request = $fb->get('/me/photos?limit=100&type=uploaded');
