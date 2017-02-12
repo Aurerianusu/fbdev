@@ -91,9 +91,9 @@ if($error) {
     echo $msg_error;
     echo "</ul>";
 }else {
-    if(isset($_POST['save']) && isset($uploadOk) && $uploadOk == true){
+    if(isset($_POST['save']) && isset($uploadOk) && $uploadOk == 1){
         $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateSelected,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name']);
-
+        
         $db->uploadFile($uploadOk,$_FILES['fileToUpload']);
         header('Location: /fbdev/admin/successadmin.php');
     }
