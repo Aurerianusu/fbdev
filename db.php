@@ -183,7 +183,7 @@ class db {
         }
     }
 
-    function uploadPrice($file){
+    function checkUploadFile($file){
 
         $target_dir = "../public/images/contest/";
         $target_file = $target_dir . basename($file["name"]);
@@ -194,46 +194,52 @@ class db {
         if(isset($_POST["submit"])) {
             $check = getimagesize($file["tmp_name"]);
             if($check !== false) {
-                echo "File is an image - " . $check["mime"] . ".";
+                echo "<li>File is an image - " . $check["mime"] . ".";
                 $uploadOk = 1;
             } else {
-                echo "Le fichier n'est pas une image";
+                echo "<li>Le fichier n'est pas une image";
                 $uploadOk = 0;
             }
         }
         // Check if file already exists
         if (file_exists($target_file)) {
-            echo "Désolé, le fichier existe déjà";
+            echo "<li>Désolé, le fichier existe déjà";
             $uploadOk = 0;
         }
         // Check file size
         if ($file["size"] > 500000) {
-            echo "Désolé, le fichier est trop lourd";
+            echo "<li>Désolé, le fichier est trop lourd";
             $uploadOk = 0;
         }
         // Allow certain file formats
         if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
             && $imageFileType != "gif" ) {
-            echo "Désolé, seulement les fichiers JPG, JPEG, PNG & GIF sont autorisés.";
+            echo "<li>Désolé, seulement les fichiers JPG, JPEG, PNG & GIF sont autorisés.";
             $uploadOk = 0;
         }
+        return $uploadOk;
+    }
+
+    function uploadFile($uploadOk,$file){
+
+        $target_dir = "../public/images/contest/";
+        $target_file = $target_dir . basename($file["name"]);
+
         // Check if $uploadOk is set to 0 by an error
         if ($uploadOk == 0) {
-            echo "Désolé votre fichier n'a pas été envoyé";
+            echo "<li>Désolé votre fichier n'a pas été envoyé";
             return false;
-        // if everything is ok, try to upload file
+            // if everything is ok, try to upload file
         } else {
             if (move_uploaded_file($file["tmp_name"], $target_file)) {
-                echo "The file ". basename($file["name"]). " a été envoyé !.";
+                //echo "The file ". basename($file["name"]). " a été envoyé !.";
                 return true;
             } else {
-                echo "Désolé il y a eu une error lors de l'envoie de votre fichier";
+                echo "<li>Désolé il y a eu une error lors de l'envoie de votre fichier";
                 return false;
-
             }
         }
     }
-
     function getActiveContest(){
         $contest = $this->getOne("SELECT * FROM contest WHERE  is_active = 1");
 

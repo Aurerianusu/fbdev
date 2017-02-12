@@ -82,8 +82,7 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
         $error = TRUE;
         $msg_error .= "<li>Vous devez choisir une photo pour le prix";
     }
-    $file = $db->uploadPrice($_FILES['fileToUpload']);
-
+    $uploadOk = $db->checkUploadFile($_FILES['fileToUpload']);
 }
 
 if($error) {
@@ -92,9 +91,11 @@ if($error) {
     echo $msg_error;
     echo "</ul>";
 }else {
-    if(isset($_POST['save']) && isset($file) && $file == true){
+    if(isset($_POST['save']) && isset($uploadOk) && $uploadOk == true){
         $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateSelected,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name']);
-        header('Location: /fbdev/successadmin.php');
+
+        $db->uploadFile($uploadOk,$_FILES['fileToUpload']);
+        header('Location: /fbdev/admin/successadmin.php');
     }
 
 }

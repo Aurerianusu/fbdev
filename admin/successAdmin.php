@@ -22,13 +22,13 @@ session_start();
     <meta name="robots" content="noindex,nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="refresh" content="5 ; url=admin.php">
-    <?php require 'header.php';?>
+    <?php require '../header.php';?>
 </head>
 
 <body>
 <!-- HEADER -->
 <header>
-    <?php require './menus.php' ?>
+    <?php require '../menus.php' ?>
 </header>
 <!-- END OF HEADER -->
 
@@ -45,7 +45,7 @@ session_start();
 <!-- END OF CONTENT -->
 <!-- FOOTER -->
 <footer class="footer">
-    <?php require './footer.php' ?>
+    <?php require '../footer.php' ?>
 </footer>
 <!-- END OF FOOTER -->
 </body>
