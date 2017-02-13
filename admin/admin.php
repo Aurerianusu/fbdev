@@ -63,7 +63,7 @@ $allContest = $db->getAllContest();
                     </div>
                     <div class="tabcontest">
                         <div class="col-md-12 col-md-offset-0">
-                            <form method="post" action="scriptDelete.php">
+                            <form method="post" action="./scriptDelete.php">
                                 <table border="1">
                                     <tr>
                                         <th>Nom</th>
@@ -90,11 +90,16 @@ $allContest = $db->getAllContest();
                                             echo'<td>'.$contest['contest_prize'].'</td>';
                                             echo'<td><img src=../'.$contest['contest_image'].' style="width: 150px"></td>';
                                             echo'<td>'.$contest['is_active'].'</td>';
-                                            echo'<td><input type="submit" name="delete" style="background-color: #d34836;"value="Supprimer"></td>';
+                                            echo'<td><input type="submit" name="delete"   onclick="return checkDelete()" style="background-color: #d34836;"value="Supprimer"></td>';
                                             echo'<td><input type="hidden" name="contestId" value='.$contest['contest_id'].'></td>';
                                             echo'</tr>';
                                         }
                                     ?>
+                                    <script language="JavaScript" type="text/javascript">
+                                        function checkDelete(){
+                                            return confirm('Voulez vraiment supprimer ce concours ?');
+                                        }
+                                    </script>
                                 </table>
                             </form>
                         </div>
