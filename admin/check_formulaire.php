@@ -9,34 +9,10 @@
 $error = FALSE;
 $msg_error = "";
 
-
 $db = new db();
 
-if(!isset($_POST['dateNow'])){
-    $_POST['dateNow'] = '';
-}
-if(isset($_POST['dateNow'])){
-
-    unset($_POST['dateBegin']);
-    unset($_POST['hourBegin']);
-    $dateSelected = date("Y-m-d H:i:s");
-
-}elseif(isset($_POST['dateBegin'])&& isset($_POST['hourBegin'])){
-    $dateSelected = $db->dateWithHour($_POST['dateBegin'],$_POST['hourBegin']);
-
-}else{
-    $dateSelected = date("Y-m-d H:i:s");
-
-}
-
-if(isset($_POST['dateEnd']) && isset($_POST['hourEnd'])){
-    $dateEnd = new DateTime($_POST['dateEnd'].' '.$_POST['hourEnd']);
-    $dateEnd =  $dateEnd->format('Y-m-d H:i');
-}
-
-if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToUpload']) &&  isset($_POST['home']) && isset($_POST['rules']) &&  isset($dateSelected) && isset($dateEnd) )
+if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToUpload']) &&  isset($_POST['home']) && isset($_POST['rules']) &&  isset($_POST['dateBegin']) && isset($_POST['hourBegin']) && isset($_POST['dateEnd']) && isset($_POST['hourEnd']) )
 {
-
 
     if(strlen($_POST['title']) < 2)
     {
@@ -66,7 +42,29 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
         $error = TRUE;
         $msg_error .= "<li>Les règles du concours doivent faire plus de 10 caractères";
     }
-    if (!DateTime::createFromFormat('Y-m-d H:i:s', $dateSelected))
+
+    $dateSelected = new DateTime($_POST['dateBegin'].' '.$_POST['hourBegin']);
+    $dateSelected = $dateSelected->format('Y/m/d H:m');
+
+    //$checkDate = $db->isDateIsBeforeToday($dateSelected);
+    $dateToday = date('Y/m/d H:m');
+    $dateToday = new DateTime($dateToday);
+
+    if($dateSelected < $dateToday){
+        $error = TRUE;
+        $msg_error .= "<li>Voulez changer le cours du temps ? Veuillez choisir une date >= à aujourd'hui svp.";
+    }elseif($dateSelected == $dateToday){
+        $is_active = 1;
+    }else{
+        $is_active = 0;
+    }
+
+    $dateEnd = new DateTime($_POST['dateEnd'].' '.$_POST['hourEnd']);
+    $dateEnd =  $dateEnd->format('Y:m:d H:m');
+
+
+
+    if(!DateTime::createFromFormat('Y:m:d H:m', $dateSelected))
     {
         $error = TRUE;
         $msg_error .= "<li>La date n'est pas valide";
@@ -77,6 +75,7 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
         $error = TRUE;
         $msg_error .= "<li>La date de fin doit être après la date de début";
     }
+
     if($_FILES['fileToUpload']['name'] == '')
     {
         $error = TRUE;
@@ -92,7 +91,9 @@ if($error) {
     echo "</ul>";
 }else {
     if(isset($_POST['save']) && isset($uploadOk) && $uploadOk == 1){
-        $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateSelected,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name']);
+    var_dump('okmec');
+    die;
+        $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateSelected,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name'],$is_active);
 
         $db->uploadFile($uploadOk,$_FILES['fileToUpload']);
         header('Location: /fbdev/admin/successadmin.php');

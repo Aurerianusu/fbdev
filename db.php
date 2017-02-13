@@ -125,29 +125,6 @@ class db {
         return $response;
     }
 
-    function dateWithHour($date,$hour){
-        $date = new DateTime($date.' '.$hour);
-        return $date->format('Y-m-d H:i');
-    }
-
-    function isDateIsToday($date)
-    {
-        $curr_date=strtotime(date("Y-m-d H:i"));
-        $the_date=strtotime($date);
-        $diff=floor(($curr_date-$the_date)/(60*60*24));
-        switch($diff)
-        {
-            case 0:
-                return "Today";
-                break;
-            case 1:
-                return "Yesterday";
-                break;
-            default:
-                return $diff." Days ago";
-        }
-    }
-
     function dateSelected($dateNow,$dateBegin,$hourBegin){
 
         if(isset($dateNow)){
@@ -167,10 +144,11 @@ class db {
             return $dateSelected;
         }
     }
-    function createContest($contestName,$contestRules,$contestHome,$dateBegin,$dateEnd,$priceName,$pricePic){
+    function createContest($contestName,$contestRules,$contestHome,$dateBegin,$dateEnd,$priceName,$pricePic,$is_active){
         $today = date("Y-m-d H:i:s");
         $filePath = 'public/images/contest/'.$pricePic;
-        $query = "INSERT INTO contest (contest_name,contest_rules,contest_home,contest_creation_date,contest_begin_date,contest_end_date,contest_prize,contest_image,is_active) VALUES ('$contestName','$contestRules','$contestHome','$today','$dateBegin','$dateEnd','$priceName','$filePath','1')";
+
+        $query = "INSERT INTO contest (contest_name,contest_rules,contest_home,contest_creation_date,contest_begin_date,contest_end_date,contest_prize,contest_image,is_active) VALUES ('$contestName','$contestRules','$contestHome','$today','$dateBegin','$dateEnd','$priceName','$filePath','$is_active')";
         if(!$response = $this->conn->exec($query)){
             echo 'PDO::errorInfo():';
             echo '<br />';

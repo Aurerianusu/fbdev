@@ -125,14 +125,14 @@
 
                                     <label class="col-md-4 control-label" for="dateBegin">Date de début</label>
                                     <div class="col-md-4">
-                                       <input type="date" class="form-control" name="dateBegin" value=" <?php echo (isset($_POST['dateBegin']))?$_POST['dateBegin']:"";?>" >
+                                       <input type="date" class="form-control" name="dateBegin" value="<?php echo (isset($_POST['dateBegin']))?$_POST['dateBegin']:"";?>" >
                                     </div>
                                 </div>
 
                                 <div class="form-group" id="datePrecise">
                                     <label class="col-md-4 control-label" for="hourBegin">Heure début</label>
                                     <div class="col-md-4">
-                                        <input type="time" class="form-control" name="hourBegin  <?php echo (isset($_POST['hourBegin']))?$_POST['hourBegin']:"";?>" >
+                                        <input type="time" class="form-control" name="hourBegin"  value="<?php echo (isset($_POST['hourBegin']))?$_POST['hourBegin']:"";?>" >
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -144,14 +144,14 @@
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="dateEnd">Date de fin</label>
                                     <div class="col-md-4">
-                                        <input type="date" class="form-control" name="dateEnd" value=" <?php echo (isset($_POST['dateEnd']))?$_POST['dateEnd']:"";?>">
+                                        <input type="date" class="form-control" name="dateEnd" value="<?php echo (isset($_POST['dateEnd']))?$_POST['dateEnd']:"";?>">
                                     </div>
                                 </div>
 
                                 <div class="form-group">
                                     <label class="col-md-4 control-label" for="hourEnd">Heure de fin </label>
                                     <div class="col-md-4">
-                                        <input type="time" class="form-control" name="hourEnd" value=" <?php echo (isset($_POST['hourEnd']))?$_POST['hourEnd']:"";?>">
+                                        <input type="time" class="form-control" name="hourEnd" value="<?php echo (isset($_POST['hourEnd']))?$_POST['hourEnd']:"";?>">
                                     </div>
                                 </div>
                             </fieldset>

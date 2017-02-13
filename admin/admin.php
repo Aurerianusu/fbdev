@@ -63,29 +63,44 @@ $allContest = $db->getAllContest();
                     </div>
                     <div class="tabcontest">
                         <div class="col-md-12 col-md-offset-0">
-                           <table border="1">
-                               <tr>
-                                   <th>Nom concours</th>
-                                   <th>Date de début</th>
-                                   <th>Date de fin</th>
-                                   <th>Prix</th>
-                                   <th>Image du prix</th>
-                                   <th>En cours</th>
-                               </tr>
-                               <?php
-                                    foreach ($allContest as $contest){
+                            <form method="post">
+                                <table border="1">
+                                    <tr>
+                                    <th>Nom concours</th>
+                                    <th>Date de début</th>
+                                    <th>Date de fin</th>
+                                    <th>Prix</th>
+                                    <th>Image du prix</th>
+                                    <th>En cours</th>
+                                    <th>Supprimer</th>
+                                    </tr>
+                                    <?php
+                                        foreach ($allContest as $contest){
 
-                                        echo'<tr>';
-                                        echo'<td>'.$contest['contest_name'].'</td>';
-                                        echo'<td>'.$contest['contest_begin_date'].'</td>';
-                                        echo'<td>'.$contest['contest_end_date'].'</td>';
-                                        echo'<td>'.$contest['contest_prize'].'</td>';
-                                        echo'<td><img src=../'.$contest['contest_image'].'></td>';
-                                        echo'<td>'.$contest['is_active'].'</td>';
-                                        echo'</tr>';
-                                    }
-                               ?>
-                           </table>
+                                            if($contest['is_active'] == 1){
+                                                $contest['is_active'] = 'oui';
+                                            }else{
+                                                $contest['is_active'] = 'non';
+                                            }
+
+                                            echo'<tr>';
+                                            echo'<td>'.$contest['contest_name'].'</td>';
+                                            echo'<td>'.$contest['contest_begin_date'].'</td>';
+                                            echo'<td>'.$contest['contest_end_date'].'</td>';
+                                            echo'<td>'.$contest['contest_prize'].'</td>';
+                                            echo'<td><img src=../'.$contest['contest_image'].' style="width: 150px"></td>';
+                                            echo'<td>'.$contest['is_active'].'</td>';
+                                            echo'<td><input type="submit" name="delete" value="Supprimer"></td>';
+                                            echo'<td><input type="hidden" name="contestId" value='.$contest['contest_id'].'></td>';
+                                            echo'</tr>';
+                                        }
+                                        if(isset($_POST['delete'])){
+                                            $contest = $_POST['contestId'];
+                                            var_dump($contest);
+                                        }
+                                    ?>
+                                </table>
+                            </form>
                         </div>
                     </div>
                 </fieldset>
