@@ -125,7 +125,7 @@
 
                                     <label class="col-md-4 control-label" for="dateBegin">Date de début</label>
                                     <div class="col-md-4">
-                                       <input type="date" class="form-control" name="dateBegin" value="<?php echo (isset($_POST['dateBegin']))?$_POST['dateBegin']:"";?>" >
+                                       <input type="date" class="form-control" name="dateBegin" max="9999-12-31" value="<?php echo (isset($_POST['dateBegin']))?$_POST['dateBegin']:"";?>" >
                                     </div>
                                 </div>
 
@@ -137,7 +137,7 @@
                                 </div>
                                 <div class="form-group">
                                     <div class="col-md-4 col-md-offset-4">
-                                        <input type="radio" name="date" value="now" class="btn-lg btn-primary"> Maintenant</input>
+                                        <input type="checkbox" name="dateNow" value="now" class="btn-lg btn-primary"> Maintenant</input>
                                     </div>
                                 </div>
 

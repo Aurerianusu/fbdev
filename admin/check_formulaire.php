@@ -43,37 +43,41 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
         $msg_error .= "<li>Les règles du concours doivent faire plus de 10 caractères";
     }
 
-    $dateSelected = new DateTime($_POST['dateBegin'].' '.$_POST['hourBegin']);
-    $dateSelected = $dateSelected->format('Y/m/d H:m');
-
-    //$checkDate = $db->isDateIsBeforeToday($dateSelected);
     $dateToday = date('Y/m/d H:m');
     $dateToday = new DateTime($dateToday);
+    $dateToday = $dateToday->format('Y/m/d H:m');
 
-    if($dateSelected < $dateToday){
-        $error = TRUE;
-        $msg_error .= "<li>Voulez changer le cours du temps ? Veuillez choisir une date >= à aujourd'hui svp.";
-    }elseif($dateSelected == $dateToday){
+    if(isset($_POST['dateNow'])){
+        $dateSelected = $dateToday;
         $is_active = 1;
+        var_dump('maintenant choisioiiiiiiiiiii');
     }else{
-        $is_active = 0;
+        $dateSelected = new DateTime($_POST['dateBegin'].' '.$_POST['hourBegin']);
+        $dateSelected = $dateSelected->format('Y/m/d H:m');
+
+
+
+        if($dateSelected < $dateToday){
+            $error = TRUE;
+            $msg_error .= "<li>Voulez changer le cours du temps Mcfly ? Veuillez choisir une date >= à aujourd'hui.";
+        }elseif($dateSelected == $dateToday){
+            $is_active = 1;
+        }else{
+            $is_active = 0;
+        }
     }
 
     $dateEnd = new DateTime($_POST['dateEnd'].' '.$_POST['hourEnd']);
-    $dateEnd =  $dateEnd->format('Y:m:d H:m');
+    $dateEnd =  $dateEnd->format('Y/m/d H:m');
 
-
-
-    if(!DateTime::createFromFormat('Y:m:d H:m', $dateSelected))
-    {
-        $error = TRUE;
-        $msg_error .= "<li>La date n'est pas valide";
-    }
-
-    if(strtotime($dateEnd) < strtotime($dateSelected))
-    {
+    if($dateEnd < $dateSelected){
         $error = TRUE;
         $msg_error .= "<li>La date de fin doit être après la date de début";
+    }elseif ($dateEnd == $dateSelected){
+        $error = TRUE;
+        $msg_error .= "<li>La date de fin de noit pas etre la meme que la date du début";
+    }else{
+        //do nothing
     }
 
     if($_FILES['fileToUpload']['name'] == '')
