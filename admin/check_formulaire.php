@@ -48,14 +48,12 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
     $dateToday = $dateToday->format('Y/m/d H:m');
 
     if(isset($_POST['dateNow'])){
+
         $dateSelected = $dateToday;
         $is_active = 1;
-        var_dump('maintenant choisioiiiiiiiiiii');
     }else{
         $dateSelected = new DateTime($_POST['dateBegin'].' '.$_POST['hourBegin']);
         $dateSelected = $dateSelected->format('Y/m/d H:m');
-
-
 
         if($dateSelected < $dateToday){
             $error = TRUE;
@@ -95,12 +93,10 @@ if($error) {
     echo "</ul>";
 }else {
     if(isset($_POST['save']) && isset($uploadOk) && $uploadOk == 1){
-    var_dump('okmec');
-    die;
+
         $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateSelected,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name'],$is_active);
 
         $db->uploadFile($uploadOk,$_FILES['fileToUpload']);
         header('Location: /fbdev/admin/successadmin.php');
     }
-
 }

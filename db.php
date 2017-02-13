@@ -97,6 +97,20 @@ class db {
         }
         return $response;
     }
+
+    function initFb(){
+        $config = parse_ini_file("config.ini");
+
+        $fb = new Facebook\Facebook([
+            'app_id' => $config['app_id'],
+            'app_secret' => $config['app_secret'],
+            'default_graph_version' => $config['default_graph_version'],
+            'status' => $config['status']
+        ]);
+
+        return $fb;
+    }
+
     function getUser($email){
 
         $user = $this->getOne("SELECT * FROM participant WHERE participant_email = '$email'");
@@ -125,25 +139,6 @@ class db {
         return $response;
     }
 
-    function dateSelected($dateNow,$dateBegin,$hourBegin){
-
-        if(isset($dateNow)){
-            unset($dateBegin);
-            unset($hourBegin);
-            $dateSelected = date("Y-m-d H:i:");
-
-            return $dateSelected;
-        }elseif(isset($dateBegin)&& isset($hourBegin)){
-            $dateSelected = $this->dateWithHour($dateBegin,$hourBegin);
-
-            return $dateSelected;
-
-        }else{
-            $dateSelected = date("Y-m-d H:i:");
-
-            return $dateSelected;
-        }
-    }
     function createContest($contestName,$contestRules,$contestHome,$dateBegin,$dateEnd,$priceName,$pricePic,$is_active){
         $today = date("Y-m-d H:i:s");
         $filePath = 'public/images/contest/'.$pricePic;
@@ -231,8 +226,7 @@ class db {
     }
 
     function checkIfParticipate($email){
-
-        if(isset($email)) {
+        if (isset($email)) {
             $user = $this->getUser($email);
             $userId = $user['participant_id'];
             $contest = $this->getActiveContest();
@@ -267,18 +261,6 @@ class db {
         return $tatoo;
     }
 
-    function initFb(){
-        $config = parse_ini_file("config.ini");
-
-        $fb = new Facebook\Facebook([
-            'app_id' => $config['app_id'],
-            'app_secret' => $config['app_secret'],
-            'default_graph_version' => $config['default_graph_version'],
-            'status' => $config['status']
-        ]);
-
-        return $fb;
-    }
 
     function getAllContest(){
         $allContest = $this->getAll("SELECT * FROM contest");
