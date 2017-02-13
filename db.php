@@ -185,8 +185,15 @@ class db {
             $uploadOk = 0;
         }
         // Allow certain file formats
-        if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-            && $imageFileType != "gif" ) {
+        if($imageFileType != "jpg"
+            && $imageFileType != "png"
+            && $imageFileType != "jpeg"
+            && $imageFileType != "jpg"
+            && $imageFileType != "gif"
+            && $imageFileType != "PNG"
+            && $imageFileType != "JPEG"
+            && $imageFileType != "JPG"
+            && $imageFileType != "GIF" ) {
             echo "<li>Désolé, seulement les fichiers JPG, JPEG, PNG & GIF sont autorisés.";
             $uploadOk = 0;
         }
@@ -286,5 +293,10 @@ class db {
                 WHERE photo.participant_id = participant.participant_id
                 ");
         return $allTattooWithInfo;
+    }
+
+    function deleteContest($contestId){
+
+        $this->execute("DELETE FROM contest WHERE contest_id ='$contestId'");
     }
 }

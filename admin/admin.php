@@ -63,16 +63,16 @@ $allContest = $db->getAllContest();
                     </div>
                     <div class="tabcontest">
                         <div class="col-md-12 col-md-offset-0">
-                            <form method="post">
+                            <form method="post" action="scriptDelete.php">
                                 <table border="1">
                                     <tr>
-                                    <th>Nom concours</th>
-                                    <th>Date de début</th>
-                                    <th>Date de fin</th>
-                                    <th>Prix</th>
-                                    <th>Image du prix</th>
-                                    <th>En cours</th>
-                                    <th>Supprimer</th>
+                                        <th>Nom</th>
+                                        <th>Date début</th>
+                                        <th>Date fin</th>
+                                        <th>Prix</th>
+                                        <th>Image prix</th>
+                                        <th>Active</th>
+                                        <th></th>
                                     </tr>
                                     <?php
                                         foreach ($allContest as $contest){
@@ -90,13 +90,9 @@ $allContest = $db->getAllContest();
                                             echo'<td>'.$contest['contest_prize'].'</td>';
                                             echo'<td><img src=../'.$contest['contest_image'].' style="width: 150px"></td>';
                                             echo'<td>'.$contest['is_active'].'</td>';
-                                            echo'<td><input type="submit" name="delete" value="Supprimer"></td>';
+                                            echo'<td><input type="submit" name="delete" style="background-color: #d34836;"value="Supprimer"></td>';
                                             echo'<td><input type="hidden" name="contestId" value='.$contest['contest_id'].'></td>';
                                             echo'</tr>';
-                                        }
-                                        if(isset($_POST['delete'])){
-                                            $contest = $_POST['contestId'];
-                                            var_dump($contest);
                                         }
                                     ?>
                                 </table>
