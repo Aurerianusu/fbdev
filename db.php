@@ -226,12 +226,6 @@ class db {
         return $contest;
     }
 
-    function getUserTattoo($userId){
-        $allUserTattoo = $this->getOne("SELECT * FROM photo WHERE participant_id = '$userId'");
-
-        return $allUserTattoo;
-    }
-
     function checkIfParticipate($email){
         if (isset($email)) {
             $user = $this->getUser($email);
@@ -261,24 +255,45 @@ class db {
         }
     }
 
-    function getTatooActiveContest($contestId){
-
-        $tatoo = $this->getAll("SELECT link FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC ");
-
-        return $tatoo;
-    }
-
-
-    function getAllContest(){
-        $allContest = $this->getAll("SELECT * FROM contest");
-
-        return $allContest;
-    }
-
     function getAllTattoo(){
         $allTattoo = $this->getAll("SELECT * FROM photo");
 
         return $allTattoo;
+    }
+
+    function getTatooActiveContestLimit($contestId){
+
+        $tatoo = $this->getAll("SELECT link FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC LIMIT 5");
+
+        return $tatoo;
+    }
+
+    function getUserTattoo($email){
+        $userTattoo = $this->getOne("
+                SELECT
+                photo.link,
+                participant.participant_surname
+                FROM photo, participant
+                WHERE
+                photo.participant_id = participant.participant_id
+                AND participant.participant_email = '$email'
+                ORDER BY photo.facebook_photos_id DESC ");
+
+        return $userTattoo;
+    }
+
+    function getTatooActiveContestWithUser(){
+
+        $tatoo = $this->getAll("
+                SELECT
+                photo.link,
+                photo.participant_id,
+                participant.participant_id,
+                participant.participant_surname
+                FROM photo,participant
+                WHERE photo.participant_id = participant.participant_id");
+
+        return $tatoo;
     }
 
     function getAllTattooWithInfo(){
@@ -296,6 +311,12 @@ class db {
                 WHERE photo.participant_id = participant.participant_id AND photo.contest_id = contest.contest_id
                 ");
         return $allTattooWithInfo;
+    }
+
+    function getAllContest(){
+        $allContest = $this->getAll("SELECT * FROM contest");
+
+        return $allContest;
     }
 
     function deleteContest($contestId){

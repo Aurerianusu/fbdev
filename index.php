@@ -8,14 +8,12 @@ $db = new db();
 $contest = $db->getActiveContest();
 $db->initFb();
 
-var_dump($_SESSION['email']);
-
 if (isset($_SESSION['email'])) {
 
     $participate = $db->checkIfParticipate($_SESSION['email']);
 }
 
-$allTattoo = $db->getTatooActiveContest($contest['contest_id']);
+$allTattoo = $db->getTatooActiveContestLimit($contest['contest_id']);
 var_dump($allTattoo);
 ?>
 <!doctype html>
