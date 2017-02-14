@@ -114,12 +114,12 @@ class db {
     }
 
     function userInscription($lastName,$firstName,$email){
+
         $query = "INSERT INTO participant (participant_name,participant_surname,participant_email) VALUES ('$lastName','$firstName','$email')";
         if(!$response = $this->conn->exec($query)){
 
             $this->redirectError();
         }
-        return $response;
     }
 
     function uploadPicture($participantId,$contestId,$picture){
@@ -348,43 +348,21 @@ class db {
         }
     }
 
-    function likePhoto($photoId,$userId){
+    function likePhoto($photoId,$userId)
+    {
 
-        $allReadyLike = $this->ifUserAllreadyLikes($photoId,$userId);
 
-        if(!$allReadyLike){
-            $query = "INSERT INTO likes (photo_id, user_id) VALUES('$photoId','$userId')";
-            if(!$response = $this->conn->exec($query)){
-                return false;
-                //$this->redirectError();
-            }else{
-                return true;
-            }
-        }else{
-
+        $query = "INSERT INTO likes (photo_id, user_id) VALUES('$photoId','$userId')";
+        if (!$response = $this->conn->exec($query)) {
             return false;
-        }
-    }
-
-    function searchUser($email){
-
-        $userId = $this->getOne("SELECT * FROM user WHERE user_email ='$email'");
-
-        return $userId;
-    }
-
-    function createUser($lastName,$firstName,$email){
-        $query = "INSERT INTO user (user_name, user_surname, user_email) VALUES('$lastName','$firstName','$email')";
-        if(!$response = $this->conn->exec($query)){
-
-            var_dump('mdr');die;
             //$this->redirectError();
+        } else {
+            return true;
         }
-        return $response;
     }
+
 
     function ifUserAllreadyLikes($photoId,$userId){
-
 
         $allReadyLike = $this->getOne("SELECT like_id FROM likes WHERE user_id = '$userId' AND photo_id = '$photoId'");
 

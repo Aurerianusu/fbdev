@@ -26,17 +26,29 @@ if($_SESSION['facebook_access_token']){
 
         $db = new db();
 
-        $user = $db->searchUser($_SESSION['email']);
+        $user = $db->getUser($_SESSION['email']);
         if($user){
-            $userId = $user['user_id'];
+            $userId = $user['participant_id'];
         }else{
 
-            $db->createUser($lastName,$firstName,$_SESSION['email']);
-            $user = $db->searchUser($_SESSION['email']);
-            $userId = $user['user_id'];
+            $db->userInscription($lastName,$firstName,$_SESSION['email']);
+            $user = $db->getUser($_SESSION['email']);
+            $userId = $user['participant_id'];
         }
-        $db->likePhoto($_GET['id'],$userId);
-        header('Location: index.php');
+        $allreadyLike = $db->ifUserAllreadyLikes($_GET['id'],$userId);
+        if(!$allreadyLike){
+            $db->likePhoto($_GET['id'],$userId);
+            header('Location: index.php');
+        }else{
+            ?>
+        <script>
+            alert('Vous aimez déjà la photo');
+            document.location.href="index.php"
+        </script>
+            <?php
+
+        }
+
     }else{
 
         header('Location: error.php');
