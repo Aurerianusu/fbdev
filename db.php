@@ -212,11 +212,17 @@ class db {
         }
     }
     function getActiveContest(){
-        $contest = $this->getOne("SELECT * FROM contest WHERE  is_active = 1");
+        $contest = $this->getOne("SELECT * FROM contest WHERE is_active = 1");
 
         return $contest;
     }
 
+    function getAllContest(){
+
+        $allContest = $this->getAll("SELECT * FROM contest");
+
+        return $allContest;
+    }
     function checkIfParticipate($email){
         if (isset($email)) {
             $user = $this->getUser($email);
@@ -261,7 +267,7 @@ class db {
 
     function getTatooActiveContestLimit($contestId){
 
-        $tatoo = $this->getAll("SELECT link,facebook_photos_id,likes FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC LIMIT 5");
+        $tatoo = $this->getAll("SELECT link,facebook_photos_id,likes FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC LIMIT 4");
 
         return $tatoo;
     }
@@ -317,13 +323,6 @@ class db {
                 ");
         return $allTattooWithInfo;
     }
-
-    function getAllContest(){
-        $allContest = $this->getAll("SELECT * FROM contest");
-
-        return $allContest;
-    }
-
     function deleteContest($contestId){
 
         $this->execute("DELETE FROM contest WHERE contest_id ='$contestId'");
@@ -385,6 +384,17 @@ class db {
         $allReadyLike = $this->getOne("SELECT like_id FROM likes WHERE user_id = '$userId' AND photo_id = '$photoId'");
 
         return $allReadyLike;
+    }
+
+    function activeContest($contestId){
+
+        $query = "UPDATE contest SET is_active = '1' WHERE contest_id = '$contestId'";
+        $this->conn->exec($query);
+    }
+    function desactiveContest($contestId){
+        $query = "UPDATE contest SET is_active = 0 WHERE contest_id = '$contestId'";
+
+        $this->conn->exec($query);
     }
     function redirectError(){
 
