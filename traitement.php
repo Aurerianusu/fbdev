@@ -22,7 +22,10 @@ $userNode = $response->getGraphUser();
 
 $firstName = $userNode->getFirstName();
 $lastName = $userNode->getLastName();
-$birthday = $userNode->getBirthday()->format('Y/m/d h:m:s');
+$birthday = $userNode->getBirthday();
+if($birthday){
+    $birthday = $birthday->format('Y/m/d h:m:s');
+}
 $email = $userNode->getField('email');
 $profile_pic =  $userNode->getPicture();
 $profile_pic = $profile_pic->getUrl();
