@@ -9,7 +9,8 @@
 session_start();
 require_once '../db.php';
 require_once '../vendor/autoload.php';
-require_once __DIR__ .'./check_formulaire.php';
+require_once './check_admin.php';
+require_once './check_formulaire.php';
 $db = new db();
 $allContest = $db->getAllContest();
 

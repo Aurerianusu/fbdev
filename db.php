@@ -328,4 +328,12 @@ class db {
 
         $this->execute("DELETE FROM photo WHERE facebook_photos_id ='$tattooId'");
     }
+
+    function getAdmin($email){
+
+        $adminId = $this->getOne("SELECT admin_id FROM admin WHERE admin_email = '$email'");
+
+        return $adminId;
+
+    }
 }
