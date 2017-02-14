@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 14 Février 2017 à 18:12
+-- Généré le :  Mar 14 Février 2017 à 18:48
 -- Version du serveur :  10.1.21-MariaDB
 -- Version de PHP :  5.6.30
 
@@ -79,17 +79,16 @@ CREATE TABLE `participant` (
   `participant_id` int(11) NOT NULL,
   `participant_name` varchar(45) NOT NULL,
   `participant_surname` varchar(45) NOT NULL,
-  `participant_email` varchar(45) NOT NULL,
-  `birthdate_participant` datetime NOT NULL
+  `participant_email` varchar(45) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 --
 -- Contenu de la table `participant`
 --
 
-INSERT INTO `participant` (`participant_id`, `participant_name`, `participant_surname`, `participant_email`, `birthdate_participant`) VALUES
-(21, 'Padenom', 'Guigui', 'screy@icloud.com', '0000-00-00 00:00:00'),
-(22, 'McFly', 'Vag', 'mcflygeorge55@gmail.com', '1985-04-01 12:04:00');
+INSERT INTO `participant` (`participant_id`, `participant_name`, `participant_surname`, `participant_email`) VALUES
+(21, 'Padenom', 'Guigui', 'screy@icloud.com'),
+(22, 'McFly', 'Vag', 'mcflygeorge55@gmail.com');
 
 -- --------------------------------------------------------
 
