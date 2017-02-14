@@ -139,10 +139,12 @@ class db {
         if(!$response = $this->conn->exec($query)){
 
             $this->redirectError();
+            return false;
 
         }else{
             return true;
         }
+
     }
 
     function checkUploadFile($file){
@@ -225,21 +227,28 @@ class db {
             $ifParticipate = $this->getOne("SELECT facebook_photos_id FROM photo WHERE participant_id = '$userId' AND contest_id = '$contestId'");
 
             if ($ifParticipate) {
-                var_dump('tu participe déjà');
+
                 return true;
             } else {
-                var_dump('tu peux participer');
+               
                 return false;
             }
+        }else{
+
+            return false;
         }
     }
 
     function checkIfParticipateAndRedirection($email){
         $participate = $this->checkIfParticipate($email);
         if($participate){
-            return true;
+
             header('Location: nope.php');
+
+            return true;
+
         }else{
+
             return false;
         }
     }
@@ -331,7 +340,10 @@ class db {
         if(!$response = $this->conn->exec($query)){
 
             $this->redirectError();
+
+            return false;
         }else{
+
             return true;
         }
     }

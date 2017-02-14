@@ -14,7 +14,6 @@ if (isset($_SESSION['email'])) {
 }
 
 $allTattoo = $db->getTatooActiveContestLimit($contest['contest_id']);
-var_dump($allTattoo);
 ?>
 <!doctype html>
 <html>
