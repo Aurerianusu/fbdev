@@ -6,7 +6,10 @@
  * Time: 22:44
  */
 
-require_once './dependency.php';
+session_start();
+require_once '../db.php';
+require_once '../vendor/autoload.php';
+require_once './check-admin.php';
 require_once './check-formulaire.php';
 $db = new db();
 $allContest = $db->getAllContest();
@@ -19,7 +22,7 @@ $allTattooWithInfo = $db->getAllTattooWithInfo();
 <html>
 <head>
     <!-- Page Title -->
-    <title>Tous les tatouages | Admin</title>
+    <title>Tous les tatouages | </title>
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="keywords" content="Concours photo Pardon-Maman" />
@@ -58,33 +61,32 @@ $allTattooWithInfo = $db->getAllTattooWithInfo();
                     <h2 class="title-settings">Tous les tatouages</h2>
                     <div class="tabcontest">
                         <div class="col-md-8 col-md-offset-0">
-                            <form method="post" action="tattoo-delete.php">
-                                <table border="1">
-                                    <tr>
-                                        <th>Nom</th>
-                                        <th>Prenom</th>
-                                        <th>Mail</th>
-                                        <th>Photo</th>
-                                        <th>Concours</th>
-                                        <th></th>
-                                    </tr>
-                                    <?php
-                                    foreach ($allTattooWithInfo as $tattooWithInfo){
+                            <table border="1">
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Prenom</th>
+                                    <th>Mail</th>
+                                    <th>Photo</th>
+                                    <th>Concours</th>
+                                    <th></th>
+                                </tr>
+                                <?php
+                                foreach ($allTattooWithInfo as $tattooWithInfo){
 
-                                        echo'<tr>';
-                                        echo'<td>'.$tattooWithInfo['participant_surname'].'</td>';
-                                        echo'<td>'.$tattooWithInfo['participant_name'].'</td>';
-                                        echo'<td>'.$tattooWithInfo['participant_email'].'</td>';
-                                        echo'<td>'.$tattooWithInfo['contest_name'].'</td>';
-                                        echo'<td><img src='.$tattooWithInfo['link'].'></td>';
-                                        echo'<td><input type="submit" name="delete"   onclick="return checkDelete()" style="background-color: #d34836;"value="Supprimer"></td>';
-                                        echo'<td><input type="hidden" name="tattooId" value='.$tattooWithInfo['facebook_photos_id'].'></td>';
-                                        echo'</tr>';
-                                    }
-                                    ?>
-                                </table>
-                            </form>
-
+                                    echo'<tr>';
+                                    echo'<td>'.$tattooWithInfo['participant_surname'].'</td>';
+                                    echo'<td>'.$tattooWithInfo['participant_name'].'</td>';
+                                    echo'<td>'.$tattooWithInfo['participant_email'].'</td>';
+                                    echo'<td>'.$tattooWithInfo['contest_name'].'</td>';
+                                    echo'<td><img src='.$tattooWithInfo['link'].' style="width: 150px;"></td>';
+                                    echo'<form method="post" action="tattoo-delete.php">';
+                                    echo'<td><input type="submit" name="delete" onclick="return checkDelete()" style="background-color: #d34836;"value="Supprimer"></td>';
+                                    echo'<td><input type="hidden" name="tattooId" value='.$tattooWithInfo['facebook_photos_id'].'></td>';
+                                    echo'</form>';
+                                    echo'</tr>';
+                                }
+                                ?>
+                            </table>
                         </div>
                     </div>
                 </fieldset>

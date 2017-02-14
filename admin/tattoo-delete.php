@@ -9,4 +9,5 @@ require_once './dependency.php';
 
 $db = new db();
 $db->deleteTattoo($_POST['tattooId']);
+
 header('Location: ./all-tattoo.php');
