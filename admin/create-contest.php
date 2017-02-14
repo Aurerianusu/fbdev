@@ -1,9 +1,6 @@
 <?php
-    session_start();
-    require_once '../db.php';
-    require_once '../vendor/autoload.php';
-    require_once './check_admin.php';
-    require_once './check_formulaire.php';
+    require_once './dependency.php';
+    require_once './check-formulaire.php';
 
 ?>
 
@@ -11,7 +8,7 @@
 <html>
 	<head>
 		<!-- Page Title -->
-	    <title>Admin | Concours photo Facebook</title>
+	    <title>Créer un concours | Admin</title>
 	    <!-- Meta Tags -->
 	    <meta charset="utf-8">
 	    <meta name="keywords" content="Concours photo Pardon-Maman" />

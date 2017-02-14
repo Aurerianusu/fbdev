@@ -336,4 +336,18 @@ class db {
         return $adminId;
 
     }
+
+    function addAdmin($name,$surname,$email){
+        $query = "INSERT INTO admin VALUES ('$name','$surname','$email')";
+        if(!$response = $this->conn->exec($query)){
+            echo 'PDO::errorInfo():';
+            echo '<br />';
+            echo 'error SQL: '.$query;
+            return false;
+            die();
+
+        }else{
+            return true;
+        }
+    }
 }

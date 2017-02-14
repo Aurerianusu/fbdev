@@ -2,8 +2,8 @@
 /**
  * Created by PhpStorm.
  * User: Guigui
- * Date: 11/02/2017
- * Time: 20:01
+ * Date: 14/02/2017
+ * Time: 15:49
  */
 session_start();
 ?>
@@ -11,7 +11,7 @@ session_start();
 <html>
 <head>
     <!-- Page Title -->
-    <title>Création réussi | Concours photo Facebook</title>
+    <title>Ajout réussi | Admin</title>
 
     <!-- Meta Tags -->
     <meta charset="utf-8">
@@ -35,10 +35,10 @@ session_start();
 <!-- CONTENT -->
 <section id="section-accueil">
     <div class="container">
-        <p>Votre concours a été créé !</p>
+        <p>L'administrateur a été ajouté !</p>
         <br><br>
         <p>Vous allez être redirigé dans quelques instant</p>
-        <p> Si vous n'etes pas automatiquelent redirigé, veuillez cliquer <a href="create-contest.php">ici</a></p>
+        <p> Si vous n'etes pas automatiquelent redirigé, veuillez cliquer <a href="admin.php">ici</a></p>
     </div>
 
 </section>

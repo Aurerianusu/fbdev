@@ -99,6 +99,6 @@ if($error) {
         $creation = $db->createContest($_POST['title'],$_POST['rules'],$_POST['home'],$dateSelected,$dateEnd,$_POST['price'],$_FILES['fileToUpload']['name'],$is_active);
 
         $db->uploadFile($uploadOk,$_FILES['fileToUpload']);
-        header('Location: /fbdev/admin/successadmin.php');
+        header('Location: ./success-admin.php');
     }
 }

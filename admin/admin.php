@@ -6,11 +6,8 @@
  * Time: 22:13
  */
 
-session_start();
-require_once '../db.php';
-require_once '../vendor/autoload.php';
-require_once './check_admin.php';
-require_once __DIR__ .'./check_formulaire.php';
+require_once './dependency.php';
+
 $db = new db();
 $allContest = $db->getAllContest();
 
@@ -20,7 +17,7 @@ $allContest = $db->getAllContest();
 <html>
 <head>
     <!-- Page Title -->
-    <title>Admin | Concours photo Facebook</title>
+    <title>Admin| Admin</title>
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="keywords" content="Concours photo Pardon-Maman" />
@@ -64,7 +61,7 @@ $allContest = $db->getAllContest();
                     </div>
                     <div class="tabcontest">
                         <div class="col-md-12 col-md-offset-0">
-                            <form method="post" action="contestDelete.php">
+                            <form method="post" action="contest-delete.php">
                                 <table border="1">
                                     <tr>
                                         <th>Nom</th>

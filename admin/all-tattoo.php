@@ -6,11 +6,8 @@
  * Time: 22:44
  */
 
-session_start();
-require_once '../db.php';
-require_once '../vendor/autoload.php';
-require_once './check_admin.php';
-require_once './check_formulaire.php';
+require_once './dependency.php';
+require_once './check-formulaire.php';
 $db = new db();
 $allContest = $db->getAllContest();
 
@@ -22,7 +19,7 @@ $allTattooWithInfo = $db->getAllTattooWithInfo();
 <html>
 <head>
     <!-- Page Title -->
-    <title>Admin | Concours photo Facebook</title>
+    <title>Tous les tatouages | Admin</title>
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta name="keywords" content="Concours photo Pardon-Maman" />
@@ -61,7 +58,7 @@ $allTattooWithInfo = $db->getAllTattooWithInfo();
                     <h2 class="title-settings">Tous les tatouages</h2>
                     <div class="tabcontest">
                         <div class="col-md-8 col-md-offset-0">
-                            <form method="post" action="./tattooDelete.php">
+                            <form method="post" action="tattoo-delete.php">
                                 <table border="1">
                                     <tr>
                                         <th>Nom</th>

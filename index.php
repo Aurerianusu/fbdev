@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-require_once __DIR__ . '/vendor/autoload.php';
-require_once __DIR__ . '/db.php';
+require_once './vendor/autoload.php';
+require_once './db.php';
 
 $db = new db();
 $contest = $db->getActiveContest();
