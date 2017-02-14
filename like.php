@@ -45,7 +45,7 @@ if($_SESSION['facebook_access_token']){
         if(!$allreadyLike){
 
             $db->likePhoto($_GET['id'],$userId);
-
+            $db->addLike($_GET['id']);
             if($_GET['goto'] == 'galerie'){
 
                 header('Location: galerie.php');

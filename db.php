@@ -276,8 +276,12 @@ class db {
                 photo.participant_id = participant.participant_id
                 AND participant.participant_email = '$email'
                 ORDER BY photo.facebook_photos_id DESC ");
+        if($userTattoo){
+            return $userTattoo;
+        }else{
+            return false;
+        }
 
-        return $userTattoo;
     }
 
     function getTatooActiveContestWithUser(){
@@ -362,7 +366,18 @@ class db {
         }
     }
 
+    function addLike($photoId){
 
+        $query = "UPDATE photo SET likes= likes +1 WHERE facebook_photos_id = '$photoId'";
+        if (!$response = $this->conn->exec($query)) {
+
+            $this->redirectError();
+            return false;
+
+        } else {
+            return true;
+        }
+    }
     function ifUserAllreadyLikes($photoId,$userId){
 
         $allReadyLike = $this->getOne("SELECT like_id FROM likes WHERE user_id = '$userId' AND photo_id = '$photoId'");

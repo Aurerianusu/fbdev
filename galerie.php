@@ -47,7 +47,7 @@ if (isset($_SESSION['email'])) {
 			                <ul class="hide-bullets">
 
                                 <?php
-                                    if(isset($userTattoo)){
+                                    if($userTattoo){
                                         echo '<li class="col-sm-3 col-xs-6">';
                                         echo '<a class="thumbnail" id="carousel-selector-0" style="border: 5px solid chartreuse;">';
                                         echo '<img src='.$userTattoo['link'].'>';
@@ -67,8 +67,6 @@ if (isset($_SESSION['email'])) {
                                         echo ' <a href=like.php?goto=galerie&id='.$tattoo['facebook_photos_id'].'>';
                                         echo $tattoo['facebook_photos_id'];
                                         echo' <span class="glyphicon glyphicon-heart"></span></a></p>';
-                                        echo '';
-
                                         echo '</li>';
                                     }
                                 ?>
@@ -113,6 +111,7 @@ if (isset($_SESSION['email'])) {
                                                                 echo '<img src='.$tattoo['link'].'>';
                                                                 echo '</div>';
                                                             }
+
                                                             echo '<div class="item" data-slide-number='.$i.'>';
                                                             echo '<img src='.$tattoo['link'].'>';
                                                             echo '</div>';
