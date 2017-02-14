@@ -14,15 +14,12 @@
     $helper = $fb->getRedirectLoginHelper();
 
     $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-    $response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,link,birthday,location,picture');
+    $response = $fb->get('/me?fields=id,name,first_name,last_name,email,link,picture');
     $userNode = $response->getGraphUser();
 
     $firstName = $userNode->getFirstName();
     $lastName = $userNode->getLastName();
-    $birthday = $userNode->getBirthday();
-    if($birthday){
-        $birthday = $birthday->format('Y/m/d h:m:s');
-    }
+
     $email = $userNode->getField('email');
     $profile_pic =  $userNode->getPicture();
     $profile_pic = $profile_pic->getUrl();

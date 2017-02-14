@@ -7,7 +7,7 @@
     $fb = $db->initFb();
 
     $helper = $fb->getRedirectLoginHelper();
-    $permissions = ['email', 'user_likes','public_profile','user_photos','user_birthday'];
+    $permissions = ['email', 'user_likes','public_profile','user_photos'];
     $loginUrl = $helper->getLoginUrl('http://localhost/fbdev/fb-callback.php', $permissions);
 
     $contest = $db->getActiveContest();

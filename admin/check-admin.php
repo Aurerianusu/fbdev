@@ -11,7 +11,7 @@ $fb = $db->initFb();
 
 
 $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-$response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,link,birthday,location,picture');
+$response = $fb->get('/me?fields=id,name,first_name,last_name,email,link,picture');
 $userNode = $response->getGraphUser();
 
 $_SESSION['email'] = $userNode->getField('email');

@@ -30,7 +30,7 @@ $allTattoo = $db->getTatooActiveContestLimit($contest['contest_id']);
     <meta name="author" content="Pardon-Maman">
     <meta name="robots" content="noindex,nofollow">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <?php require 'header.php'; ?>
+    <?php require './header.php'; ?>
 </head>
 
 <body>

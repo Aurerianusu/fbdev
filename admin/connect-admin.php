@@ -14,7 +14,7 @@ $db = new db();
 $fb = $db->initFb();
 
 $helper = $fb->getRedirectLoginHelper();
-$permissions = ['email', 'user_likes','public_profile','user_photos','user_birthday'];
+$permissions = ['email', 'user_likes','public_profile','user_photos',];
 
 $loginAdminUrl = $helper->getLoginUrl('http://localhost/fbdev/admin/fb-callback-admin.php', $permissions);
 

@@ -113,8 +113,8 @@ class db {
         return $user;
     }
 
-    function userInscription($lastName,$firstName,$email,$birthday){
-        $query = "INSERT INTO participant (participant_name,participant_surname,participant_email,birthdate_participant) VALUES ('$lastName','$firstName','$email','$birthday')";
+    function userInscription($lastName,$firstName,$email){
+        $query = "INSERT INTO participant (participant_name,participant_surname,participant_email) VALUES ('$lastName','$firstName','$email')";
         if(!$response = $this->conn->exec($query)){
 
             $this->redirectError();

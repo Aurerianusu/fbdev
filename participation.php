@@ -13,40 +13,38 @@
     $db = new db();
 
 
-        $fb = $db->initFb();
-        //$helper = $fb->getRedirectLoginHelper();
+    $fb = $db->initFb();
+    //$helper = $fb->getRedirectLoginHelper();
 
-        $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
-        $response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,link,birthday,location,picture');
-        $userNode = $response->getGraphUser();
+    $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
+    $response = $fb->get('/me?fields=id,name,first_name,last_name,email,link,picture');
+    $userNode = $response->getGraphUser();
 
-        $_SESSION['email'] = $userNode->getField('email');
+    $_SESSION['email'] = $userNode->getField('email');
 
-        $participate = $db->checkIfParticipateAndRedirection($_SESSION['email']);
+    $participate = $db->checkIfParticipateAndRedirection($_SESSION['email']);
 
-        if($participate){
-            header('Location: nope.php');
-        }
+    if($participate){
+        header('Location: nope.php');
+    }
 
-        $photos_request = $fb->get('/me/photos?limit=100&type=uploaded');
-        $photos = $photos_request->getGraphEdge();
+    $photos_request = $fb->get('/me/photos?limit=50&type=uploaded');
+    $photos = $photos_request->getGraphEdge();
 
-        $all_photos = array();
-        if ($fb->next($photos)) {
-            $photos_array = $photos->asArray();
-            $all_photos = array_merge($photos_array, $all_photos);
-            while ($photos = $fb->next($photos)) {
-                $photos_array = $photos->asArray();
-                $all_photos = array_merge($photos_array, $all_photos);
-            }
-        } else {
+    $all_photos = array();
+    if ($fb->next($photos)) {
+        $photos_array = $photos->asArray();
+        $all_photos = array_merge($photos_array, $all_photos);
+        while ($photos = $fb->next($photos)) {
             $photos_array = $photos->asArray();
             $all_photos = array_merge($photos_array, $all_photos);
         }
+    } else {
+        $photos_array = $photos->asArray();
+        $all_photos = array_merge($photos_array, $all_photos);
+    }
 
-        //header('Location: mustconnect.php');
-
-
+    //header('Location: mustconnect.php');
 ?>
 <!doctype html>
 <html>
@@ -84,8 +82,10 @@
                             <ul class="hide-bullets">
                                 <?php
                                     foreach ($all_photos as $key) {
+
                                         $photo_request = $fb->get('/'.$key['id'].'?fields=images');
                                         $photo = $photo_request->getGraphNode()->asArray();
+
                                         echo'<li class="col-sm-3 col-xs-2>';
                                         echo'<a class="thumbnail" >';
                                         echo '<img  onclick="swap(this)" src="'.$photo['images'][1]['source'].'" class=popular id=popular>';
