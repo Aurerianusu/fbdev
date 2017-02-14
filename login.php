@@ -1,7 +1,7 @@
 <?php
 
-    require_once __DIR__.'./db.php';
-    require_once __DIR__.'/vendor/autoload.php';
+    require_once './db.php';
+    require_once './vendor/autoload.php';
 
     $db = new db();
     $fb = $db->initFb();
@@ -9,7 +9,6 @@
     $helper = $fb->getRedirectLoginHelper();
     $permissions = ['email', 'user_likes','public_profile','user_photos','user_birthday'];
     $loginUrl = $helper->getLoginUrl('http://localhost/fbdev/fb-callback.php', $permissions);
-    $loginAdminUrl = $helper->getLoginUrl('http://localhost/fbdev/admin/fb-callback-admin.php', $permissions);
 
     $contest = $db->getActiveContest();
 

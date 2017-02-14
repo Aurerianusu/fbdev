@@ -9,6 +9,7 @@
 require_once './dependency.php';
 
 $db = new db();
+
 $allContest = $db->getAllContest();
 
 ?>

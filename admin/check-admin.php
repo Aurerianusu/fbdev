@@ -9,6 +9,7 @@
 $db = new db();
 $fb = $db->initFb();
 
+
 $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
 $response = $fb->get('/me?fields=id,name,first_name,last_name,email,gender,link,birthday,location,picture');
 $userNode = $response->getGraphUser();
