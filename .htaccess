@@ -1,0 +1,12 @@
+<Files ./config.ini>
+    deny from all
+</Files>
+<Files ./db.php>
+    deny from all
+</Files>
+<Files ./composer.json>
+    deny from all
+</Files>
+<Files ./composer.lock>
+    deny from all
+</Files>
