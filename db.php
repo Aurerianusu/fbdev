@@ -288,9 +288,12 @@ class db {
                 participant.participant_name, 
                 participant.participant_surname, 
                 participant.participant_id,
-                photo.link
-                FROM photo,participant
-                WHERE photo.participant_id = participant.participant_id
+                photo.link,
+                photo.facebook_photos_id,
+                contest.contest_id,
+                contest.contest_name
+                FROM photo,participant,contest
+                WHERE photo.participant_id = participant.participant_id AND photo.contest_id = contest.contest_id
                 ");
         return $allTattooWithInfo;
     }
@@ -298,5 +301,10 @@ class db {
     function deleteContest($contestId){
 
         $this->execute("DELETE FROM contest WHERE contest_id ='$contestId'");
+    }
+
+    function deleteTattoo($tattooId){
+
+        $this->execute("DELETE FROM photo WHERE facebook_photos_id ='$tattooId'");
     }
 }

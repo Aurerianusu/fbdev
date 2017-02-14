@@ -63,7 +63,7 @@ $allContest = $db->getAllContest();
                     </div>
                     <div class="tabcontest">
                         <div class="col-md-12 col-md-offset-0">
-                            <form method="post" action="./scriptDelete.php">
+                            <form method="post" action="contestDelete.php">
                                 <table border="1">
                                     <tr>
                                         <th>Nom</th>
@@ -95,11 +95,6 @@ $allContest = $db->getAllContest();
                                             echo'</tr>';
                                         }
                                     ?>
-                                    <script language="JavaScript" type="text/javascript">
-                                        function checkDelete(){
-                                            return confirm('Voulez vraiment supprimer ce concours ?');
-                                        }
-                                    </script>
                                 </table>
                             </form>
                         </div>
@@ -125,6 +120,11 @@ $allContest = $db->getAllContest();
         </div>
     </div>
 </section>
+<script language="JavaScript" type="text/javascript">
+    function checkDelete(){
+        return confirm('Voulez vraiment supprimer ce concours ?');
+    }
+</script>
 <!-- END OF FOOTER -->
 <footer><?php require_once '../footer.php' ?></footer>
 <!-- END OF FOOTER -->

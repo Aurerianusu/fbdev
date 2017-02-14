@@ -60,25 +60,33 @@ $allTattooWithInfo = $db->getAllTattooWithInfo();
                     <h2 class="title-settings">Tous les tatouages</h2>
                     <div class="tabcontest">
                         <div class="col-md-8 col-md-offset-0">
-                            <table border="1">
-                                <tr>
-                                    <th>Nom</th>
-                                    <th>Prenom</th>
-                                    <th>Mail</th>
-                                    <th>Photo</th>
-                                </tr>
-                                <?php
-                                foreach ($allTattooWithInfo as $tattooWithInfo){
+                            <form method="post" action="./tattooDelete.php">
+                                <table border="1">
+                                    <tr>
+                                        <th>Nom</th>
+                                        <th>Prenom</th>
+                                        <th>Mail</th>
+                                        <th>Photo</th>
+                                        <th>Concours</th>
+                                        <th></th>
+                                    </tr>
+                                    <?php
+                                    foreach ($allTattooWithInfo as $tattooWithInfo){
 
-                                    echo'<tr>';
-                                    echo'<td>'.$tattooWithInfo['participant_surname'].'</td>';
-                                    echo'<td>'.$tattooWithInfo['participant_name'].'</td>';
-                                    echo'<td>'.$tattooWithInfo['participant_email'].'</td>';
-                                    echo'<td><img src='.$tattooWithInfo['link'].'></td>';
-                                    echo'</tr>';
-                                }
-                                ?>
-                            </table>
+                                        echo'<tr>';
+                                        echo'<td>'.$tattooWithInfo['participant_surname'].'</td>';
+                                        echo'<td>'.$tattooWithInfo['participant_name'].'</td>';
+                                        echo'<td>'.$tattooWithInfo['participant_email'].'</td>';
+                                        echo'<td>'.$tattooWithInfo['contest_name'].'</td>';
+                                        echo'<td><img src='.$tattooWithInfo['link'].'></td>';
+                                        echo'<td><input type="submit" name="delete"   onclick="return checkDelete()" style="background-color: #d34836;"value="Supprimer"></td>';
+                                        echo'<td><input type="hidden" name="tattooId" value='.$tattooWithInfo['facebook_photos_id'].'></td>';
+                                        echo'</tr>';
+                                    }
+                                    ?>
+                                </table>
+                            </form>
+
                         </div>
                     </div>
                 </fieldset>
@@ -86,6 +94,11 @@ $allTattooWithInfo = $db->getAllTattooWithInfo();
         </div>
     </div>
 </section>
+<script language="JavaScript" type="text/javascript">
+    function checkDelete(){
+        return confirm('Voulez vraiment supprimer cette photo ?');
+    }
+</script>
 <!-- END OF FOOTER -->
 <footer><?php require_once '../footer.php' ?></footer>
 <!-- END OF FOOTER -->
