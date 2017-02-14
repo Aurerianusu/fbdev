@@ -285,6 +285,7 @@ class db {
         $tatoo = $this->getAll("
                 SELECT
                 photo.link,
+                photo.facebook_photos_id,
                 photo.participant_id,
                 participant.participant_id,
                 participant.participant_surname
@@ -348,14 +349,14 @@ class db {
         }
     }
 
-    function likePhoto($photoId,$userId)
-    {
+    function likePhoto($photoId,$userId){
 
-
-        $query = "INSERT INTO likes (photo_id, user_id) VALUES('$photoId','$userId')";
+        $query = "INSERT INTO likes (photo_id, user_id) VALUES ('$photoId','$userId')";
         if (!$response = $this->conn->exec($query)) {
+
+            $this->redirectError();
             return false;
-            //$this->redirectError();
+
         } else {
             return true;
         }

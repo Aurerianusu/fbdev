@@ -10,7 +10,9 @@ require_once './vendor/autoload.php';
 require_once './db.php';
 
 $db = new db();
+
 if($_SESSION['facebook_access_token']){
+
 
     $fb = $db->initFb();
     $fb->setDefaultAccessToken($_SESSION['facebook_access_token']);
@@ -27,7 +29,9 @@ if($_SESSION['facebook_access_token']){
         $db = new db();
 
         $user = $db->getUser($_SESSION['email']);
+
         if($user){
+
             $userId = $user['participant_id'];
         }else{
 
@@ -35,15 +39,25 @@ if($_SESSION['facebook_access_token']){
             $user = $db->getUser($_SESSION['email']);
             $userId = $user['participant_id'];
         }
+
         $allreadyLike = $db->ifUserAllreadyLikes($_GET['id'],$userId);
+
         if(!$allreadyLike){
+
             $db->likePhoto($_GET['id'],$userId);
-            header('Location: index.php');
+
+            if($_GET['goto'] == 'galerie'){
+
+                header('Location: galerie.php');
+            }else{
+                header('Location: index.php');
+            }
+
         }else{
             ?>
         <script>
             alert('Vous aimez déjà la photo');
-            document.location.href="index.php"
+            document.location.href="<?php echo $_GET['goto'];?>.php"
         </script>
             <?php
 
