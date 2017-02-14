@@ -14,6 +14,7 @@ if (isset($_SESSION['email'])) {
 }
 
 $allTattoo = $db->getTatooActiveContestLimit($contest['contest_id']);
+var_dump($allTattoo);
 ?>
 <!doctype html>
 <html>
@@ -72,13 +73,8 @@ $allTattoo = $db->getTatooActiveContestLimit($contest['contest_id']);
                 ?>
                 <div class="col-sm-3 col-xs-6">
                     <img class="popular" src="<?php echo $tattoo['link']?>"/>
-                    <div
-                        data-href="#"
-                        class="fb-like"
-                        data-layout="box_count"
-                        data-action="like"
-                        data-size="large"
-                        data-show-faces="true">
+                    <div>
+                        <a href="like.php?id=<?php echo $tattoo['facebook_photos_id'];?>">like</a>
                     </div>
                 </div>
                 <?php

@@ -8,7 +8,7 @@
 
     session_start();
     require_once './db.php';
-    require_once '/vendor/autoload.php';
+    require_once './vendor/autoload.php';
 
     $db = new db();
     $fb = $db->initFb();
@@ -29,7 +29,10 @@
         $_SESSION['facebook_access_token'] = (string) $accessToken;
         // Log them into your web framework here . . .
         // Redirect here . . .
-        header('Location: ./participation.php');
+
+            header('Location: '.$_GET['goto'].'.php?id='.$_GET['id']);
+
+        //header('Location: ./participation.php');
         exit;
     } elseif ($helper->getError()) {
         // The user denied the request

@@ -261,7 +261,7 @@ class db {
 
     function getTatooActiveContestLimit($contestId){
 
-        $tatoo = $this->getAll("SELECT link FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC LIMIT 5");
+        $tatoo = $this->getAll("SELECT link,facebook_photos_id FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC LIMIT 5");
 
         return $tatoo;
     }
@@ -348,8 +348,51 @@ class db {
         }
     }
 
+    function likePhoto($photoId,$userId){
+
+        $allReadyLike = $this->ifUserAllreadyLikes($photoId,$userId);
+
+        if(!$allReadyLike){
+            $query = "INSERT INTO likes (photo_id, user_id) VALUES('$photoId','$userId')";
+            if(!$response = $this->conn->exec($query)){
+                return false;
+                //$this->redirectError();
+            }else{
+                return true;
+            }
+        }else{
+
+            return false;
+        }
+    }
+
+    function searchUser($email){
+
+        $userId = $this->getOne("SELECT * FROM user WHERE user_email ='$email'");
+
+        return $userId;
+    }
+
+    function createUser($lastName,$firstName,$email){
+        $query = "INSERT INTO user (user_name, user_surname, user_email) VALUES('$lastName','$firstName','$email')";
+        if(!$response = $this->conn->exec($query)){
+
+            var_dump('mdr');die;
+            //$this->redirectError();
+        }
+        return $response;
+    }
+
+    function ifUserAllreadyLikes($photoId,$userId){
+
+
+        $allReadyLike = $this->getOne("SELECT like_id FROM likes WHERE user_id = '$userId' AND photo_id = '$photoId'");
+
+        return $allReadyLike;
+    }
     function redirectError(){
 
         header('Location: error.php');
     }
+
 }
