@@ -1,10 +1,9 @@
 <div class="container">
         <div class="row text-left bloc-center">
         	<div class="col-sm-12 col-xs-12">
-               	<a href="https://www.facebook.com/bootsnipp"><i id="social-fb" class="fa fa-facebook-square fa-2x social"></i></a>
-                <a href="https://twitter.com/bootsnipp"><i id="social-tw" class="fa fa-twitter-square fa-2x social"></i></a>
-                <a href="https://plus.google.com/+Bootsnipp-page"><i id="social-gp" class="fa fa-google-plus-square fa-2x social"></i></a>
-                <a href="mailto:coucou@gmail.com"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
+               	<a href="https://www.facebook.com/PardonMamanTattoo/"><i id="social-fb" class="fa fa-facebook-square fa-2x social"></i></a>
+                <a href="https://twitter.com/pardonmaman"><i id="social-tw" class="fa fa-twitter-square fa-2x social"></i></a>
+                <a href="https://pardon-maman.com/mail/"><i id="social-em" class="fa fa-envelope-square fa-2x social"></i></a>
           </div>
 		</div>
 
