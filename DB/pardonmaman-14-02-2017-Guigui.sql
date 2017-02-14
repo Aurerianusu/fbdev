@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Client :  127.0.0.1
--- Généré le :  Mar 14 Février 2017 à 18:48
+-- Généré le :  Mar 14 Février 2017 à 19:05
 -- Version du serveur :  10.1.21-MariaDB
 -- Version de PHP :  5.6.30
 
@@ -66,8 +66,7 @@ CREATE TABLE `contest` (
 --
 
 INSERT INTO `contest` (`contest_id`, `contest_name`, `contest_rules`, `contest_home`, `contest_creation_date`, `contest_begin_date`, `contest_end_date`, `contest_prize`, `contest_image`, `is_active`, `winner_participant_id`, `winner_image_id`) VALUES
-(16, 'Un concours', 'zehrbgzeorughybzevncdvb efhzebrogzhebgiazeyrgzeorgzbyeofg', ' zjzbgozehgbzerhzebgzeuigybeighzebgizeybgziehgbzehvgbzviehurvbgzoerygb', '2017-02-14 01:05:11', '2017-02-14 01:02:00', '2017-11-28 22:11:00', 'Un prix', 'public/images/contest/eyJ1cmwiOiJodHRwczovL2kueXRpbWcuY29tL3ZpL1hXZFBQNGZITjlzL21heHJlc2RlZmF1bHQuanBnIn0.jpg', 1, 0, 0),
-(18, 'zehfbzerkgh', 'érfbzehbgzhergzzjrgzehrgzbe', '  engzelrbgzehrgbzekghbzehzebhke fgzeergzerg zzeg\r\nze\r\ngzegzerg', '2017-02-14 17:40:39', '2017-11-28 22:11:00', '2017-11-30 22:11:00', 'hebgzehjkrgbzehrgbzerkg', 'public/images/contest/gift.jpg', 0, 0, 0);
+(16, 'Un concours', 'zehrbgzeorughybzevncdvb efhzebrogzhebgiazeyrgzeorgzbyeofg', ' zjzbgozehgbzerhzebgzeuigybeighzebgizeybgziehgbzehvgbzviehurvbgzoerygb', '2017-02-14 01:05:11', '2017-02-14 01:02:00', '2017-11-28 22:11:00', 'Un prix', 'public/images/contest/gift.jpg', 1, 0, 0);
 
 -- --------------------------------------------------------
 
