@@ -62,40 +62,40 @@ $allContest = $db->getAllContest();
                     </div>
                     <div class="tabcontest">
                         <div class="col-md-12 col-md-offset-0">
-                            <form method="post" action="contest-delete.php">
-                                <table border="1">
-                                    <tr>
-                                        <th>Nom</th>
-                                        <th>Date début</th>
-                                        <th>Date fin</th>
-                                        <th>Prix</th>
-                                        <th>Image prix</th>
-                                        <th>Active</th>
-                                        <th></th>
-                                    </tr>
-                                    <?php
-                                        foreach ($allContest as $contest){
+                            <table border="1">
+                                <tr>
+                                    <th>Nom</th>
+                                    <th>Date début</th>
+                                    <th>Date fin</th>
+                                    <th>Prix</th>
+                                    <th>Image prix</th>
+                                    <th>Active</th>
+                                    <th></th>
+                                </tr>
+                                <?php
+                                    foreach ($allContest as $contest){
 
-                                            if($contest['is_active'] == 1){
-                                                $contest['is_active'] = 'oui';
-                                            }else{
-                                                $contest['is_active'] = 'non';
-                                            }
-
-                                            echo'<tr>';
-                                            echo'<td>'.$contest['contest_name'].'</td>';
-                                            echo'<td>'.$contest['contest_begin_date'].'</td>';
-                                            echo'<td>'.$contest['contest_end_date'].'</td>';
-                                            echo'<td>'.$contest['contest_prize'].'</td>';
-                                            echo'<td><img src=../'.$contest['contest_image'].' style="width: 150px"></td>';
-                                            echo'<td>'.$contest['is_active'].'</td>';
-                                            echo'<td><input type="submit" name="delete"   onclick="return checkDelete()" style="background-color: #d34836;"value="Supprimer"></td>';
-                                            echo'<td><input type="hidden" name="contestId" value='.$contest['contest_id'].'></td>';
-                                            echo'</tr>';
+                                        if($contest['is_active'] == 1){
+                                            $contest['is_active'] = 'oui';
+                                        }else{
+                                            $contest['is_active'] = 'non';
                                         }
-                                    ?>
-                                </table>
-                            </form>
+
+                                        echo'<tr>';
+                                        echo'<td>'.$contest['contest_name'].'</td>';
+                                        echo'<td>'.$contest['contest_begin_date'].'</td>';
+                                        echo'<td>'.$contest['contest_end_date'].'</td>';
+                                        echo'<td>'.$contest['contest_prize'].'</td>';
+                                        echo'<td><img src=../'.$contest['contest_image'].' style="width: 150px"></td>';
+                                        echo'<td>'.$contest['is_active'].'</td>';
+                                        echo '<form method="post" action="contest-delete.php">';
+                                        echo'<td><input type="submit" name="delete"   onclick="return checkDelete()" style="background-color: #d34836;"value="Supprimer"></td>';
+                                        echo'<td><input type="hidden" name="contestId" value='.$contest['contest_id'].'></td>';
+                                        echo'</form>';
+                                        echo'</tr>';
+                                    }
+                                ?>
+                            </table>
                         </div>
                     </div>
                 </fieldset>
