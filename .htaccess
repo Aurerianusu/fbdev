@@ -10,3 +10,10 @@
 <Files ./composer.lock>
     deny from all
 </Files>
+<Files ./git>
+    deny from all
+</Files>
+<Files ./idea>
+    deny from all
+</Files>
+
