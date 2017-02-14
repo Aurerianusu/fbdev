@@ -61,12 +61,11 @@ class db {
     function getOne($query) {
         $result = $this->conn->prepare($query);
         $ret = $result->execute();
+
         if (!$ret) {
-            echo 'PDO::errorInfo():';
-            echo '<br />';
-            echo 'error SQL: '.$query;
-            die();
+            $this->redirectError();
         }
+
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $reponse = $result->fetch();
 
@@ -76,12 +75,11 @@ class db {
     function getAll($query) {
         $result = $this->conn->prepare($query);
         $ret = $result->execute();
+
         if (!$ret) {
-            echo 'PDO::errorInfo():';
-            echo '<br />';
-            echo 'error SQL: '.$query;
-            die();
+            $this->redirectError();
         }
+
         $result->setFetchMode(PDO::FETCH_ASSOC);
         $reponse = $result->fetchAll();
 
@@ -90,10 +88,8 @@ class db {
 
     function execute($query) {
         if (!$response = $this->conn->exec($query)) {
-            echo 'PDO::errorInfo():';
-            echo '<br />';
-            echo 'error SQL: '.$query;
-            die();
+
+            $this->redirectError();
         }
         return $response;
     }
@@ -120,10 +116,8 @@ class db {
     function userInscription($lastName,$firstName,$email,$birthday){
         $query = "INSERT INTO participant (participant_name,participant_surname,participant_email,birthdate_participant) VALUES ('$lastName','$firstName','$email','$birthday')";
         if(!$response = $this->conn->exec($query)){
-            echo 'PDO::errorInfo():';
-            echo '<br />';
-            echo 'error SQL: '.$query;
-            die();
+
+            $this->redirectError();
         }
         return $response;
     }
@@ -131,10 +125,8 @@ class db {
     function uploadPicture($participantId,$contestId,$picture){
         $query = "INSERT INTO photo(participant_id,contest_id,link) VALUE ('$participantId','$contestId','$picture')";
         if(!$response = $this->conn->exec($query)){
-            echo 'PDO::errorInfo():';
-            echo '<br />';
-            echo 'error SQL: '.$query;
-            die();
+
+            $this->redirectError();
         }
         return $response;
     }
@@ -145,11 +137,8 @@ class db {
 
         $query = "INSERT INTO contest (contest_name,contest_rules,contest_home,contest_creation_date,contest_begin_date,contest_end_date,contest_prize,contest_image,is_active) VALUES ('$contestName','$contestRules','$contestHome','$today','$dateBegin','$dateEnd','$priceName','$filePath','$is_active')";
         if(!$response = $this->conn->exec($query)){
-            echo 'PDO::errorInfo():';
-            echo '<br />';
-            echo 'error SQL: '.$query;
-            return false;
-            die();
+
+            $this->redirectError();
 
         }else{
             return true;
@@ -340,14 +329,15 @@ class db {
     function addAdmin($name,$surname,$email){
         $query = "INSERT INTO admin VALUES ('$name','$surname','$email')";
         if(!$response = $this->conn->exec($query)){
-            echo 'PDO::errorInfo():';
-            echo '<br />';
-            echo 'error SQL: '.$query;
-            return false;
-            die();
 
+            $this->redirectError();
         }else{
             return true;
         }
+    }
+
+    function redirectError(){
+
+        header('Location: error.php');
     }
 }
