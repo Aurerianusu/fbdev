@@ -261,7 +261,7 @@ class db {
 
     function getTatooActiveContestLimit($contestId){
 
-        $tatoo = $this->getAll("SELECT link,facebook_photos_id FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC LIMIT 5");
+        $tatoo = $this->getAll("SELECT link,facebook_photos_id,likes FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC LIMIT 5");
 
         return $tatoo;
     }
@@ -288,13 +288,15 @@ class db {
 
         $tatoo = $this->getAll("
                 SELECT
+                photo.likes,
                 photo.link,
                 photo.facebook_photos_id,
                 photo.participant_id,
                 participant.participant_id,
                 participant.participant_surname
                 FROM photo,participant
-                WHERE photo.participant_id = participant.participant_id");
+                WHERE photo.participant_id = participant.participant_id
+                ORDER BY likes DESC");
 
         return $tatoo;
     }

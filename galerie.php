@@ -64,8 +64,8 @@ if (isset($_SESSION['email'])) {
                                         echo '<li class="col-sm-3 col-xs-2">';
                                         echo '<a class="thumbnail"><img src='.$tattoo['link'].'></a>';
                                         echo '<p class="title-photo">'.$tattoo['participant_surname'];
-                                        echo ' <a href=like.php?goto=galerie&id='.$tattoo['facebook_photos_id'].'>';
-                                        echo $tattoo['facebook_photos_id'];
+                                        echo $tattoo['likes'];
+                                        echo ' <a href=like.php?goto=galerie&id='.$tattoo['facebook_photos_id'].'> ';
                                         echo' <span class="glyphicon glyphicon-heart"></span></a></p>';
                                         echo '</li>';
                                     }
