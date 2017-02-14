@@ -57,7 +57,7 @@ $allContest = $db->getAllContest();
                     <h2 class="title-settings">Concours</h2>
                     <div>
                         <div class="col-md-4 col-md-offset-4">
-                           <a href="create-contest.php">Créer un concour</a>
+                           <a href="create-contest.php">Créer un concours</a>
                         </div>
                     </div>
                     <div class="tabcontest">
@@ -103,6 +103,7 @@ $allContest = $db->getAllContest();
         </div>
     </div>
 </section>
+
 <section id="section-galerie">
     <div class="container">
         <div class="row">
@@ -110,7 +111,7 @@ $allContest = $db->getAllContest();
                 <fieldset>
                     <h2 class="title-settings">Photos des participants</h2>
                     <div class="form-group">
-                        <div class="col-md-4">
+                        <div class="col-md-4 col-md-offset-4">
                             <a href="all-tattoo.php">Tous les tatouages</a>
                         </div>
                     </div>
@@ -119,6 +120,24 @@ $allContest = $db->getAllContest();
         </div>
     </div>
 </section>
+
+<section id="section-galerie">
+    <div class="container">
+        <div class="row">
+            <div class="form-horizontal">
+                <fieldset>
+                    <h2 class="title-settings">Ajouter un admin</h2>
+                    <div class="form-group">
+                        <div class="col-md-4 col-md-offset-4">
+                            <a href="add-admin.php">Ajouter un admin</a>
+                        </div>
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+</section>
+
 <script language="JavaScript" type="text/javascript">
     function checkDelete(){
         return confirm('Voulez vraiment supprimer ce concours ?');
