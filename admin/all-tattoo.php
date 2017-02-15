@@ -6,10 +6,7 @@
  * Time: 22:44
  */
 
-session_start();
-require_once '../db.php';
-require_once '../vendor/autoload.php';
-require_once './check-admin.php';
+require_once './dependency.php';
 require_once './check-formulaire.php';
 $db = new db();
 $allContest = $db->getAllContest();
@@ -66,8 +63,8 @@ $allTattooWithInfo = $db->getAllTattooWithInfo();
                                     <th>Nom</th>
                                     <th>Prenom</th>
                                     <th>Mail</th>
-                                    <th>Photo</th>
                                     <th>Concours</th>
+                                    <th>Photo</th>
                                     <th></th>
                                 </tr>
                                 <?php

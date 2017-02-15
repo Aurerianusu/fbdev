@@ -6,9 +6,7 @@
  * Time: 19:36
  */
 
-require_once './vendor/autoload.php';
-require_once './db.php';
-session_start();
+require_once './dependency.php';
 
 $db = new db();
 

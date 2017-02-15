@@ -5,9 +5,7 @@
  * Date: 06/02/2017
  * Time: 14:16
  */
-    session_start();
-    require_once __DIR__.'./db.php';
-    require_once __DIR__.'/vendor/autoload.php';
+    require_once './dependency.php';
 
     $db = new db();
     $fb = $db->initFb();

@@ -5,9 +5,7 @@
  * Date: 14/02/2017
  * Time: 19:29
  */
-session_start();
-require_once './vendor/autoload.php';
-require_once './db.php';
+require_once './dependency.php';
 
 $db = new db();
 

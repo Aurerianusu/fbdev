@@ -11,7 +11,6 @@ require_once './check-admin-formulaire.php';
 
 $db = new db();
 $fb = $db->initFb();
-
 ?>
 
 <!doctype html>

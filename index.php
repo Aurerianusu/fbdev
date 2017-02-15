@@ -1,12 +1,12 @@
 <?php
-session_start();
-
-require_once './vendor/autoload.php';
-require_once './db.php';
+require_once './dependency.php';
 
 $db = new db();
+
+$fb = $db->initFb();
+
 $contest = $db->getActiveContest();
-$db->initFb();
+
 
 if (isset($_SESSION['email'])) {
 
