@@ -114,12 +114,12 @@ class db {
     }
 
     function userInscription($lastName,$firstName,$email){
+
         $query = "INSERT INTO participant (participant_name,participant_surname,participant_email) VALUES ('$lastName','$firstName','$email')";
         if(!$response = $this->conn->exec($query)){
 
             $this->redirectError();
         }
-        return $response;
     }
 
     function uploadPicture($participantId,$contestId,$picture){
@@ -212,11 +212,17 @@ class db {
         }
     }
     function getActiveContest(){
-        $contest = $this->getOne("SELECT * FROM contest WHERE  is_active = 1");
+        $contest = $this->getOne("SELECT * FROM contest WHERE is_active = 1");
 
         return $contest;
     }
 
+    function getAllContest(){
+
+        $allContest = $this->getAll("SELECT * FROM contest");
+
+        return $allContest;
+    }
     function checkIfParticipate($email){
         if (isset($email)) {
             $user = $this->getUser($email);
@@ -261,7 +267,7 @@ class db {
 
     function getTatooActiveContestLimit($contestId){
 
-        $tatoo = $this->getAll("SELECT link FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC LIMIT 5");
+        $tatoo = $this->getAll("SELECT link,facebook_photos_id,likes FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC LIMIT 4");
 
         return $tatoo;
     }
@@ -276,20 +282,27 @@ class db {
                 photo.participant_id = participant.participant_id
                 AND participant.participant_email = '$email'
                 ORDER BY photo.facebook_photos_id DESC ");
+        if($userTattoo){
+            return $userTattoo;
+        }else{
+            return false;
+        }
 
-        return $userTattoo;
     }
 
     function getTatooActiveContestWithUser(){
 
         $tatoo = $this->getAll("
                 SELECT
+                photo.likes,
                 photo.link,
+                photo.facebook_photos_id,
                 photo.participant_id,
                 participant.participant_id,
                 participant.participant_surname
                 FROM photo,participant
-                WHERE photo.participant_id = participant.participant_id");
+                WHERE photo.participant_id = participant.participant_id
+                ORDER BY likes DESC");
 
         return $tatoo;
     }
@@ -310,16 +323,10 @@ class db {
                 ");
         return $allTattooWithInfo;
     }
-
-    function getAllContest(){
-        $allContest = $this->getAll("SELECT * FROM contest");
-
-        return $allContest;
-    }
-
     function deleteContest($contestId){
-
+        $picture = $this->getOne("SELECT contest_image FROM contest WHERE contest_id = '$contestId'");
         $this->execute("DELETE FROM contest WHERE contest_id ='$contestId'");
+        unlink('./'.$picture);
     }
 
     function deleteTattoo($tattooId){
@@ -348,8 +355,51 @@ class db {
         }
     }
 
+    function likePhoto($photoId,$userId){
+
+        $query = "INSERT INTO likes (photo_id, user_id) VALUES ('$photoId','$userId')";
+        if (!$response = $this->conn->exec($query)) {
+
+            $this->redirectError();
+            return false;
+
+        } else {
+            return true;
+        }
+    }
+
+    function addLike($photoId){
+
+        $query = "UPDATE photo SET likes= likes +1 WHERE facebook_photos_id = '$photoId'";
+        if (!$response = $this->conn->exec($query)) {
+
+            $this->redirectError();
+            return false;
+
+        } else {
+            return true;
+        }
+    }
+    function ifUserAllreadyLikes($photoId,$userId){
+
+        $allReadyLike = $this->getOne("SELECT like_id FROM likes WHERE user_id = '$userId' AND photo_id = '$photoId'");
+
+        return $allReadyLike;
+    }
+
+    function activeContest($contestId){
+
+        $query = "UPDATE contest SET is_active = '1' WHERE contest_id = '$contestId'";
+        $this->conn->exec($query);
+    }
+    function desactiveContest($contestId){
+        $query = "UPDATE contest SET is_active = 0 WHERE contest_id = '$contestId'";
+
+        $this->conn->exec($query);
+    }
     function redirectError(){
 
         header('Location: error.php');
     }
+
 }

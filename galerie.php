@@ -1,7 +1,5 @@
 <?php
-session_start();
-require_once './db.php';
-require_once './vendor/autoload.php';
+require_once './dependency.php';
 
 $db = new db();
 
@@ -60,9 +58,13 @@ if (isset($_SESSION['email'])) {
                                         $firstSlide .= '</div>';
                                     }
                                     foreach ($allTattoo as $tattoo){
+
                                         echo '<li class="col-sm-3 col-xs-2">';
                                         echo '<a class="thumbnail"><img src='.$tattoo['link'].'></a>';
-                                        echo '<p class="title-photo">'.$tattoo['participant_surname'].'</p>';
+                                        echo '<p class="title-photo">'.$tattoo['participant_surname'];
+                                        echo $tattoo['likes'];
+                                        echo ' <a href=like.php?goto=galerie&id='.$tattoo['facebook_photos_id'].'> ';
+                                        echo' <span class="glyphicon glyphicon-heart"></span></a></p>';
                                         echo '</li>';
                                     }
                                 ?>
@@ -107,6 +109,7 @@ if (isset($_SESSION['email'])) {
                                                                 echo '<img src='.$tattoo['link'].'>';
                                                                 echo '</div>';
                                                             }
+
                                                             echo '<div class="item" data-slide-number='.$i.'>';
                                                             echo '<img src='.$tattoo['link'].'>';
                                                             echo '</div>';

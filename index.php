@@ -1,12 +1,12 @@
 <?php
-session_start();
-
-require_once './vendor/autoload.php';
-require_once './db.php';
+require_once './dependency.php';
 
 $db = new db();
+
+$fb = $db->initFb();
+
 $contest = $db->getActiveContest();
-$db->initFb();
+
 
 if (isset($_SESSION['email'])) {
 
@@ -72,13 +72,9 @@ $allTattoo = $db->getTatooActiveContestLimit($contest['contest_id']);
                 ?>
                 <div class="col-sm-3 col-xs-6">
                     <img class="popular" src="<?php echo $tattoo['link']?>"/>
-                    <div
-                        data-href="#"
-                        class="fb-like"
-                        data-layout="box_count"
-                        data-action="like"
-                        data-size="large"
-                        data-show-faces="true">
+                    <div>
+                        <span><?php echo $tattoo['likes'];?></span>
+                        <a href="like.php?goto=index&id=<?php echo $tattoo['facebook_photos_id'];?>"><span class="glyphicon glyphicon-heart"></span></a>
                     </div>
                 </div>
                 <?php
