@@ -5,7 +5,7 @@ $db = new db();
 
 $allTattoo = $db->getTatooActiveContestWithUser();
 if (isset($_SESSION['email'])) {
-    $userTattoo = $db->getUserTattoo($_SESSION['email']);
+    $userTattoo = $db->getUserTattooActive($_SESSION['email']);
 }
 
 ?>
@@ -61,7 +61,7 @@ if (isset($_SESSION['email'])) {
 
                                         echo '<li class="col-sm-3 col-xs-2">';
                                         echo '<a class="thumbnail"><img src='.$tattoo['link'].'></a>';
-                                        echo '<p class="title-photo">'.$tattoo['participant_surname'];
+                                        echo '<p class="title-photo">'.$tattoo['participant_surname'].' ';
                                         echo $tattoo['likes'];
                                         echo ' <a href=like.php?goto=galerie&id='.$tattoo['facebook_photos_id'].'> ';
                                         echo' <span class="glyphicon glyphicon-heart"></span></a></p>';

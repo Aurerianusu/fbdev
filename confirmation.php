@@ -25,6 +25,7 @@
     $_SESSION['email'] = $email;
 
     $participate = $db->checkIfParticipateAndRedirection($_SESSION['email']);
+
     if($participate){
         header('Location: nope.php');
     }

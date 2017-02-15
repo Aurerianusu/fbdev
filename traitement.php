@@ -27,6 +27,7 @@ $profile_pic = $profile_pic->getUrl();
 
 //$profile_pic = "http://graph.facebook.com/".$userNode->getId()."/picture?width=200";
 
+
 $linkMonImage = $_POST['linkTatoo'];
 
 $participant = $db->getUser($email);

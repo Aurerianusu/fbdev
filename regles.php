@@ -1,3 +1,18 @@
+<?php
+
+    require_once './dependency.php';
+
+    $db = new db();
+
+    $activeContest = $db->getActiveContest();
+
+    if(isset($activeContest)){
+        $dateEnd = $activeContest['contest_end_date'];
+
+
+        $dateEnd = date("d-m-Y", strtotime($dateEnd));
+    }
+?>
 <!doctype html>
 <html>
 	<head>
@@ -57,7 +72,7 @@
 			    </div>
 			    <div class="row">
 					<div class="col-sm-12 col-xs-12">
-						<p style="font-size:20px;">Le concours se termine le 31/12/16 à 23h59</p>
+						<p style="font-size:20px;">Le concours se termine le <?php echo $dateEnd; ?></p>
 					</div>
 			    </div>
 			    <div class="row">

@@ -179,7 +179,6 @@ class db {
         if($imageFileType != "jpg"
             && $imageFileType != "png"
             && $imageFileType != "jpeg"
-            && $imageFileType != "jpg"
             && $imageFileType != "gif"
             && $imageFileType != "PNG"
             && $imageFileType != "JPEG"
@@ -211,6 +210,7 @@ class db {
             }
         }
     }
+
     function getActiveContest(){
         $contest = $this->getOne("SELECT * FROM contest WHERE is_active = 1");
 
@@ -287,21 +287,43 @@ class db {
         }else{
             return false;
         }
-
     }
+
+    function getUserTattooActive($email){
+        $userTattoo = $this->getOne("
+                SELECT
+                photo.link,
+                participant.participant_surname
+                FROM photo, participant,contest
+                WHERE
+                photo.participant_id = participant.participant_id
+                AND photo.contest_id = contest.contest_id
+                AND contest.is_active = '1'
+                AND participant.participant_email = '$email'
+                ORDER BY photo.facebook_photos_id DESC ");
+        if($userTattoo){
+            return $userTattoo;
+        }else{
+            return false;
+        }
+    }
+
 
     function getTatooActiveContestWithUser(){
 
         $tatoo = $this->getAll("
                 SELECT
+                contest.is_active,
                 photo.likes,
                 photo.link,
                 photo.facebook_photos_id,
                 photo.participant_id,
                 participant.participant_id,
                 participant.participant_surname
-                FROM photo,participant
-                WHERE photo.participant_id = participant.participant_id
+                FROM photo,participant,contest
+                WHERE photo.participant_id = participant.participant_id 
+                AND photo.contest_id = contest.contest_id 
+                AND contest.is_active = '1'
                 ORDER BY likes DESC");
 
         return $tatoo;
