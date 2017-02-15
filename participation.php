@@ -130,7 +130,7 @@
             if($uploadok){
                 $db->uploadFile($uploadok,$_FILES['fileToUpload']);
             }else{
-                var_dump('marche pas');die;
+                $db->redirectError();
             }
         }
         ?>

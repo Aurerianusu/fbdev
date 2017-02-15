@@ -58,7 +58,6 @@ if($_SESSION['facebook_access_token']){
             document.location.href="<?php echo $_GET['goto'];?>.php"
         </script>
             <?php
-
         }
 
     }else{

@@ -1,7 +1,6 @@
 <?php
     require_once './dependency.php';
     require_once './check-formulaire.php';
-
 ?>
 
 <!doctype html>

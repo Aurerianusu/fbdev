@@ -6,14 +6,38 @@
  * Time: 19:00
  */
 class db {
+    /**
+     * @var bool
+     */
     private $conn;
+    /**
+     * @var
+     */
     private $host;
+    /**
+     * @var
+     */
     private $user;
+    /**
+     * @var
+     */
     private $password;
+    /**
+     * @var
+     */
     private $baseName;
+    /**
+     * @var
+     */
     private $port;
+    /**
+     * @var
+     */
     private $Debug;
 
+    /**
+     * db constructor.
+     */
     function __construct() {
         $config = parse_ini_file("config.ini");
         $this->conn = false;
@@ -26,10 +50,16 @@ class db {
         $this->connect();
     }
 
+    /**
+     *
+     */
     function __destruct() {
         $this->disconnect();
     }
 
+    /**
+     * @return bool|PDO
+     */
     function connect() {
         if (!$this->conn) {
             try {
@@ -52,12 +82,19 @@ class db {
         return $this->conn;
     }
 
+    /**
+     *
+     */
     function disconnect() {
         if ($this->conn) {
             $this->conn = null;
         }
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     function getOne($query) {
         $result = $this->conn->prepare($query);
         $ret = $result->execute();
@@ -72,6 +109,10 @@ class db {
         return $reponse;
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     function getAll($query) {
         $result = $this->conn->prepare($query);
         $ret = $result->execute();
@@ -86,6 +127,10 @@ class db {
         return $reponse;
     }
 
+    /**
+     * @param $query
+     * @return mixed
+     */
     function execute($query) {
         if (!$response = $this->conn->exec($query)) {
 
@@ -94,6 +139,9 @@ class db {
         return $response;
     }
 
+    /**
+     * @return \Facebook\Facebook
+     */
     function initFb(){
         $config = parse_ini_file("config.ini");
 
@@ -107,13 +155,22 @@ class db {
         return $fb;
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     */
     function getUser($email){
 
         $user = $this->getOne("SELECT * FROM participant WHERE participant_email = '$email'");
         return $user;
     }
 
-    function userInscription($lastName,$firstName,$email){
+    /**
+     * @param $lastName
+     * @param $firstName
+     * @param $email
+     */
+    function userInscription($lastName, $firstName, $email){
 
         $query = "INSERT INTO participant (participant_name,participant_surname,participant_email) VALUES ('$lastName','$firstName','$email')";
         if(!$response = $this->conn->exec($query)){
@@ -122,7 +179,13 @@ class db {
         }
     }
 
-    function uploadPicture($participantId,$contestId,$picture){
+    /**
+     * @param $participantId
+     * @param $contestId
+     * @param $picture
+     * @return mixed
+     */
+    function uploadPicture($participantId, $contestId, $picture){
         $query = "INSERT INTO photo(participant_id,contest_id,link) VALUE ('$participantId','$contestId','$picture')";
         if(!$response = $this->conn->exec($query)){
 
@@ -131,7 +194,18 @@ class db {
         return $response;
     }
 
-    function createContest($contestName,$contestRules,$contestHome,$dateBegin,$dateEnd,$priceName,$pricePic,$is_active){
+    /**
+     * @param $contestName
+     * @param $contestRules
+     * @param $contestHome
+     * @param $dateBegin
+     * @param $dateEnd
+     * @param $priceName
+     * @param $pricePic
+     * @param $is_active
+     * @return bool
+     */
+    function createContest($contestName, $contestRules, $contestHome, $dateBegin, $dateEnd, $priceName, $pricePic, $is_active){
         $today = date("Y-m-d H:i:s");
         $filePath = 'public/images/contest/'.$pricePic;
 
@@ -147,6 +221,10 @@ class db {
 
     }
 
+    /**
+     * @param $file
+     * @return int
+     */
     function checkUploadFile($file){
 
         $target_dir = "../public/images/contest/";
@@ -190,7 +268,12 @@ class db {
         return $uploadOk;
     }
 
-    function uploadFile($uploadOk,$file){
+    /**
+     * @param $uploadOk
+     * @param $file
+     * @return bool
+     */
+    function uploadFile($uploadOk, $file){
 
         $target_dir = "../public/images/contest/";
         $target_file = $target_dir . basename($file["name"]);
@@ -211,18 +294,29 @@ class db {
         }
     }
 
+    /**
+     * @return mixed
+     */
     function getActiveContest(){
         $contest = $this->getOne("SELECT * FROM contest WHERE is_active = 1");
 
         return $contest;
     }
 
+    /**
+     * @return mixed
+     */
     function getAllContest(){
 
         $allContest = $this->getAll("SELECT * FROM contest");
 
         return $allContest;
     }
+
+    /**
+     * @param $email
+     * @return bool
+     */
     function checkIfParticipate($email){
         if (isset($email)) {
             $user = $this->getUser($email);
@@ -245,6 +339,10 @@ class db {
         }
     }
 
+    /**
+     * @param $email
+     * @return bool
+     */
     function checkIfParticipateAndRedirection($email){
         $participate = $this->checkIfParticipate($email);
         if($participate){
@@ -259,12 +357,19 @@ class db {
         }
     }
 
+    /**
+     * @return mixed
+     */
     function getAllTattoo(){
         $allTattoo = $this->getAll("SELECT * FROM photo");
 
         return $allTattoo;
     }
 
+    /**
+     * @param $contestId
+     * @return mixed
+     */
     function getTatooActiveContestLimit($contestId){
 
         $tatoo = $this->getAll("SELECT link,facebook_photos_id,likes FROM photo WHERE contest_id = '$contestId' ORDER BY likes DESC LIMIT 4");
@@ -272,6 +377,10 @@ class db {
         return $tatoo;
     }
 
+    /**
+     * @param $email
+     * @return bool|mixed
+     */
     function getUserTattoo($email){
         $userTattoo = $this->getOne("
                 SELECT
@@ -289,6 +398,10 @@ class db {
         }
     }
 
+    /**
+     * @param $email
+     * @return bool|mixed
+     */
     function getUserTattooActive($email){
         $userTattoo = $this->getOne("
                 SELECT
@@ -309,6 +422,9 @@ class db {
     }
 
 
+    /**
+     * @return mixed
+     */
     function getTatooActiveContestWithUser(){
 
         $tatoo = $this->getAll("
@@ -329,6 +445,9 @@ class db {
         return $tatoo;
     }
 
+    /**
+     * @return mixed
+     */
     function getAllTattooWithInfo(){
         $allTattooWithInfo = $this->getAll("
                 SELECT 
@@ -345,17 +464,28 @@ class db {
                 ");
         return $allTattooWithInfo;
     }
+
+    /**
+     * @param $contestId
+     */
     function deleteContest($contestId){
         $picture = $this->getOne("SELECT contest_image FROM contest WHERE contest_id = '$contestId'");
         $this->execute("DELETE FROM contest WHERE contest_id ='$contestId'");
         unlink('./'.$picture);
     }
 
+    /**
+     * @param $tattooId
+     */
     function deleteTattoo($tattooId){
 
         $this->execute("DELETE FROM photo WHERE facebook_photos_id ='$tattooId'");
     }
 
+    /**
+     * @param $email
+     * @return mixed
+     */
     function getAdmin($email){
 
         $adminId = $this->getOne("SELECT admin_id FROM admin WHERE admin_email = '$email'");
@@ -364,7 +494,13 @@ class db {
 
     }
 
-    function addAdmin($name,$surname,$email){
+    /**
+     * @param $name
+     * @param $surname
+     * @param $email
+     * @return bool
+     */
+    function addAdmin($name, $surname, $email){
         $query = "INSERT INTO admin VALUES ('$name','$surname','$email')";
         if(!$response = $this->conn->exec($query)){
 
@@ -377,7 +513,12 @@ class db {
         }
     }
 
-    function likePhoto($photoId,$userId){
+    /**
+     * @param $photoId
+     * @param $userId
+     * @return bool
+     */
+    function likePhoto($photoId, $userId){
 
         $query = "INSERT INTO likes (photo_id, user_id) VALUES ('$photoId','$userId')";
         if (!$response = $this->conn->exec($query)) {
@@ -390,6 +531,10 @@ class db {
         }
     }
 
+    /**
+     * @param $photoId
+     * @return bool
+     */
     function addLike($photoId){
 
         $query = "UPDATE photo SET likes= likes +1 WHERE facebook_photos_id = '$photoId'";
@@ -402,23 +547,40 @@ class db {
             return true;
         }
     }
-    function ifUserAllreadyLikes($photoId,$userId){
+
+    /**
+     * @param $photoId
+     * @param $userId
+     * @return mixed
+     */
+    function ifUserAllreadyLikes($photoId, $userId){
 
         $allReadyLike = $this->getOne("SELECT like_id FROM likes WHERE user_id = '$userId' AND photo_id = '$photoId'");
 
         return $allReadyLike;
     }
 
+    /**
+     * @param $contestId
+     */
     function activeContest($contestId){
 
         $query = "UPDATE contest SET is_active = '1' WHERE contest_id = '$contestId'";
         $this->conn->exec($query);
     }
+
+    /**
+     * @param $contestId
+     */
     function desactiveContest($contestId){
         $query = "UPDATE contest SET is_active = 0 WHERE contest_id = '$contestId'";
 
         $this->conn->exec($query);
     }
+
+    /**
+     *
+     */
     function redirectError(){
 
         header('Location: error.php');
