@@ -7,7 +7,6 @@ $fb = $db->initFb();
 
 $contest = $db->getActiveContest();
 
-
 if (isset($_SESSION['email'])) {
 
     $participate = $db->checkIfParticipate($_SESSION['email']);
@@ -44,12 +43,16 @@ $allTattoo = $db->getTatooActiveContestLimit($contest['contest_id']);
 <!-- BLOC 1 -->
 <section id="section-accueil">
     <div class="container">
+        <h1><?php echo $contest['contest_name'];?></h1>
         <h1 style="font-size: 31px;">
             <?php echo $contest['contest_prize']; ?>
         </h1>
         <div class="row">
+
             <div class="col-sm-4 col-xs-12">
+
                 <img src="<?php echo $contest['contest_image']; ?>" alt="" class="img-thumbnail img-responsive">
+
             </div>
 
             <div class="col-sm-8 col-xs-12 text-left" id="description">

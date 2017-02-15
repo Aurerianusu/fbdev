@@ -124,7 +124,7 @@
     <footer><?php require './footer.php' ?></footer>
     <!-- END OF FOOTER -->
         <?php
-        
+
         if(isset($_FILES['fileToUpload'])){
             $uploadok = $db->checkUploadFile($_FILES['fileToUpload']);
             if($uploadok){
@@ -132,7 +132,6 @@
             }else{
                 var_dump('marche pas');die;
             }
-
         }
         ?>
     <script>
