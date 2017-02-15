@@ -179,7 +179,6 @@ class db {
         if($imageFileType != "jpg"
             && $imageFileType != "png"
             && $imageFileType != "jpeg"
-            && $imageFileType != "jpg"
             && $imageFileType != "gif"
             && $imageFileType != "PNG"
             && $imageFileType != "JPEG"
@@ -211,6 +210,7 @@ class db {
             }
         }
     }
+
     function getActiveContest(){
         $contest = $this->getOne("SELECT * FROM contest WHERE is_active = 1");
 

@@ -57,7 +57,7 @@ $allContest = $db->getAllContest();
                     <h2 class="title-settings">Concours</h2>
                     <div>
                         <div class="col-md-4 col-md-offset-4">
-                           <a href="create-contest.php">Créer un concours</a>
+                           <a href="contest-create.php">Créer un concours</a>
                         </div>
                     </div>
                     <div class="tabcontest">
