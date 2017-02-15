@@ -50,7 +50,16 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
     if(isset($_POST['dateNow'])){
 
         $dateSelected = $dateToday;
-        $is_active = 1;
+
+        $allreadyContestToday = $db->getActiveContest();
+
+        if($allreadyContestToday){
+
+            $error = TRUE;
+            $msg_error .= "<li>Un concours est déjà en cours aujourd'hui.";
+        }else{
+            $is_active = 1;
+        }
     }else{
         $dateSelected = new DateTime($_POST['dateBegin'].' '.$_POST['hourBegin']);
         $dateSelected = $dateSelected->format('Y/m/d H:m');
@@ -59,7 +68,17 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
             $error = TRUE;
             $msg_error .= "<li>Voulez changer le cours du temps Mcfly ? Veuillez choisir une date >= à aujourd'hui.";
         }elseif($dateSelected == $dateToday){
-            $is_active = 1;
+
+            $allreadyContestToday = $db->getActiveContest();
+            
+            if($allreadyContestToday){
+
+                $error = TRUE;
+                $msg_error .= "<li>Un concours est déjà en cours aujourd'hui.";
+            }else{
+                $is_active = 1;
+            }
+
         }else{
             $is_active = 0;
         }
