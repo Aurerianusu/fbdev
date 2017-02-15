@@ -324,8 +324,9 @@ class db {
         return $allTattooWithInfo;
     }
     function deleteContest($contestId){
-
+        $picture = $this->getOne("SELECT contest_image FROM contest WHERE contest_id = '$contestId'");
         $this->execute("DELETE FROM contest WHERE contest_id ='$contestId'");
+        unlink('./'.$picture);
     }
 
     function deleteTattoo($tattooId){

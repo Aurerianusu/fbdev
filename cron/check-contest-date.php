@@ -18,12 +18,12 @@ foreach ($allContest as $contest){
     $endDate = $contest['contest_end_date'];
     $beginDate = $contest['contest_begin_date'];
 
-    $beginDate = date("Y/m/d H:m", strtotime($beginDate));
-    $endDate = date("Y/m/d H:m", strtotime($endDate));
+    $beginDate = date("Y/m/d", strtotime($beginDate));
+    $endDate = date("Y/m/d", strtotime($endDate));
 
-    $today = date('Y/m/d H:m');
+    $today = date('Y/m/d');
     $today = new DateTime($today);
-    $today = $today->format('Y/m/d H:m');
+    $today = $today->format('Y/m/d');
 
     if($beginDate < $today && $endDate < $today ){
         $db->desactiveContest($contest['contest_id']);

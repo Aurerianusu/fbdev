@@ -11,7 +11,7 @@ $msg_error = "";
 
 $db = new db();
 
-if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToUpload']) &&  isset($_POST['home']) && isset($_POST['rules']) &&  isset($_POST['dateBegin']) && isset($_POST['hourBegin']) && isset($_POST['dateEnd']) && isset($_POST['hourEnd']) )
+if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToUpload']) &&  isset($_POST['home']) && isset($_POST['rules']) &&  isset($_POST['dateBegin'])  && isset($_POST['dateEnd']) )
 {
 
     if(strlen($_POST['title']) < 2)
@@ -43,9 +43,9 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
         $msg_error .= "<li>Les règles du concours doivent faire plus de 10 caractères";
     }
 
-    $dateToday = date('Y/m/d H:m');
+    $dateToday = date('Y/m/d');
     $dateToday = new DateTime($dateToday);
-    $dateToday = $dateToday->format('Y/m/d H:m');
+    $dateToday = $dateToday->format('Y/m/d');
 
     if(isset($_POST['dateNow'])){
 
@@ -61,8 +61,8 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
             $is_active = 1;
         }
     }else{
-        $dateSelected = new DateTime($_POST['dateBegin'].' '.$_POST['hourBegin']);
-        $dateSelected = $dateSelected->format('Y/m/d H:m');
+        $dateSelected = new DateTime($_POST['dateBegin']);
+        $dateSelected = $dateSelected->format('Y/m/d');
 
         if($dateSelected < $dateToday){
             $error = TRUE;
@@ -70,7 +70,7 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
         }elseif($dateSelected == $dateToday){
 
             $allreadyContestToday = $db->getActiveContest();
-            
+
             if($allreadyContestToday){
 
                 $error = TRUE;
@@ -84,8 +84,8 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
         }
     }
 
-    $dateEnd = new DateTime($_POST['dateEnd'].' '.$_POST['hourEnd']);
-    $dateEnd =  $dateEnd->format('Y/m/d H:m');
+    $dateEnd = new DateTime($_POST['dateEnd']);
+    $dateEnd =  $dateEnd->format('Y/m/d');
 
     if($dateEnd < $dateSelected){
         $error = TRUE;
@@ -93,7 +93,7 @@ if( isset($_POST['title']) &&  isset($_POST['price']) &&  isset($_FILES['fileToU
     }elseif ($dateEnd == $dateSelected){
         $error = TRUE;
         $msg_error .= "<li>La date de fin de noit pas etre la meme que la date du début";
-    }else{
+    }elseif($dateEnd ){
         //do nothing
     }
 
