@@ -44,7 +44,7 @@ $allTattoo = $db->getTatooActiveContestLimit($contest['contest_id']);
 <section id="section-accueil">
     <div class="container">
         <h1><?php echo $contest['contest_name'];?></h1>
-        <p>bonsouar</p>
+        
         <h1 style="font-size: 31px;">
             <?php echo $contest['contest_prize']; ?>
         </h1>
